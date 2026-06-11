@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors (keep .cursor/skills — project skills are tracked)
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local temp / backup
+*.bak
+*.tmp
+docs/_test_gen.xmind
+docs/_xmind_build/
+docs/_xmind_inspect/

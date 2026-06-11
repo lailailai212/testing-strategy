@@ -78,3 +78,4 @@ description: >-
 - 判定规则与拆分口诀：[reference.md](reference.md)
 - Small / Large 完整示例：[examples.md](examples.md)
 - 团队文档：[docs/story-ac-guide.md](../../../docs/story-ac-guide.md)
+- 测试点可视化 XMind：[test-points-xmind](../test-points-xmind/SKILL.md)
