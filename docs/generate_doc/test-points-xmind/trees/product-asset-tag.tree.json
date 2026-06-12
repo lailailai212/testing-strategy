@@ -1,0 +1,57 @@
+{
+  "sheet_title": "Product Asset Tag 测试点",
+  "root_title": "Product Asset — Certificate/Key Tag 测试点",
+  "tree": [
+    {
+      "title": "Product Asset",
+      "children": [
+        {
+          "title": "Assign Security Key",
+          "children": [
+            "TP-PA-KEY-01 | Tag 选择控件；产品级共用；下拉单选已有 Tag",
+            "TP-PA-KEY-02 | Tag 非必填，不选可成功 Assign"
+          ]
+        },
+        {
+          "title": "Assign Certificate",
+          "children": [
+            "TP-PA-CERT-01 | Tag 控件；默认项 google certificate config / matter config；下拉单选",
+            "TP-PA-CERT-02 | Tag 必填，未选不能提交；选后可成功 Assign"
+          ]
+        },
+        {
+          "title": "Tag 新增与删除（Key/Certificate 共用）",
+          "children": [
+            "TP-PA-TAG-01 | Enter Value + Add；空值时 Add 置灰",
+            "TP-PA-TAG-02 | Add 创建成功自动选中并关闭下拉；重复名称校验失败",
+            "TP-PA-TAG-03 | 同产品自定义 Tag 在两个 Assign 弹窗均可选",
+            "TP-PA-TAG-04 | Tag 支持删除；删除后下拉不再展示"
+          ]
+        },
+        {
+          "title": "Asset 列表展示",
+          "children": [
+            "TP-PA-LIST-01 | Certificate 列表展示 Tag，与 Assign 一致",
+            "TP-PA-LIST-02 | Key 列表展示 Tag，与 Assign 一致",
+            "TP-PA-LIST-03 | 历史 Cert：google/matter 默认 config，其他为「-」",
+            "TP-PA-LIST-04 | 历史 Key Tag 默认为「-」"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Version 详情页",
+      "children": [
+        "TP-VER-01 | Certificate 区域展示 Tag，与 Asset 一致",
+        "TP-VER-02 | Key 区域展示 Tag，与 Asset 一致"
+      ]
+    },
+    {
+      "title": "产品详情页",
+      "children": [
+        "TP-PD-01 | Certificate 区域展示 Tag，与 Asset 一致",
+        "TP-PD-02 | Key 区域展示 Tag，与 Asset 一致"
+      ]
+    }
+  ]
+}
