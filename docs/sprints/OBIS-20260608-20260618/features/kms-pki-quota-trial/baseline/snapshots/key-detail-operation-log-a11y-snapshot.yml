@@ -1,0 +1,282 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - img "logo" [ref=e10]
+        - heading "OnBoard IoT Security" [level=5] [ref=e12]
+      - list [ref=e15]:
+        - listitem [ref=e16]:
+          - img [ref=e18]
+        - paragraph [ref=e23]: /
+        - listitem [ref=e24]:
+          - generic [ref=e25] [cursor=pointer]: KMS
+        - paragraph [ref=e28]: /
+        - listitem [ref=e29]:
+          - generic [ref=e30]: ScanStep23
+      - list [ref=e31]:
+        - listitem [ref=e32]:
+          - switch [ref=e33] [cursor=pointer]
+        - listitem [ref=e35]:
+          - button [ref=e36] [cursor=pointer]:
+            - img [ref=e38]
+        - listitem [ref=e40]:
+          - button [ref=e41] [cursor=pointer]:
+            - img [ref=e43]
+        - listitem [ref=e46]:
+          - generic [ref=e47] [cursor=pointer]:
+            - img "Avatar" [ref=e48]
+            - generic [ref=e49]: Future Wei
+    - generic [ref=e51]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e61]:
+          - generic: Core
+          - generic [ref=e62] [cursor=pointer]:
+            - img [ref=e64]
+            - generic [ref=e66]: Product
+          - generic [ref=e67] [cursor=pointer]:
+            - img [ref=e69]
+            - generic [ref=e71]: KMS
+          - generic [ref=e72] [cursor=pointer]:
+            - img [ref=e74]
+            - generic [ref=e76]: PKI
+        - generic [ref=e77]:
+          - generic: Ecosystem
+          - generic [ref=e78] [cursor=pointer]:
+            - img [ref=e80]
+            - generic [ref=e82]: Factory
+          - generic [ref=e83] [cursor=pointer]:
+            - img [ref=e85]
+            - generic [ref=e87]: U-Safe List
+        - generic [ref=e88]:
+          - generic: Records
+          - generic [ref=e89] [cursor=pointer]:
+            - img [ref=e91]
+            - generic [ref=e93]: Device History
+          - generic [ref=e94] [cursor=pointer]:
+            - img [ref=e96]
+            - generic [ref=e98]: DAC Report
+        - generic [ref=e99]:
+          - generic: Admin
+          - generic [ref=e100] [cursor=pointer]:
+            - img [ref=e102]
+            - generic [ref=e104]: Account
+          - generic [ref=e105] [cursor=pointer]:
+            - img [ref=e107]
+            - generic [ref=e109]: Group
+        - generic [ref=e110] [cursor=pointer]:
+          - img [ref=e112]
+          - generic [ref=e114]: System
+      - main [ref=e116]:
+        - generic [ref=e120]:
+          - generic [ref=e122]:
+            - img [ref=e123] [cursor=pointer]
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - generic "ScanStep23" [ref=e128]:
+                  - textbox "ScanStep23"
+                  - generic:
+                    - generic: ScanStep23
+                  - img [ref=e131]
+                - generic [ref=e134]: PROD
+              - separator [ref=e135]
+              - generic [ref=e136]:
+                - generic [ref=e137]: Status
+                - generic [ref=e138]: Active
+            - generic [ref=e140]:
+              - button "Lock" [ref=e141] [cursor=pointer]: Lock
+              - button "Download" [ref=e142] [cursor=pointer]: Download
+          - generic [ref=e143]:
+            - generic [ref=e146]:
+              - generic [ref=e148] [cursor=pointer]: Overview
+              - generic [ref=e150] [cursor=pointer]: Usage Count
+              - generic [ref=e152] [cursor=pointer]: Permission
+              - generic [ref=e154] [cursor=pointer]: Operation Log
+            - generic [ref=e157]:
+              - generic [ref=e162]:
+                - generic [ref=e163]:
+                  - heading "Basic Info" [level=6] [ref=e168]
+                  - button [ref=e170] [cursor=pointer]:
+                    - img [ref=e171]
+                - generic [ref=e175]:
+                  - generic [ref=e176]:
+                    - generic [ref=e177]:
+                      - generic [ref=e178]: Name
+                      - generic [ref=e180]:
+                        - text: ScanStep23
+                        - img [ref=e182] [cursor=pointer]
+                    - generic [ref=e184]:
+                      - generic [ref=e185]: ID
+                      - generic [ref=e187]:
+                        - text: KID-AR34c414c3f8
+                        - img [ref=e189] [cursor=pointer]
+                    - generic [ref=e191]:
+                      - generic [ref=e192]: Storage
+                      - generic [ref=e194]: Local
+                    - generic [ref=e195]:
+                      - generic [ref=e196]: Version
+                      - generic [ref=e198]: V1
+                    - generic [ref=e199]:
+                      - generic [ref=e200]: Source
+                      - generic [ref=e202]: System
+                    - generic [ref=e203]:
+                      - generic [ref=e204]: Type
+                      - generic [ref=e206]: Asymmetric
+                    - generic [ref=e207]:
+                      - generic [ref=e208]: Algorithm
+                      - generic [ref=e210]: RSA-2048
+                  - generic [ref=e211]:
+                    - generic [ref=e212]:
+                      - generic [ref=e213]: Admin
+                      - generic [ref=e215]:
+                        - img "avatar" [ref=e216]
+                        - generic [ref=e217]: Future Wei
+                    - generic [ref=e218]:
+                      - generic [ref=e219]: Creation Time
+                      - generic [ref=e221]: 2026-06-15 21:22:16
+                    - generic [ref=e222]:
+                      - generic [ref=e223]: Usage
+                      - generic [ref=e226]: Sign / Verify
+                    - generic [ref=e227]:
+                      - generic [ref=e228]: Usage Count
+                      - generic [ref=e230]: "0"
+                    - generic [ref=e231]:
+                      - generic [ref=e232]: Last Usage
+                      - generic [ref=e234]: 2026-06-15 21:22:16
+                    - generic [ref=e235]:
+                      - generic [ref=e236]: Expiration Date
+                      - generic [ref=e238]: 2051-06-15
+                    - generic [ref=e241]:
+                      - progressbar [ref=e243]
+                      - generic [ref=e245]:
+                        - generic [ref=e246]: Used 1 hour
+                        - generic [ref=e247]: 25 years left
+              - generic [ref=e256]:
+                - generic [ref=e257]:
+                  - button "Used by Product (0)" [expanded] [ref=e258] [cursor=pointer]:
+                    - img [ref=e260]
+                    - generic [ref=e263]: Used by Product (0)
+                  - region [ref=e264]:
+                    - generic [ref=e268]:
+                      - img [ref=e269]
+                      - text: No associated products
+                - generic [ref=e281]:
+                  - button "Used by User (0)" [expanded] [ref=e282] [cursor=pointer]:
+                    - img [ref=e284]
+                    - generic [ref=e287]: Used by User (0)
+                  - region [ref=e288]:
+                    - generic [ref=e292]:
+                      - img [ref=e293]
+                      - text: No associated users
+              - generic [ref=e308]:
+                - generic [ref=e309]:
+                  - heading "Permission" [level=6] [ref=e314]
+                  - button "Add" [ref=e316] [cursor=pointer]:
+                    - img [ref=e318]
+                    - text: Add
+                - generic [ref=e321]:
+                  - generic [ref=e326]:
+                    - generic [ref=e327] [cursor=pointer]:
+                      - img [ref=e328]
+                      - generic [ref=e330]: Filter
+                      - img [ref=e331]
+                    - generic [ref=e333] [cursor=pointer]:
+                      - img [ref=e334]
+                      - generic [ref=e336]: Sort· 1
+                      - img [ref=e337]
+                    - button [ref=e339] [cursor=pointer]:
+                      - img [ref=e341]
+                    - button [ref=e343] [cursor=pointer]:
+                      - img [ref=e345]
+                  - generic [ref=e351]:
+                    - table [ref=e354]:
+                      - rowgroup [ref=e362]:
+                        - row "Name Permission Status Operator Operation Time" [ref=e363]:
+                          - columnheader "Name" [ref=e364]:
+                            - generic [ref=e366]: Name
+                          - columnheader "Permission" [ref=e367]:
+                            - generic [ref=e370]: Permission
+                          - columnheader "Status" [ref=e371]:
+                            - generic [ref=e374]: Status
+                          - columnheader "Operator" [ref=e375]:
+                            - generic [ref=e378]: Operator
+                          - columnheader "Operation Time" [ref=e379]:
+                            - generic [ref=e382]: Operation Time
+                          - columnheader [ref=e383]
+                    - table [ref=e387]:
+                      - rowgroup [ref=e395]:
+                        - row "avatar Admin Future Wei(future.wei@snowballtech.com) Add, View, Unlock, Edit, Create Authorization, Lock, Delete Enable avatar future.wei@snowballtech.com 2026-06-15 21:22:15" [ref=e396]:
+                          - cell "avatar Admin Future Wei(future.wei@snowballtech.com)" [ref=e397]:
+                            - generic [ref=e400]:
+                              - img "avatar" [ref=e401]
+                              - generic [ref=e402]: Admin
+                              - generic [ref=e404]: Future Wei(future.wei@snowballtech.com)
+                          - cell "Add, View, Unlock, Edit, Create Authorization, Lock, Delete" [ref=e405]:
+                            - generic [ref=e408]: Add, View, Unlock, Edit, Create Authorization, Lock, Delete
+                          - cell "Enable" [ref=e409]:
+                            - generic [ref=e415]: Enable
+                          - cell "avatar future.wei@snowballtech.com" [ref=e416]:
+                            - generic [ref=e420]:
+                              - img "avatar" [ref=e421]
+                              - generic [ref=e423]: future.wei@snowballtech.com
+                          - cell "2026-06-15 21:22:15" [ref=e424]:
+                            - generic [ref=e427]: 2026-06-15 21:22:15
+                          - cell [ref=e428]:
+                            - button [ref=e431] [cursor=pointer]:
+                              - img [ref=e433]
+              - generic [ref=e440]:
+                - heading "Operation Log" [level=6] [ref=e446]
+                - generic [ref=e448]:
+                  - generic [ref=e453]:
+                    - generic [ref=e454] [cursor=pointer]:
+                      - img [ref=e455]
+                      - generic [ref=e457]: Filter
+                      - img [ref=e458]
+                    - generic [ref=e460] [cursor=pointer]:
+                      - img [ref=e461]
+                      - generic [ref=e463]: Sort· 1
+                      - img [ref=e464]
+                    - button [ref=e466] [cursor=pointer]:
+                      - img [ref=e468]
+                    - button [ref=e470] [cursor=pointer]:
+                      - img [ref=e472]
+                  - generic [ref=e478]:
+                    - table [ref=e481]:
+                      - rowgroup [ref=e488]:
+                        - row "Operation Operation Type Operation Time Operator Name Operator Email" [ref=e489]:
+                          - columnheader "Operation" [ref=e490]:
+                            - generic [ref=e493]: Operation
+                          - columnheader "Operation Type" [ref=e494]:
+                            - generic [ref=e497]: Operation Type
+                          - columnheader "Operation Time" [ref=e498]:
+                            - generic [ref=e501]: Operation Time
+                          - columnheader "Operator Name" [ref=e502]:
+                            - generic [ref=e505]: Operator Name
+                          - columnheader "Operator Email" [ref=e506]:
+                            - generic [ref=e509]: Operator Email
+                    - table [ref=e512]:
+                      - rowgroup [ref=e519]:
+                        - 'row "Save HSM Key: ScanStep23 Create-HSM 2026-06-15 21:22:24 Future Wei future.wei@snowballtech.com" [ref=e520]':
+                          - 'cell "Save HSM Key: ScanStep23" [ref=e521]':
+                            - generic [ref=e524]: "Save HSM Key: ScanStep23"
+                          - cell "Create-HSM" [ref=e525]:
+                            - generic [ref=e528]: Create-HSM
+                          - cell "2026-06-15 21:22:24" [ref=e529]:
+                            - generic [ref=e532]: 2026-06-15 21:22:24
+                          - cell "Future Wei" [ref=e533]:
+                            - generic [ref=e536]: Future Wei
+                          - cell "future.wei@snowballtech.com" [ref=e537]:
+                            - generic [ref=e540]: future.wei@snowballtech.com
+                        - 'row "Create key: ScanStep23 Create 2026-06-15 21:22:16 Future Wei future.wei@snowballtech.com" [ref=e541]':
+                          - 'cell "Create key: ScanStep23" [ref=e542]':
+                            - generic [ref=e545]: "Create key: ScanStep23"
+                          - cell "Create" [ref=e546]:
+                            - generic [ref=e549]: Create
+                          - cell "2026-06-15 21:22:16" [ref=e550]:
+                            - generic [ref=e553]: 2026-06-15 21:22:16
+                          - cell "Future Wei" [ref=e554]:
+                            - generic [ref=e557]: Future Wei
+                          - cell "future.wei@snowballtech.com" [ref=e558]:
+                            - generic [ref=e561]: future.wei@snowballtech.com
+  - img
+  - generic [ref=e563]: future.wei@s...

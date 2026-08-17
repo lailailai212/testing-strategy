@@ -1,0 +1,314 @@
+{
+  "started_at": "2026-06-30 08:07:03 UTC",
+  "environment": "https://iot-admin-uat.snowballtech.com/welcome",
+  "account": "auto_user@free.com",
+  "summary": {
+    "pass": 4,
+    "fail": 8,
+    "blocked": 1,
+    "skip": 0
+  },
+  "cases": [
+    {
+      "case_id": "TBR-01",
+      "name": "Welcome 工具栏布局 - 页面底部常驻四模块等宽网格",
+      "priority": "P0",
+      "status": "pass",
+      "bugs": [],
+      "notes": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "滚动至页面底部工具栏区域",
+          "expected": "工具栏位于 Welcome 底部且常驻可见",
+          "actual": "已滚动并截图",
+          "status": "pass",
+          "screenshot": "screenshots/TBR-01_step1_toolbar_bottom.png"
+        },
+        {
+          "index": 2,
+          "action": "查看四张卡片布局与模块名称",
+          "expected": "4 张卡片 Quick Start / Operations Manual / Tools & Downloads / FAQ 等宽网格",
+          "actual": "可见模块: Quick Start, Operations Manual, Tools, FAQ; 缺失: 无",
+          "status": "pass",
+          "screenshot": "screenshots/TBR-01_step2_four_cards.png"
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-02",
+      "name": "Welcome Tools 模块 - 头部打开 Drawer 展示全部工具",
+      "priority": "P0",
+      "status": "fail",
+      "bugs": [
+        "点击 Tools 卡片头部未打开 Drawer"
+      ],
+      "notes": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "统计卡片默认区可见工具条数",
+          "expected": "卡片列表部 ≤4 条",
+          "actual": "统计到 0 条",
+          "status": "pass",
+          "screenshot": "screenshots/TBR-02_step1_card_items_0.png"
+        },
+        {
+          "index": 2,
+          "action": "点击 Tools & Downloads 卡片头部",
+          "expected": "打开列表 Drawer（非新标签页）",
+          "actual": "未检测到 Drawer",
+          "status": "fail",
+          "screenshot": "screenshots/TBR-02_step2_drawer_open.png"
+        },
+        {
+          "index": 3,
+          "action": "统计 Drawer 内工具条数",
+          "expected": "Drawer 展示全部工具条目；不分页",
+          "actual": "Drawer 内约 0 条（卡片区 0 条）",
+          "status": "fail",
+          "screenshot": "screenshots/TBR-02_step3_drawer_items.png"
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-03",
+      "name": "Welcome Tools 模块 - Drawer 右上角关闭按钮可关闭",
+      "priority": "P0",
+      "status": "pass",
+      "bugs": [],
+      "notes": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "点击 Drawer 右上角关闭按钮",
+          "expected": "Drawer 关闭；回到 Welcome 底部工具栏",
+          "actual": "Drawer 已关闭",
+          "status": "pass",
+          "screenshot": "screenshots/TBR-03_step1_after_close.png"
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-04",
+      "name": "Welcome Tools 模块 - 卡片默认区下载按钮直接下载",
+      "priority": "P0",
+      "status": "fail",
+      "bugs": [
+        "卡片默认区下载按钮未触发下载",
+        "下载时打开了新标签页或 Drawer"
+      ],
+      "notes": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "在卡片默认区点击某工具下载箭头按钮",
+          "expected": "触发直接下载",
+          "actual": "未捕获下载事件: Timeout 8000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================",
+          "status": "fail",
+          "screenshot": "screenshots/TBR-04_step1_after_download_click.png"
+        },
+        {
+          "index": 2,
+          "action": "观察是否打开详情 Drawer 或新标签页",
+          "expected": "无工具详情 Drawer；无新标签详情页",
+          "actual": "标签页 1→2; Drawer 0→0",
+          "status": "fail",
+          "screenshot": "screenshots/TBR-04_step1_after_download_click.png"
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-05",
+      "name": "页头导航 - Docs Contact Us 全屏与语言选择器可见",
+      "priority": "P0",
+      "status": "fail",
+      "bugs": [
+        "页头缺少: 语言"
+      ],
+      "notes": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "查看页头右侧操作区",
+          "expected": "可见 Docs、Contact Us、全屏按钮、语言下拉",
+          "actual": "Docs/文档中心: 可见; Contact Us/联系我们: 可见; 全屏: 可见; 语言: 不可见",
+          "status": "fail",
+          "screenshot": "screenshots/TBR-05_step1_header.png"
+        }
+      ]
+    },
+    {
+      "case_id": "case",
+      "name": "<function run_all.<locals>.<lambda> at 0x0000017322F32DE0>",
+      "priority": "?",
+      "status": "fail",
+      "bugs": [
+        "执行异常: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"English\", exact=True).first\n"
+      ],
+      "notes": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "执行",
+          "expected": "用例完成",
+          "actual": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"English\", exact=True).first\n",
+          "status": "fail",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "case_id": "case",
+      "name": "<function run_all.<locals>.<lambda> at 0x0000017322F323E0>",
+      "priority": "?",
+      "status": "fail",
+      "bugs": [
+        "执行异常: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"中文\", exact=True).first\n"
+      ],
+      "notes": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "执行",
+          "expected": "用例完成",
+          "actual": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"中文\", exact=True).first\n",
+          "status": "fail",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-08",
+      "name": "页头 Contact Us - 全部租户未签约时展示",
+      "priority": "P0",
+      "status": "pass",
+      "bugs": [],
+      "notes": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "进入 Welcome → 查看页头 Contact Us",
+          "expected": "Contact Us 可见且可点击",
+          "actual": "可见",
+          "status": "pass",
+          "screenshot": "screenshots/TBR-08_step1_contact_us.png"
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-09",
+      "name": "页头 Contact Us - 存在已签约租户时任何上下文均不展示",
+      "priority": "P0",
+      "status": "blocked",
+      "bugs": [],
+      "notes": [
+        "前置条件需 Mixed_Tenant_User（含 ≥1 已签约 Tenant），当前仅 auto_user@free.com"
+      ],
+      "steps": [
+        {
+          "index": 1,
+          "action": "在未签约 Tenant 上下文查看页头",
+          "expected": "Contact Us 不可见（任一已签约则全局隐藏）",
+          "actual": "需 Mixed_Tenant_User 账号",
+          "status": "blocked",
+          "screenshot": null
+        },
+        {
+          "index": 2,
+          "action": "切换到已签约 Tenant 后再查看",
+          "expected": "已签约 Tenant 下仍不展示",
+          "actual": "无 Mixed_Tenant_User 凭据，未执行",
+          "status": "blocked",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "case_id": "case",
+      "name": "<function run_all.<locals>.<lambda> at 0x0000017322F32700>",
+      "priority": "?",
+      "status": "fail",
+      "bugs": [
+        "执行异常: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"中文\", exact=True).first\n"
+      ],
+      "notes": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "执行",
+          "expected": "用例完成",
+          "actual": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"中文\", exact=True).first\n",
+          "status": "fail",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "case_id": "case",
+      "name": "<function run_all.<locals>.<lambda> at 0x0000017322F32E80>",
+      "priority": "?",
+      "status": "fail",
+      "bugs": [
+        "执行异常: Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"English\", exact=True).first\n"
+      ],
+      "notes": [],
+      "steps": [
+        {
+          "index": 0,
+          "action": "执行",
+          "expected": "用例完成",
+          "actual": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"English\", exact=True).first\n",
+          "status": "fail",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-12",
+      "name": "页头全屏 - 点击切换全屏显示",
+      "priority": "P1",
+      "status": "fail",
+      "bugs": [],
+      "notes": [],
+      "steps": [
+        {
+          "index": 1,
+          "action": "点击全屏按钮",
+          "expected": "进入全屏",
+          "actual": "已进入全屏",
+          "status": "pass",
+          "screenshot": "screenshots/TBR-12_step1_fullscreen_on.png"
+        },
+        {
+          "index": 2,
+          "action": "Esc 退出全屏",
+          "expected": "退出全屏恢复",
+          "actual": "仍全屏",
+          "status": "fail",
+          "screenshot": "screenshots/TBR-12_step2_fullscreen_off.png"
+        }
+      ]
+    },
+    {
+      "case_id": "TBR-13",
+      "name": "Welcome 工具栏与页头 - 对照 Figma 壳层布局一致",
+      "priority": "P2",
+      "status": "pass",
+      "bugs": [],
+      "notes": [
+        "P2 视觉验收：自动化仅做结构存在性检查，Figma 像素对比需人工"
+      ],
+      "steps": [
+        {
+          "index": 1,
+          "action": "对照 Welcome 底部四卡网格、Tools Drawer 壳层、页头操作区",
+          "expected": "布局/间距与 Figma 一致",
+          "actual": "底部工具栏: 有; 页头: 有（像素级 Figma 对比需人工）",
+          "status": "pass",
+          "screenshot": "screenshots/TBR-13_step1_layout_full.png"
+        }
+      ]
+    }
+  ]
+}

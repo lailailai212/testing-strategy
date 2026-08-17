@@ -12,7 +12,8 @@ description: >-
 ## 前置条件
 
 - 飞书 MCP（`FeishuProjectMcp`）已配置且可用
-- 输出目录：项目根 `story/`
+- 输出目录：项目根 `story/`（暂存；正式关联写在 `docs/sprints/.../features/{slug}/META.md` 的 `story-path`）
+- 落盘 AC/测试点时：确认飞书 **Sprint** 字段，写入对应 `docs/sprints/{sprint}/features/{slug}/`
 
 ## 输入（优先级）
 

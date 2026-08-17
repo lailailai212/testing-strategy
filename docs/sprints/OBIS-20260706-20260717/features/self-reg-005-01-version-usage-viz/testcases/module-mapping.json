@@ -1,0 +1,8 @@
+{
+  "feature_slug": "self-reg-005-01-version-usage-viz",
+  "notes": "Welcome 入口挂 /Cloud/Welcome；Profile 入口挂 /Cloud/Login & Profile/My Profile。",
+  "module_paths": [
+    "/Cloud/Welcome",
+    "/Cloud/Login & Profile/My Profile"
+  ]
+}

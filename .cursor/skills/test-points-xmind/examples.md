@@ -1,41 +1,41 @@
 # Examples — Test Points XMind
 
-## 示例 A：从已有测试点表生成
+## 示例 A：从测试点 MD 生成
 
-**输入**：用户已确认 Product Asset Tag 测试点（16 条 P0）。
+**输入**：`docs/sprints/_unassigned/features/self-reg-001-05-domain-whitelist/acceptance.md`
 
-**步骤**：
+**叶子 JSON**（节选）：
 
-1. 按页面模块整理树（见 `examples/product-asset-tag.tree.json`）
-2. 写入 `docs/generate_doc/test-points-xmind/trees/product-asset-tag.tree.json`
-3. 执行生成脚本
+```json
+{
+  "title": "Applications Tab 右侧角标展示 Pending 状态申请数量",
+  "source": "AC-01",
+  "priority": "P0"
+}
+```
 
-**命令**（推荐 `--feature-slug`，路径自动对齐固定目录）：
+**XMind 展示**：`[P0][AC-01] Applications Tab 右侧角标展示 Pending 状态申请数量`
+
+**命令**：
 
 ```bash
 python .cursor/skills/test-points-xmind/scripts/generate_xmind.py \
-  --feature-slug product-asset-tag
+  --feature-slug self-reg-001-05-domain-whitelist
 ```
 
-**固定产出**：
+---
 
-- 树 JSON：`docs/generate_doc/test-points-xmind/trees/product-asset-tag.tree.json`
-- XMind：`docs/generate_doc/test-points-xmind/product-asset-tag-test-points.xmind`
+## 示例 B：叶子格式对照
+
+| 来源 | priority | title（节选） | XMind 叶子标题 |
+|------|----------|---------------|----------------|
+| AC-09 | P0 | 用户提交…不向申请人发邮件 | `[P0][AC-09] 用户提交…` |
+| 需求描述 | P0 | 首次提交后通知 Admin | `[P0][需求描述] 首次提交后…` |
+| QA扩展 | P1 | 子域名是否匹配白名单 | `[P1][QA扩展] 子域名是否…` |
 
 ---
 
-## 示例 B：用户只说「帮我把测试点做成 xmind」
-
-**行为**：
-
-1. 从对话或 `story-acceptance-design` 产出中提取测试点
-2. 若无条目表 → 先按模块输出粗颗粒度测试点（8–16 条），用户确认后再生成
-3. **固定目录**写入 XMind：`docs/generate_doc/test-points-xmind/{feature-slug}-test-points.xmind`
-4. **固定目录**写入树 JSON：`docs/generate_doc/test-points-xmind/trees/{feature-slug}.tree.json`（不得改路径）
-
----
-
-## 示例 C：树结构对照（Product Asset）
+## 示例 C：树结构（Product Asset Tag）
 
 ```text
 Product Asset — Certificate/Key Tag 测试点
@@ -43,7 +43,7 @@ Product Asset — Certificate/Key Tag 测试点
 │   ├── Assign Security Key        → 2 叶子
 │   ├── Assign Certificate         → 2 叶子
 │   ├── Tag 新增与删除             → 4 叶子
-│   └── Asset 列表展示             → 4 叶子（含历史数据）
+│   └── Asset 列表展示             → 4 叶子
 ├── Version 详情页                 → 2 叶子
 └── 产品详情页                     → 2 叶子
 ```

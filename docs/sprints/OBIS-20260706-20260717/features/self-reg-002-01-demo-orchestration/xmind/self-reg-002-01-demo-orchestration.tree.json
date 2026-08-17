@@ -1,0 +1,151 @@
+{
+  "sheet_title": "【自注册】002-01 — Demo 数据预设编排 测试点",
+  "root_title": "【自注册】002-01 — Demo 数据预设编排",
+  "tree": [
+    {
+      "title": "触发与排除",
+      "children": [
+        {
+          "title": "自注册流程中 Tenant 创建成功后，系统异步触发 Demo 预设任务（后台可观测到任务创建/执行记录，用户侧无同步等待）",
+          "source": "AC-01",
+          "priority": "P0"
+        },
+        {
+          "title": "同一自注册 Tenant 生命周期内仅触发一次 Demo 预设；该用户重复登录、再次进入 Portal 均不重复触发 KMS / PKI / FM / PM 预设",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "运营后台开通的 Tenant 创建成功后，不触发 Demo 预设（不创建 Demo Factory / Demo Key·PKI / Demo Product）",
+          "source": "AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "除「自注册创建 Tenant」外的其他 Tenant 创建路径（若存在）均不触发 Demo 预设",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "编排成功与重试",
+      "children": [
+        {
+          "title": "自注册 Tenant 预设成功后，各模块资源均创建完成：FM（1 个 Cloud Factory + 1 个 Station）、KMS（1 个 Key）、PKI（PAA/PAI/DAC 三层）、PM（1 个 Product + 资源包 + Version）",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "**FM 路**（创建 Cloud Factory / Station）调用失败或超时时，对该路自动重试，最多 3 次，间隔 30 秒",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "**KMS / Vault Key 路**调用失败或超时时，对该路自动重试，最多 3 次，间隔 30 秒",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "**PKI 路**（根/中间/叶子证书）调用失败或超时时，对该路自动重试，最多 3 次，间隔 30 秒",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "**PM 路**（创建 Product / 资源包 / Version）调用失败或超时时，对该路自动重试，最多 3 次，间隔 30 秒",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "任一路重试 3 次仍失败时，用户仍可进入系统并正常使用（注册/登录流程不被阻断）",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "全部重试仍失败时，记录预设结果为部分失败（或失败），并通知运营人员",
+          "source": "需求描述",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "依赖顺序与失败传播（评论 2026-07-14）",
+      "children": [
+        {
+          "title": "**PKI 链路串行**：根证书不成功时，不开始创建中间证书；中间证书不成功时，不开始创建叶子证书",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "**工厂链路串行**：Cloud Factory 不成功时，不开始创建 Programming Station",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "**产品链路**：Product 创建后进入 Version；当 KMS 或 PKI 未成功时，**Version 不开始**",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "**跨模块独立**：KMS、PKI、工厂三者互相独立——模拟其一失败时，另两个模块仍可按自身规则继续预设成功（不受该失败阻断）",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "KMS 失败且 PKI、工厂成功时：Product 可按实现创建，但 **Version 不开始**；工厂与 Station（在工厂成功前提下）不受 KMS 失败影响",
+          "source": "需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "PKI 失败且 KMS、工厂成功时：同样 **Version 不开始**；KMS 与工厂链路不受 PKI 失败影响",
+          "source": "需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "PM 侧 Product/Version 预设失败时独立重试，不回滚已成功的 KMS、PKI、工厂资源",
+          "source": "需求描述",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "用户无感知",
+      "children": [
+        {
+          "title": "自注册成功进入系统过程中，用户侧无 Demo 预设进度条、无强制等待页、无「正在创建 Demo」类阻塞提示",
+          "source": "AC-04",
+          "priority": "P0"
+        },
+        {
+          "title": "Demo 预设仍在后台执行时，用户可正常浏览 Portal；预设完成后，在 Factory / Vault / Product 对应列表中出现 Demo 资源",
+          "source": "AC-04",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "Demo 标识与删除不重建",
+      "children": [
+        {
+          "title": "预设成功的 Demo 资源在对应**列表页**展示「Demo Data / 测试数据」标签（至少覆盖：Factory 列表、KMS/证书相关列表、Product 列表）",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "用户删除任一 Demo 资源（如 Demo Product、Demo Factory、Demo Key）后，系统不自动重建该资源",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "用户仅删除其中一个 Demo 资源（例如只删 Demo Product）时，其余已成功的 Demo 资源（Factory / Key·PKI 等）仍保留",
+          "source": "需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "用户删除本租户全部 Demo 资源后，系统不重建，也不因「Demo 资源为空」再次触发预设（与 AC-07 一致）",
+          "source": "QA扩展",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "feature_slug": "ux-p2-account-detail-self-reg",
+  "notes": "Account 主路径挂 /Cloud/Admin/Account；Profile 挂 /Cloud/Login & Profile/My Profile。",
+  "module_paths": [
+    "/Cloud/Admin/Account",
+    "/Cloud/Login & Profile/My Profile"
+  ]
+}

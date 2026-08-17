@@ -1,0 +1,316 @@
+{
+  "sheet_title": "【体验优化P2】Account 详情（自注册版本） 测试点",
+  "root_title": "【体验优化P2】Account 详情（自注册版本）",
+  "tree": [
+    {
+      "title": "邀请用户",
+      "children": [
+        {
+          "title": "Create Account 抽屉",
+          "children": [
+            {
+              "title": "有 Create 权限用户在 Account 列表点击右上角 Create，打开全宽「Create Account / 创建用户」抽屉",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "必填 Email、Name、User Role 校验通过后点击 Create：关闭抽屉；Toast 为「操作成功。已发送邀请邮件…」中英文规格文案；自动切到 Invitation Tab，新记录在第一行且状态 Pending",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "表单含 Phone、Notes（非必填）；Email/Name 占位 `Please Enter`/`请输入`，User Role 占位 `Please Select`/`请选择`；必填项带 `*`",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "点击右上角关闭 icon 或 Cancel：关闭抽屉且不保存已填内容",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "点击抽屉外黑色蒙层，抽屉不关闭",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "必填项为空时点击 Create，不创建成功、不切 Tab、不发邀请（停留抽屉并提示校验）",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "抽屉文字颜色/大小、输入框尺寸等样式与 UI 稿一致（对照 Figma）",
+              "source": "需求描述",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "编辑用户",
+      "children": [
+        {
+          "title": "Edit Account 抽屉",
+          "children": [
+            {
+              "title": "Member 列表 Operation → Edit，打开「Edit Account / 编辑用户」抽屉，自动带入已有数据",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "修改 Name/Role/Phone/Notes 后点 Save：关闭抽屉，Toast 操作成功；再次打开 Edit 或进入用户详情可见更新；Email 始终不可修改",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "用户详情页卡片右上角编辑 icon 打开的编辑抽屉与列表 Edit 样式、字段、行为一致",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "Invitation 列表 Operation → Edit 打开的编辑抽屉与 Member/详情入口完全一致",
+              "source": "AC-02",
+              "priority": "P1"
+            },
+            {
+              "title": "编辑抽屉关闭 icon / Cancel 不保存；点击蒙层不可关闭",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "未修改任何字段直接 Save，仍可成功关闭并提示成功（或按产品约定无变更提示）",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "确认弹窗",
+      "children": [
+        {
+          "title": "Member 锁定 / 删除",
+          "children": [
+            {
+              "title": "触发 Member 锁定：弹窗标题「Confirm Action / 确认操作」；正文为锁定后禁用账号、无法操作系统的中英文规格文案；Confirm 执行锁定",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "触发 Member 删除：标题「确认操作」；正文为删除后无法恢复的中英文规格文案；Confirm 执行删除",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "Member 删除确认文案使用独立 i18n key，不与「删除租户」文案共用",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "Member 锁定/删除弹窗：Cancel 与关闭 icon 不执行操作；点击蒙层不可关闭",
+              "source": "AC-03",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Invitation 重新邀请 / 删除",
+          "children": [
+            {
+              "title": "触发重新邀请：标题「确认操作」；正文为将生成全新激活链接并邮件通知受邀人的中英文规格文案；Confirm 执行",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "触发 Invitation 删除：标题「确认操作」；正文为邀请链接立即失效且无法恢复的中英文规格文案；Confirm 执行",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "Invitation 重邀/删除弹窗：Cancel、关闭 icon 不执行；蒙层不可关闭",
+              "source": "AC-03",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Application 通过 / 拒绝",
+          "children": [
+            {
+              "title": "触发 Approve：标题「确认操作」；正文为通过后将成为本组织成员的中英文规格文案；Confirm 执行通过",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "触发 Reject：标题「确认操作」；正文为拒绝不可撤回、申请作废的中英文规格文案；Confirm 执行拒绝",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "Application 通过/拒绝弹窗：Cancel、关闭 icon 不执行；蒙层不可关闭",
+              "source": "AC-03",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "用户详情",
+      "children": [
+        {
+          "title": "基本信息与其他信息",
+          "children": [
+            {
+              "title": "用户详情左侧展示 Name、Email、User Role、Tenant、Phone；右侧展示 Created Time（年月日时分秒）、Created By、Register Channel、Notes",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Register Channel 按用户来源展示：`Self Register` 自注册 / `Apply to Join` 申请加入 / `Invited Join` 邀请加入",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Tenant 旁套餐标签：免费版可点击并打开版本对比弹窗；企业版仅展示、点击不打开",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "点击左上角返回：回到 Account List，且保持进入详情前的页码、筛选项、排序规则、列显示",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Notes 单行独占；最长展示三行，超出省略号 + 展开箭头；点击展开打开抽屉展示全文，关闭 icon 关闭抽屉",
+              "source": "AC-04",
+              "priority": "P1"
+            },
+            {
+              "title": "头像状态小点：Active 为绿色，Locked 为黄色（尺寸对照 UI）",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "Created By 展示头像 + Name + 邮箱 icon；鼠标悬停展示邮箱与复制 icon，可复制邮箱",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "详情卡片右上角编辑按钮打开与列表一致的 Edit 抽屉",
+              "source": "AC-02, AC-04",
+              "priority": "P1"
+            },
+            {
+              "title": "Access Keys 仍在详情卡片内，现有功能与样式不变（不提前迁到 Tab）",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "Role 标签、Tenant/Phone 图标等样式与列表/UI 稿一致",
+              "source": "需求描述",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "切换租户（头像下拉）",
+      "children": [
+        {
+          "title": "点击系统右上角头像弹出切换弹窗：顶部头像+邮箱；列表标题「Switch Account / 切换账户」；当前账户有 ✅",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "列表项展示：正常账户=头像+Name+套餐名；Locked/Pending 账户置灰并显示对应状态文案",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "当前为免费版时展示「Upgrade Plan / 升级套餐」，点击打开版本对比弹窗；企业版不展示该入口",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "点击 Profile 跳转 Profile 页；点击 Sign Out 退出登录并进入登录页",
+          "source": "AC-05",
+          "priority": "P1"
+        },
+        {
+          "title": "顶部邮箱过长显示省略号；租户头像由系统按首字母/首汉字生成",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "title": "Profile",
+      "children": [
+        {
+          "title": "Profile 页展示内容与交互与 Account 用户详情页一致（基本信息、其他信息、编辑等）",
+          "source": "AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "从任意页进入 Profile 后，左侧菜单仍保持进入前选中的菜单项",
+          "source": "AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "点击左上角返回，回到进入 Profile 前的上一页面",
+          "source": "AC-06",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "权限控制",
+      "children": [
+        {
+          "title": "Role 配置【Create Button】时 Account 列表可见 Create；未配置时 Create 按钮不可见",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "无 Member Edit/Lock/Delete 对应权限时：Operation 三点仍可点开，对应菜单项置灰不可用；有权限时可正常操作",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "Invitation：无 Edit / Delete / Re-invite 权限时三点可开、对应项置灰；有权限可操作（Edit→【Edit Operation】；Delete→【Delete Operation】；Re-invite→【Re-invite Operation】）",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "Application：无【Review Operation】时 Approve/Reject 置灰；有权限可操作；三点始终可点",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "Member Edit 置灰/可用受【Create Button】控制（与 Create 同权限码，按需求原文验收；产品是否有意待确认）",
+          "source": "AC-07",
+          "priority": "P1 / 待确认"
+        }
+      ]
+    },
+    {
+      "title": "Audit 日志 Tab",
+      "children": [
+        {
+          "title": "用户详情存在 Tab「Audit / 日志」，列表布局与样式按 UI 稿更新",
+          "source": "AC-08",
+          "priority": "P0"
+        },
+        {
+          "title": "本 Story 不验收日志字段业务规则（属另 Story）；仅核对列表视觉与 Tab 名称",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

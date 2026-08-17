@@ -1,0 +1,28 @@
+{
+  "feature_slug": "product-asset-tag",
+  "metersphere_project": "（填写 MeterSphere 项目名称，便于核对）",
+  "notes": "module_path 必须与 MeterSphere 模块树完全一致（大小写、空格、中英文均敏感）",
+  "valid_paths": [
+    "/Product/Product Asset/Keys",
+    "/Product/Product Asset/Certifications",
+    "/Product/Version",
+    "/Product/Product Detail"
+  ],
+  "mappings": [
+    {
+      "tp_id": "TP-PA-KEY-01",
+      "xmind_branch": "Assign Security Key",
+      "module_path": "/Product/Product Asset/Keys"
+    },
+    {
+      "tp_id": "TP-PA-CERT-01",
+      "xmind_branch": "Assign Certificate",
+      "module_path": "/Product/Product Asset/Certifications"
+    },
+    {
+      "tp_id": "TP-VER-01",
+      "xmind_branch": "Version 详情页",
+      "module_path": "/Product/Version"
+    }
+  ]
+}

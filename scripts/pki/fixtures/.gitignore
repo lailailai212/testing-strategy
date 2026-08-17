@@ -1,0 +1,4 @@
+# Generated private keys — never commit
+*.key
+
+# Regenerate with: bash ../generate_test_root_ca.sh

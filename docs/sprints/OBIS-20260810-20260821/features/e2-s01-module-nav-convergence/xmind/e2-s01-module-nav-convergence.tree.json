@@ -1,0 +1,226 @@
+{
+  "sheet_title": "\\[3]E2-S01: 模块入口与导航收敛 测试点",
+  "root_title": "\\[3]E2-S01: 模块入口与导航收敛",
+  "tree": [
+    {
+      "title": "Overview",
+      "children": [
+        {
+          "title": "Assets 分区",
+          "children": [
+            {
+              "title": "Overview → Assets 分区：不渲染模块切换条",
+              "source": "AC-F01-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Assets 分区仅呈现 8 张汇总卡；构成、顺序、统计口径与改前一致",
+              "source": "AC-F01-01, AC-F01-04",
+              "priority": "P0"
+            },
+            {
+              "title": "切换条移除后上下内容收拢，无空白带",
+              "source": "AC-F01-03",
+              "priority": "P0"
+            },
+            {
+              "title": "8 张汇总卡按整个产品汇总；计数与改前一致",
+              "source": "AC-F01-09, AC-F01-10",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Create Version",
+      "children": [
+        {
+          "title": "顶部与分区导航",
+          "children": [
+            {
+              "title": "Create Version 页顶部不渲染模块切换条",
+              "source": "AC-F01-02",
+              "priority": "P0"
+            },
+            {
+              "title": "顶部切换条移除后相邻内容收拢，无空白带",
+              "source": "AC-F01-03",
+              "priority": "P0"
+            },
+            {
+              "title": "Create Version 分区导航无顶部模块名标题行",
+              "source": "AC-F01-06",
+              "priority": "P0"
+            },
+            {
+              "title": "分区索引项数量/顺序与改前一致；点击可滚动定位；激活态随滚动更新",
+              "source": "AC-F01-07",
+              "priority": "P0"
+            },
+            {
+              "title": "分区导航无空白带，索引可正常滚动",
+              "source": "AC-F01-08",
+              "priority": "P0"
+            },
+            {
+              "title": "各资产分区行集为整产品范围，呈现与改前一致",
+              "source": "AC-F01-09, AC-F01-10",
+              "priority": "P0"
+            },
+            {
+              "title": "「基本信息」及 7 个分区字段/表格/按钮/提交流程与改前一致（仅验未误改）",
+              "source": "BR-F01-10, 需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Assets 页",
+      "children": [
+        {
+          "title": "分区导航与列表",
+          "children": [
+            {
+              "title": "Assets 页分区导航无顶部模块名标题行",
+              "source": "AC-F01-06",
+              "priority": "P0"
+            },
+            {
+              "title": "分区索引完整、可点击滚动定位、激活态随滚动更新",
+              "source": "AC-F01-07",
+              "priority": "P0"
+            },
+            {
+              "title": "分区导航无空白带",
+              "source": "AC-F01-08",
+              "priority": "P0"
+            },
+            {
+              "title": "各分区行集为整产品范围，与改前一致",
+              "source": "AC-F01-09, AC-F01-10",
+              "priority": "P0"
+            },
+            {
+              "title": "各分区列集、列序、单元格取值与行菜单与改前一致（仅取数范围变化）",
+              "source": "BR-F01-05, 需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Version Details",
+      "children": [
+        {
+          "title": "无多 Module UI / 入口",
+          "children": [
+            {
+              "title": "打开已有 Version 的 **Version Details** 页：不渲染模块切换条 / Module Tab / Module 下拉等「多 Module」选择 UI",
+              "source": "AC-F01-05, QA扩展",
+              "priority": "P0"
+            },
+            {
+              "title": "Version Details 内分区导航（若有）不渲染顶部模块名标题行；无「当前模块」展示",
+              "source": "AC-F01-05, AC-F01-06, QA扩展",
+              "priority": "P0"
+            },
+            {
+              "title": "Version Details 内无菜单项、下拉项、链接、面包屑层级或可展开区域可进入 / 切换模块层级",
+              "source": "AC-F01-05, BR-F01-07",
+              "priority": "P0"
+            },
+            {
+              "title": "Version Details 资产分区（若展示资产列表/汇总）不按 Module 过滤呈现，界面无 Module 过滤控件",
+              "source": "AC-F01-09, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "Version Details 首屏直接呈无 Module UI 状态，无模块切换条/标题行闪现后消失",
+              "source": "AC-F01-14, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "中/英文 Version Details 均无多 Module UI 与模块入口",
+              "source": "AC-F01-11, QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "模块入口清除",
+      "children": [
+        {
+          "title": "Overview / Assets / Create Version / **Version Details** 内无菜单、下拉、链接、面包屑或可展开区域可进入模块层级",
+          "source": "AC-F01-05",
+          "priority": "P0"
+        },
+        {
+          "title": "被隐藏元素为「不渲染」：无法通过勾选/展开/切换重新显示切换条或标题行（含 Version Details）",
+          "source": "AC-F01-05, BR-F01-07",
+          "priority": "P0"
+        },
+        {
+          "title": "产品详情页签条本身未改动",
+          "source": "BR-F01-11, 需求描述",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "一致性、兜底与性能",
+      "children": [
+        {
+          "title": "中文界面：三页均无模块切换条与分区导航标题行",
+          "source": "AC-F01-11",
+          "priority": "P0"
+        },
+        {
+          "title": "英文界面：同上收敛行为一致",
+          "source": "AC-F01-11",
+          "priority": "P0"
+        },
+        {
+          "title": "响应仍含模块字段时：界面不渲染该字段、无报错、无提示",
+          "source": "AC-F01-12",
+          "priority": "P0"
+        },
+        {
+          "title": "至少 2 种不同角色账号进入三页：呈现一致，无角色分支、无开关",
+          "source": "AC-F01-13",
+          "priority": "P0"
+        },
+        {
+          "title": "不同租户账号各进一次三页：收敛行为一致",
+          "source": "AC-F01-13",
+          "priority": "P1"
+        },
+        {
+          "title": "首屏直接呈收敛态：无切换条/标题行闪现后消失",
+          "source": "AC-F01-14",
+          "priority": "P0"
+        },
+        {
+          "title": "三页首屏未引入额外接口请求；加载时间不劣于改前（对照网络面板/基线）",
+          "source": "AC-F01-15",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "副标题文案（边界说明）",
+      "children": [
+        {
+          "title": "Assets 分区副标题若仍含 Module-scoped 等措辞：本 Story 不要求改文案（另 Story 认领）；仅记录不阻断本 Story 验收",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

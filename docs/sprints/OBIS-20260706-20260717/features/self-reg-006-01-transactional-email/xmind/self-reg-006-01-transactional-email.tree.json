@@ -1,0 +1,301 @@
+{
+  "sheet_title": "【自注册】006-01 — 免费版事务邮件触达 测试点",
+  "root_title": "【自注册】006-01 — 免费版事务邮件触达",
+  "tree": [
+    {
+      "title": "Welcome 邮件",
+      "children": [
+        {
+          "title": "触发与去重",
+          "children": [
+            {
+              "title": "自注册流程中 Account 创建完毕且 Tenant 创建成功后，系统向 Tenant 创建者邮箱发送 Welcome 邮件",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "同一自注册 Tenant 仅发送 1 封 Welcome 邮件；重复触发创建成功事件不重复发送",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Welcome 邮件仅发送给 Tenant 创建者邮箱，不发送给同 Tenant 下其他成员",
+              "source": "需求描述",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "首次 DAC 签发邮件",
+      "children": [
+        {
+          "title": "触发与去重",
+          "children": [
+            {
+              "title": "自注册 Tenant 下首条真实终端实体 DAC 证书经 Vault 签发成功后，系统发送首次 DAC 签发邮件",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "同一 Tenant 仅发送 1 封首次 DAC 签发邮件；后续再次签发真实 DAC 不重复发送",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "首次 DAC 签发邮件仅发送给 Tenant 创建者邮箱",
+              "source": "需求描述",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "首次产品烧录邮件",
+      "children": [
+        {
+          "title": "触发与去重",
+          "children": [
+            {
+              "title": "自注册 Tenant 下首条真实 Production Record 生成后，系统发送首次产品烧录邮件",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "同一 Tenant 仅发送 1 封首次烧录邮件；后续再次生成真实 Production Record 不重复发送",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "首次烧录邮件仅发送给 Tenant 创建者邮箱",
+              "source": "需求描述",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "触发排除规则",
+      "children": [
+        {
+          "title": "Demo 资源相关的 DAC 签发成功时，不发送首次 DAC 签发邮件，也不发送其他事务邮件",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "Demo 预设产品 / 纯 Demo 烧录路径下 Production Record 生成时，不发送首次烧录邮件，也不发送其他事务邮件",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "同一 Tenant 先发生 Demo 签发/烧录，再首次发生真实 DAC 签发时，仍应发送首次 DAC 签发邮件（Demo 不占用「首次」额度）",
+          "source": "AC-05, AC-02",
+          "priority": "P0"
+        },
+        {
+          "title": "同一 Tenant 先发生 Demo 烧录，再首次生成真实 Production Record 时，仍应发送首次烧录邮件",
+          "source": "AC-05, AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "运营后台开通的 Tenant 创建成功后，不发送 Welcome 邮件",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "运营后台开通的 Tenant 发生真实 DAC 签发 / 真实 Production Record 时，不发送首次 DAC / 首次烧录邮件",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "自注册账户升级为企业后，再签发 DAC 不发送首次 DAC 签发邮件",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "自注册账户升级为企业后，再完成首次烧录不发送首次烧录邮件",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "用户第一个自建产品内使用了 demo key / demo cert / demo factory 数据时，完成第一次烧录仍发送首次烧录邮件",
+          "source": "需求描述, AC-03, AC-05",
+          "priority": "P0"
+        }
+      ]
+    },
+    {
+      "title": "邮件内容",
+      "children": [
+        {
+          "title": "公共规格",
+          "children": [
+            {
+              "title": "三类邮件发件人名称均为 `Snowball OBIS`，发件人地址均为 `noreply@snowballtech.com`",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "三类邮件均为 HTML 格式，正文含 OBIS Logo 与品牌色",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "三类邮件正文同时包含英文与中文内容（双语模板）",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "三类邮件中的链接（`welcome_url` / `cert_url` / `record_url`）均为可访问的 OBIS 登录相关链接",
+              "source": "AC-04, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "`{name}` 变量替换为用户注册姓名，中英文称呼处均正确",
+              "source": "AC-04",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "Welcome",
+          "children": [
+            {
+              "title": "Welcome 邮件主题为：`Welcome to OBIS! Let's Get Started`",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Welcome 英文正文含评价租户就绪说明，以及 Complete first DAC signing / Try secure factory flash / Explore the docs 三项引导，含 Get Started 链接",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Welcome 中文正文含免费版企业就绪说明，以及完成首次 DAC 签发 / 体验安全烧录 / 查阅操作文档三项引导，含「立即开始」链接",
+              "source": "AC-04",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "首次 DAC 签发",
+          "children": [
+            {
+              "title": "首次 DAC 邮件主题为：`Great Work! Your First DAC Certificate Has Been Issued`",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "首次 DAC 邮件证书信息变量正确：`{cert_type}` 为 DAC、`{issue_time}` 为 ISO 8601 UTC、`{serial_number}` 为十六进制序列号",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "首次 DAC 邮件含「View Certificate / 查看证书」链接，指向证书相关 OBIS 入口",
+              "source": "AC-04",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "首次产品烧录",
+          "children": [
+            {
+              "title": "首次烧录邮件主题为：`Production Milestone! Your First Device Has Been Flashed`",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "首次烧录邮件生产信息变量正确：`{product_name}`、`{batch_name}`、`{flash_time}`（ISO 8601 UTC）与实际 Production Record 一致",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "首次烧录邮件含「View Production Records / 查看生产记录」链接，指向生产记录相关 OBIS 入口",
+              "source": "AC-04",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "并发与组合场景",
+      "children": [
+        {
+          "title": "Matter module 场景下，首次烧录同时意味着首次 DAC 签发成功时，用户在烧录成功那一刻收到两封邮件（首次 DAC + 首次烧录），此为期望行为",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "同一 Tenant 按顺序完成 Welcome → 首次真实 DAC → 首次真实烧录，三类邮件均各收到 1 封，互不影响去重计数",
+          "source": "QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "自注册 Tenant 已发送 Welcome 后，运营侧对该 Tenant 的其他操作不导致 Welcome 再次发送",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "发送失败",
+      "children": [
+        {
+          "title": "重试（告警本迭代不做）",
+          "children": [
+            {
+              "title": "任一事务邮件首次发送失败后，系统后台按间隔 5 分钟重试，最多共重试 3 次",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "重试过程中某次发送成功，则停止后续重试",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "3 次重试均失败后，停止重试；本迭代**不要求**向 Operator 告警（可记录日志，以实现对齐）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "邮件发送失败（含重试中 / 最终失败）不阻塞 Tenant 创建、DAC 签发、Production Record 生成等业务流程",
+              "source": "AC-06",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "边界与负向（QA 扩展）",
+      "children": [
+        {
+          "title": "Tenant 创建者邮箱无效 / 不可达时，仍按重试策略处理，最终失败不阻塞业务主流程（本迭代不验 Operator 告警）",
+          "source": "QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "真实 DAC 签发失败时，不发送首次 DAC 签发邮件",
+          "source": "QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "Production Record 生成失败时，不发送首次烧录邮件",
+          "source": "QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "邮件正文时间戳时区展示为 UTC（ISO 8601），与系统记录一致",
+          "source": "QA扩展",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

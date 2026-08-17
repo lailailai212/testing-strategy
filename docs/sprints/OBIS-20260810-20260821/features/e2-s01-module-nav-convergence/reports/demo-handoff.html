@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>E2-S01 模块入口与导航收敛 — 提测演示</title>
+<!--
+  Placeholders (replace before save):
+  E2-S01 模块入口与导航收敛 — 提测演示 [3]E2-S01: 模块入口与导航收敛 https://project.feishu.cn/obis/userstory/detail/7067952077 7067952077
+  OBIS-20260810-20260821 e2-s01-module-nav-convergence docs/sprints/OBIS-20260810-20260821/features/e2-s01-module-nav-convergence/acceptance.md
+  2026-08-10 e2-s01-module-nav-convergence 25～35 分钟
+  Hybrid（主 UI/UX，次 Logic：整产品取数） Large
+  Precondition / demo rows / pending / oos / footer filled as HTML fragments.
+-->
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --card: #fff;
+    --text: #1a1d21;
+    --muted: #5c6570;
+    --line: #e2e6ea;
+    --accent: #0b6bcb;
+    --ok: #1b7f4a;
+    --bad: #c0392b;
+    --warn: #b78103;
+    --p0: #0b6bcb;
+    --p1: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    font-size: 14px;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 20px 16px 80px; }
+  header.card { padding: 20px 22px; margin-bottom: 14px; }
+  h1 { margin: 0 0 8px; font-size: 1.35rem; font-weight: 700; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .meta a { color: var(--accent); }
+  .meta div { margin: 2px 0; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  h2 { margin: 0 0 10px; font-size: 1.05rem; }
+  h3 { margin: 14px 0 8px; font-size: 0.95rem; color: #334155; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top; text-align: left; }
+  th { background: #f0f3f6; font-weight: 600; }
+  .rules td:first-child { width: 7em; font-weight: 600; white-space: nowrap; }
+  .chk { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+  .chk label {
+    display: flex; gap: 6px; align-items: flex-start;
+    margin: 4px 0; cursor: pointer;
+  }
+  .verdict { display: flex; gap: 4px; flex-wrap: wrap; }
+  .verdict button {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    min-width: 2rem;
+  }
+  .verdict button[data-v="P"].on { background: #e8f7ee; border-color: var(--ok); color: var(--ok); }
+  .verdict button[data-v="F"].on { background: #fdecea; border-color: var(--bad); color: var(--bad); }
+  .verdict button[data-v="B"].on { background: #fff6db; border-color: var(--warn); color: var(--warn); }
+  .badge {
+    display: inline-block; padding: 1px 7px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; color: #fff;
+  }
+  .badge.P0 { background: var(--p0); }
+  .badge.P1 { background: var(--p1); }
+  .note { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+  .sticky {
+    position: sticky; top: 0; z-index: 20;
+    background: #0f172a; color: #e2e8f0;
+    padding: 10px 16px; display: flex; gap: 16px; flex-wrap: wrap;
+    align-items: center; justify-content: space-between;
+  }
+  .sticky .bar {
+    flex: 1; min-width: 160px; height: 8px; background: #334155;
+    border-radius: 999px; overflow: hidden;
+  }
+  .sticky .bar > i { display: block; height: 100%; width: 0; background: #22c55e; }
+  .sticky .actions button {
+    background: #1e293b; color: #e2e8f0; border: 1px solid #475569;
+    border-radius: 6px; padding: 6px 10px; cursor: pointer; font-size: 12px;
+  }
+  .conclusion label { margin-right: 14px; }
+  textarea {
+    width: 100%; min-height: 64px; border: 1px solid var(--line);
+    border-radius: 6px; padding: 8px; font: inherit;
+  }
+  ul.compact { margin: 6px 0 0; padding-left: 1.2em; }
+  @media print {
+    .sticky .actions { display: none; }
+    body { background: #fff; }
+    .card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sticky" data-storage-key="e2-s01-module-nav-convergence">
+  <div>
+    <strong>P0 进度</strong>
+    <span id="p0-progress">0 / 0</span>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="p0-bar"></i></div>
+  <div class="actions">
+    <button type="button" id="btn-print">打印 / PDF</button>
+    <button type="button" id="btn-reset">清空结论</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="card">
+    <h1>[3]E2-S01: 模块入口与导航收敛 — 提测演示引导与确认项</h1>
+    <div class="meta">
+      <div><strong>来源</strong>：<a href="https://project.feishu.cn/obis/userstory/detail/7067952077" target="_blank" rel="noopener">飞书 Story #7067952077</a></div>
+      <div><strong>Sprint</strong>：OBIS-20260810-20260821　│　<strong>feature</strong>：<code>e2-s01-module-nav-convergence</code></div>
+      <div><strong>依据</strong>：<code>docs/sprints/OBIS-20260810-20260821/features/e2-s01-module-nav-convergence/acceptance.md</code></div>
+      <div><strong>模式 / 变更类型</strong>：Large / Hybrid（主 UI/UX，次 Logic：整产品取数）</div>
+      <div><strong>生成</strong>：2026-08-10　│　<strong>建议时长</strong>：25～35 分钟</div>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>一、审核规则</h2>
+    <table class="rules">
+      <tbody>
+        <tr><td>演示方</td><td>开发主操；QA 不代操作</td></tr>
+        <tr><td>审核方</td><td>QA 主测 + 产品；结论由 QA 主测记录</td></tr>
+        <tr><td>判定</td><td>每条独立：<strong>P</strong> 通过 / <strong>F</strong> 不通过 / <strong>B</strong> 阻塞（无法演示）</td></tr>
+        <tr><td>准入</td><td>本 feature <strong>全部 P0 演示项通过</strong> 才准入正式测试</td></tr>
+        <tr><td>P0 失败</td><td>整体打回；修复后可只补演未通过项</td></tr>
+        <tr><td>P1 失败</td><td>记已知问题，不阻塞准入</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>二、演示前置（开场确认）</h2>
+    <p class="note">缺项则顺延演示或相关条目记 B。</p>
+    <div class="chk" id="preconditions">
+      <!-- <label><input type="checkbox" data-pre="1"/> 功能已部署到演示环境，版本与提测单一致</label>
+      <label><input type="checkbox" data-pre="2"/> 至少 1 个含资产的产品；Overview / Assets / Create Version / Version Details 均可打开</label>
+      <label><input type="checkbox" data-pre="3"/> 至少 1 个已存在的 Version（用于 Version Details）</label>
+      <label><input type="checkbox" data-pre="4"/> 环境可切换中/英文</label>
+      <label><input type="checkbox" data-pre="5"/> 另备 1 个不同角色账号（用于 D-NAV-07）</label>
+      <label><input type="checkbox" data-pre="6"/> （建议）改前 SIT 基线截图：Overview 8 卡、Assets/Create Version 分区导航</label>
+      <label><input type="checkbox" data-pre="7"/> 浏览器开发者工具可用（D-NAV-08 / D-NAV-10）</label> example:
+      <label><input type="checkbox" data-pre="1"/> 功能已部署到演示环境，版本与提测单一致</label>
+      -->
+      <label><input type="checkbox" data-pre="1"/> 功能已部署到演示环境，版本与提测单一致</label>
+      <label><input type="checkbox" data-pre="2"/> 至少 1 个含资产的产品；Overview / Assets / Create Version / Version Details 均可打开</label>
+      <label><input type="checkbox" data-pre="3"/> 至少 1 个已存在的 Version（用于 Version Details）</label>
+      <label><input type="checkbox" data-pre="4"/> 环境可切换中/英文</label>
+      <label><input type="checkbox" data-pre="5"/> 另备 1 个不同角色账号（用于 D-NAV-07）</label>
+      <label><input type="checkbox" data-pre="6"/> （建议）改前 SIT 基线截图：Overview 8 卡、Assets/Create Version 分区导航</label>
+      <label><input type="checkbox" data-pre="7"/> 浏览器开发者工具可用（D-NAV-08 / D-NAV-10）</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>三、演示顺序</h2>
+    <p class="note">按页面巡检：Overview → Create Version → Assets → Version Details → 入口清除总检 → 英文 → 换角色 → 模块字段静默（网络）→ P1 回归/性能。全部只读演示，无不可逆写操作。</p>
+  </section>
+
+  <section class="card">
+    <h2>四、演示项与确认</h2>
+    <p class="note">开发按「演示内容」操作；审核方按「审核判据」点选结论。</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:6em">#</th>
+          <th>演示内容（开发操作）</th>
+          <th>审核判据</th>
+          <th style="width:9em">依据</th>
+          <th style="width:3.5em">级别</th>
+          <th style="width:8em">结论</th>
+        </tr>
+      </thead>
+      <tbody id="demo-rows">
+        <!--         <tr data-id="D-NAV-01" data-level="P0">
+          <td>D-NAV-01</td>
+          <td>打开产品详情 → Overview → Assets 分区；硬刷新一次观察首屏</td>
+          <td>① 无模块切换条；② 仅 8 张汇总卡，构成/顺序/口径与改前一致；③ 上下收拢无空白带；④ 首屏无切换条闪现；⑤ 计数按整产品汇总（与改前一致）</td>
+          <td>AC-F01-01/03/04/09/10/14 / TP-OV-01～04、TP-FLASH-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-01">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-02" data-level="P0">
+          <td>D-NAV-02</td>
+          <td>进入 Create Version：查看页顶与分区导航；点击 2～3 个索引项并滚动页面</td>
+          <td>① 顶部无模块切换条且无空白带；② 分区导航无模块名标题行、无空白带；③ 索引数量/顺序正常，点击可定位，激活态随滚动更新；④ 各资产分区行集为整产品范围</td>
+          <td>AC-F01-02/03/06/07/08/09/10 / TP-CV-01～06</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-02">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-03" data-level="P0">
+          <td>D-NAV-03</td>
+          <td>进入产品 Assets 页：查看分区导航并点击索引滚动定位</td>
+          <td>无模块名标题行、无空白带；索引完整可定位；各分区行集为整产品范围</td>
+          <td>AC-F01-06/07/08/09/10 / TP-AST-01～04</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-03">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-04" data-level="P0">
+          <td>D-NAV-04</td>
+          <td>打开任一已有 Version 的 Version Details：巡视顶部、分区导航、菜单/面包屑/可展开区</td>
+          <td>无模块切换条 / Module Tab / Module 下拉等「多 Module」UI；无模块名标题行与「当前模块」；无任何进入/切换模块层级的入口</td>
+          <td>AC-F01-05/06 / TP-VD-01～03、TP-ENT-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-04">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-05" data-level="P0">
+          <td>D-NAV-05</td>
+          <td>在 Overview / Assets / Create Version / Version Details 四处主动查找模块入口（菜单、下拉、链接、面包屑、展开区）；尝试勾选/展开是否「藏着」切换条</td>
+          <td>四处均无可进入模块层级的入口；被隐藏元素为不渲染，无法勾出/展开再现</td>
+          <td>AC-F01-05 / TP-ENT-01、02</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-05">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-06" data-level="P0">
+          <td>D-NAV-06</td>
+          <td>切换到英文界面，复看 Overview Assets、Assets、Create Version（及 Version Details）</td>
+          <td>英文下同样无模块切换条与分区导航标题行；与中文收敛一致</td>
+          <td>AC-F01-11 / TP-I18N-01、02、TP-VD-06</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-06">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-07" data-level="P0">
+          <td>D-NAV-07</td>
+          <td>换至少 1 个不同角色账号（与当前账号权限不同）进入上述页面快速对照</td>
+          <td>呈现与上一账号一致；无角色分支、界面无开关</td>
+          <td>AC-F01-13 / TP-ROLE-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-07">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-08" data-level="P0">
+          <td>D-NAV-08</td>
+          <td>开发打开网络面板指出仍返回模块字段的接口响应（或口头说明），同时看界面是否出现模块字段/报错/提示</td>
+          <td>界面忽略模块字段：不渲染、不报错、不出提示</td>
+          <td>AC-F01-12 / TP-IGN-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-08">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-09" data-level="P1">
+          <td>D-NAV-09</td>
+          <td>Create Version：快速扫一眼「基本信息」与各分区字段/表格/提交按钮是否仍在且可操作（不深挖业务）</td>
+          <td>除切换条与分区导航标题行外，其余分区与提交流程未见误删/错乱</td>
+          <td>BR-F01-10 / TP-CV-07</td>
+          <td><span class="badge P1">P1</span></td>
+          <td><div class="verdict" data-id="D-NAV-09">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-10" data-level="P1">
+          <td>D-NAV-10</td>
+          <td>Overview / Assets / Create Version 各硬刷新一次，对照网络请求条数或加载体感（可对照改前说明）</td>
+          <td>未明显引入额外首屏请求；加载不劣于改前（定性即可，量化方式见待确认）</td>
+          <td>AC-F01-15 / TP-PERF-01</td>
+          <td><span class="badge P1">P1</span></td>
+          <td><div class="verdict" data-id="D-NAV-10">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr> example row:
+        <tr data-id="D-ARCH-01" data-level="P0">
+          <td>D-ARCH-01</td>
+          <td>打开 Locked SE Profile 详情 → 点击 Archive</td>
+          <td>弹出 COPY-01 二次确认，含 Confirm Archive / Cancel</td>
+          <td>AC-02 / TP-ARCH-DTL-03</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-ARCH-01">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        -->
+                <tr data-id="D-NAV-01" data-level="P0">
+          <td>D-NAV-01</td>
+          <td>打开产品详情 → Overview → Assets 分区；硬刷新一次观察首屏</td>
+          <td>① 无模块切换条；② 仅 8 张汇总卡，构成/顺序/口径与改前一致；③ 上下收拢无空白带；④ 首屏无切换条闪现；⑤ 计数按整产品汇总（与改前一致）</td>
+          <td>AC-F01-01/03/04/09/10/14 / TP-OV-01～04、TP-FLASH-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-01">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-02" data-level="P0">
+          <td>D-NAV-02</td>
+          <td>进入 Create Version：查看页顶与分区导航；点击 2～3 个索引项并滚动页面</td>
+          <td>① 顶部无模块切换条且无空白带；② 分区导航无模块名标题行、无空白带；③ 索引数量/顺序正常，点击可定位，激活态随滚动更新；④ 各资产分区行集为整产品范围</td>
+          <td>AC-F01-02/03/06/07/08/09/10 / TP-CV-01～06</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-02">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-03" data-level="P0">
+          <td>D-NAV-03</td>
+          <td>进入产品 Assets 页：查看分区导航并点击索引滚动定位</td>
+          <td>无模块名标题行、无空白带；索引完整可定位；各分区行集为整产品范围</td>
+          <td>AC-F01-06/07/08/09/10 / TP-AST-01～04</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-03">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-04" data-level="P0">
+          <td>D-NAV-04</td>
+          <td>打开任一已有 Version 的 Version Details：巡视顶部、分区导航、菜单/面包屑/可展开区</td>
+          <td>无模块切换条 / Module Tab / Module 下拉等「多 Module」UI；无模块名标题行与「当前模块」；无任何进入/切换模块层级的入口</td>
+          <td>AC-F01-05/06 / TP-VD-01～03、TP-ENT-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-04">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-05" data-level="P0">
+          <td>D-NAV-05</td>
+          <td>在 Overview / Assets / Create Version / Version Details 四处主动查找模块入口（菜单、下拉、链接、面包屑、展开区）；尝试勾选/展开是否「藏着」切换条</td>
+          <td>四处均无可进入模块层级的入口；被隐藏元素为不渲染，无法勾出/展开再现</td>
+          <td>AC-F01-05 / TP-ENT-01、02</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-05">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-06" data-level="P0">
+          <td>D-NAV-06</td>
+          <td>切换到英文界面，复看 Overview Assets、Assets、Create Version（及 Version Details）</td>
+          <td>英文下同样无模块切换条与分区导航标题行；与中文收敛一致</td>
+          <td>AC-F01-11 / TP-I18N-01、02、TP-VD-06</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-06">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-07" data-level="P0">
+          <td>D-NAV-07</td>
+          <td>换至少 1 个不同角色账号（与当前账号权限不同）进入上述页面快速对照</td>
+          <td>呈现与上一账号一致；无角色分支、界面无开关</td>
+          <td>AC-F01-13 / TP-ROLE-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-07">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-08" data-level="P0">
+          <td>D-NAV-08</td>
+          <td>开发打开网络面板指出仍返回模块字段的接口响应（或口头说明），同时看界面是否出现模块字段/报错/提示</td>
+          <td>界面忽略模块字段：不渲染、不报错、不出提示</td>
+          <td>AC-F01-12 / TP-IGN-01</td>
+          <td><span class="badge P0">P0</span></td>
+          <td><div class="verdict" data-id="D-NAV-08">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-09" data-level="P1">
+          <td>D-NAV-09</td>
+          <td>Create Version：快速扫一眼「基本信息」与各分区字段/表格/提交按钮是否仍在且可操作（不深挖业务）</td>
+          <td>除切换条与分区导航标题行外，其余分区与提交流程未见误删/错乱</td>
+          <td>BR-F01-10 / TP-CV-07</td>
+          <td><span class="badge P1">P1</span></td>
+          <td><div class="verdict" data-id="D-NAV-09">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+        <tr data-id="D-NAV-10" data-level="P1">
+          <td>D-NAV-10</td>
+          <td>Overview / Assets / Create Version 各硬刷新一次，对照网络请求条数或加载体感（可对照改前说明）</td>
+          <td>未明显引入额外首屏请求；加载不劣于改前（定性即可，量化方式见待确认）</td>
+          <td>AC-F01-15 / TP-PERF-01</td>
+          <td><span class="badge P1">P1</span></td>
+          <td><div class="verdict" data-id="D-NAV-10">
+            <button type="button" data-v="P">P</button>
+            <button type="button" data-v="F">F</button>
+            <button type="button" data-v="B">B</button>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>五、现场待确认</h2>
+    <div class="chk" id="pending">
+      <label><input type="checkbox" data-pending="1"/> 工作项标题 E2-S01 与 Description 中 E1-S01 编号口径</label>
+      <label><input type="checkbox" data-pending="2"/> 飞书 Epic 字段是否回填 Epic-1</label>
+      <label><input type="checkbox" data-pending="3"/> Product Doc 链到的 OTA/SBOM PRD 与本 Story（hidden-module F01）范围是否交叉</label>
+      <label><input type="checkbox" data-pending="4"/> AC-F01-15 性能对比基线采集方式（SIT 前后对比或网络请求条数）</label>
+      <label><input type="checkbox" data-pending="5"/> Version Details 改前是否存在与 Create Version 同构的模块切换条 / 分区导航标题行</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>六、不在本次演示范围</h2>
+    <ul class="compact">
+      <li>Assets 分区副标题 Module-scoped 文案改动（另 Story）</li>
+      <li>Create Version 除切换条与分区导航标题行外的深度功能改造</li>
+      <li>产品详情页签条本身</li>
+      <li>汇总卡构成/顺序/统计口径本身及 Assets 列集/行菜单（仅取数范围）</li>
+      <li>后端接口、数据结构、权限判定与模块归属存储</li>
+      <li>按角色/租户差异化或功能开关</li>
+      <li>多模块产品去重或来源标识</li>
+    </ul>
+  </section>
+
+  <section class="card conclusion">
+    <h2>七、本 Feature 结论</h2>
+    <div>
+      <label><input type="radio" name="admit" value="pass"/> 准入</label>
+      <label><input type="radio" name="admit" value="reject"/> 打回</label>
+      <label><input type="radio" name="admit" value="conditional"/> 有条件准入</label>
+    </div>
+    <p class="note" style="margin-top:10px">不通过 / 阻塞项与备注：</p>
+    <textarea id="admit-notes" placeholder="例：D-xx F — …；阻塞：缺账号…"></textarea>
+    <div class="signoff" style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+      <label>演示日期<br/><input type="text" id="sign-date" placeholder="YYYY-MM-DD" style="width:100%;margin-top:4px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+      <label>QA<br/><input type="text" id="sign-qa" placeholder="姓名" style="width:100%;margin-top:4px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+      <label>开发<br/><input type="text" id="sign-dev" placeholder="姓名" style="width:100%;margin-top:4px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+      <label>产品<br/><input type="text" id="sign-pm" placeholder="姓名" style="width:100%;margin-top:4px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;font:inherit"/></label>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  const sticky = document.querySelector(".sticky");
+  const key = sticky.getAttribute("data-storage-key") || "demo-handoff";
+  const storageKey = "demo-handoff:" + key;
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(storageKey) || "{}"); }
+    catch { return {}; }
+  }
+  function save(state) {
+    localStorage.setItem(storageKey, JSON.stringify(state));
+  }
+
+  function collect() {
+    const state = load();
+    state.verdicts = state.verdicts || {};
+    document.querySelectorAll(".verdict").forEach(function (group) {
+      const id = group.getAttribute("data-id");
+      const on = group.querySelector("button.on");
+      if (on) state.verdicts[id] = on.getAttribute("data-v");
+      else delete state.verdicts[id];
+    });
+    state.pre = {};
+    document.querySelectorAll("#preconditions input[type=checkbox]").forEach(function (el, i) {
+      state.pre[el.getAttribute("data-pre") || String(i)] = el.checked;
+    });
+    state.pending = {};
+    document.querySelectorAll("#pending input[type=checkbox]").forEach(function (el, i) {
+      state.pending[el.getAttribute("data-pending") || String(i)] = el.checked;
+    });
+    const admit = document.querySelector('input[name="admit"]:checked');
+    state.admit = admit ? admit.value : null;
+    state.notes = document.getElementById("admit-notes").value;
+    state.sign = {
+      date: document.getElementById("sign-date").value,
+      qa: document.getElementById("sign-qa").value,
+      dev: document.getElementById("sign-dev").value,
+      pm: document.getElementById("sign-pm").value
+    };
+    save(state);
+    updateProgress();
+  }
+
+  function restore() {
+    const state = load();
+    const verdicts = state.verdicts || {};
+    document.querySelectorAll(".verdict").forEach(function (group) {
+      const id = group.getAttribute("data-id");
+      const v = verdicts[id];
+      group.querySelectorAll("button").forEach(function (btn) {
+        btn.classList.toggle("on", btn.getAttribute("data-v") === v);
+      });
+    });
+    document.querySelectorAll("#preconditions input[type=checkbox]").forEach(function (el, i) {
+      const k = el.getAttribute("data-pre") || String(i);
+      el.checked = !!(state.pre && state.pre[k]);
+    });
+    document.querySelectorAll("#pending input[type=checkbox]").forEach(function (el, i) {
+      const k = el.getAttribute("data-pending") || String(i);
+      el.checked = !!(state.pending && state.pending[k]);
+    });
+    if (state.admit) {
+      const r = document.querySelector('input[name="admit"][value="' + state.admit + '"]');
+      if (r) r.checked = true;
+    }
+    if (state.notes) document.getElementById("admit-notes").value = state.notes;
+    const sign = state.sign || {};
+    document.getElementById("sign-date").value = sign.date || "";
+    document.getElementById("sign-qa").value = sign.qa || "";
+    document.getElementById("sign-dev").value = sign.dev || "";
+    document.getElementById("sign-pm").value = sign.pm || "";
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const rows = Array.from(document.querySelectorAll("#demo-rows tr[data-level='P0']"));
+    const total = rows.length;
+    let pass = 0;
+    rows.forEach(function (tr) {
+      const id = tr.getAttribute("data-id");
+      const on = tr.querySelector(".verdict button.on");
+      if (on && on.getAttribute("data-v") === "P") pass++;
+    });
+    document.getElementById("p0-progress").textContent = pass + " / " + total;
+    document.getElementById("p0-bar").style.width = (total ? (100 * pass / total) : 0) + "%";
+  }
+
+  document.getElementById("demo-rows").addEventListener("click", function (e) {
+    const btn = e.target.closest("button[data-v]");
+    if (!btn) return;
+    const group = btn.closest(".verdict");
+    const wasOn = btn.classList.contains("on");
+    group.querySelectorAll("button").forEach(function (b) { b.classList.remove("on"); });
+    if (!wasOn) btn.classList.add("on");
+    collect();
+  });
+
+  document.querySelectorAll("#preconditions, #pending, .conclusion").forEach(function (el) {
+    el.addEventListener("change", collect);
+  });
+  document.getElementById("admit-notes").addEventListener("input", collect);
+  ["sign-date", "sign-qa", "sign-dev", "sign-pm"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", collect);
+  });
+
+  document.getElementById("btn-print").addEventListener("click", function () { window.print(); });
+  document.getElementById("btn-reset").addEventListener("click", function () {
+    if (!confirm("清空本页全部勾选与结论？")) return;
+    localStorage.removeItem(storageKey);
+    document.querySelectorAll(".verdict button").forEach(function (b) { b.classList.remove("on"); });
+    document.querySelectorAll("input[type=checkbox]").forEach(function (c) { c.checked = false; });
+    document.querySelectorAll('input[name="admit"]').forEach(function (r) { r.checked = false; });
+    document.getElementById("admit-notes").value = "";
+    document.getElementById("sign-date").value = "";
+    document.getElementById("sign-qa").value = "";
+    document.getElementById("sign-dev").value = "";
+    document.getElementById("sign-pm").value = "";
+    updateProgress();
+  });
+
+  restore();
+})();
+</script>
+</body>
+</html>

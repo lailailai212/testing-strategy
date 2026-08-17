@@ -1,0 +1,171 @@
+{
+  "sheet_title": "【SE卡片】订阅与动作 测试点",
+  "root_title": "【SE卡片】订阅与动作",
+  "tree": [
+    {
+      "title": "PW",
+      "children": [
+        {
+          "title": "SEMS 状态变更订阅",
+          "children": [
+            {
+              "title": "PW 对已引用到 workspace 的 SEMS SE 资产建立**状态变更订阅**（非 PKI/KMS 旧订阅模式）",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "SEMS 侧 SE profile 状态由 **active → 非 active** 变更后，PW / Assets 侧 SE 卡片 **active 状态展示同步更新**（无需用户手动刷新或重新导入）",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "订阅范围**仅状态**字段：SE profile **name** 等其他字段变更走 Story #653 既有同步，**不依赖**本 Story 订阅",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "具体订阅哪些状态枚举（active / deactive / 其他 SEMS 状态）及推送时机（实时 / 轮询）",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "多 Product / 多 Module 引用同一 SEMS SE 时，状态变更对各 workspace **均生效**",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "SEMS 状态恢复为 **active** 后，Assets SE 卡片状态展示**同步恢复**",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "创建 Version",
+      "children": [
+        {
+          "title": "SE 状态校验",
+          "children": [
+            {
+              "title": "Product 已导入 SE 且 SE profile 为 **active** 时，创建 **Product Version**（引用含 SE 的 Module）**可成功**",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "创建 Version 流程中，系统对资产内被引用的 **SE profile 调用状态接口**查询当前 SEMS 状态",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "SE profile 状态为**非 active** 时，创建 Version **失败**，不产生新版本",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "Version 创建失败提示（中文）：**SE profile状态变更，请检查SE profile状态**",
+              "source": "AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "Version 创建失败提示（英文）：**The status of the SE profile has changed. Please check the status of the SE profile.**",
+              "source": "AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "失败提示展示形式：Toast / Dialog / 行内错误（Product Doc 未述）",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "SE Module **数据不充分**（Story #601）本就不出现在 Version Module 列表；与 AC-08 **非 active** 拦截为不同路径，均须覆盖",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "Version 创建失败后，用户修正 SEMS 状态为 active 后**可重试成功**",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "Product **无 SE 引用**或 Module 不含 SE 时，创建 Version **不受**本 Story SE 状态校验影响",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "创建 Batch",
+      "children": [
+        {
+          "title": "SE 状态校验",
+          "children": [
+            {
+              "title": "Product 已导入 SE 且 SE profile 为 **active** 时，创建 **Batch**（Manufacturing，引用含 SE 的版本 / 资产）**可成功**",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "创建 Batch 流程中，系统对资产内被引用的 **SE profile 调用状态接口**查询当前 SEMS 状态",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "SE profile 状态为**非 active** 时，创建 Batch **失败**，不产生新批次",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "Batch 创建失败提示（中文）：**SE profile状态变更，请检查SE profile状态**",
+              "source": "AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "Batch 创建失败提示（英文）：**The status of the SE profile has changed. Please check the status of the SE profile.**",
+              "source": "AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "Batch 创建失败后，SE 状态恢复 active 后**可重试成功**",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "无 SE 引用的 Product 创建 Batch **不受**本 Story 校验影响",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "负向与边界",
+      "children": [
+        {
+          "title": "状态接口",
+          "children": [
+            {
+              "title": "创建 Version / Batch 时状态接口**超时或不可用**，创建**失败**并给出可识别错误（非静默成功）",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "「非 active」具体 SEMS 枚举值（deactive / revoked / 其他）均触发 AC-08 拦截",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "Product Doc 动作段落文案为「SE**芯片**状态变更」，AC-09 为「SE **profile**状态变更」— **以 AC-09 为准或待产品统一**",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

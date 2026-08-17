@@ -1,0 +1,291 @@
+{
+  "sheet_title": "【体验优化P2】Member功能统一 测试点",
+  "root_title": "【体验优化P2】Member功能统一",
+  "tree": [
+    {
+      "title": "KMS",
+      "children": [
+        {
+          "title": "Member 列表",
+          "children": [
+            {
+              "title": "默认列含 Name、Role、Permission、Organization、Status；Organization 在 Permission 后",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Permission 默认展示 1 个，其余 `+n`；hover 展示全部 Permission",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Admin 行 `⋮` 仅含 Transfer Admin，无其它操作项",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Admin 本人：Transfer Admin 可点（亮起）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "非 Admin 本人查看 Admin 行：Transfer Admin 置灰，hover「No Permission / 无权限」",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Organization 展示租户简称；Status 为 Account 状态",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Transfer Admin",
+          "children": [
+            {
+              "title": "弹窗标题「Transfer KMS Admin / 转移密钥管理员」；字段「Select KMS Admin」必填带 *",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "下拉仅同租户其他 Active 用户邮箱；不含当前 Admin；不展示 Locked 置灰交互",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "未选确认：报错「KMS Admin is required / 密钥管理员是必填项」",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "目标已在 Member：Confirm 后 Role→Admin、全部权限点；Toast 成功；弹窗关闭；列表刷新",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "目标不在 Member：Confirm 后新增为 Admin 且全部权限点",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "原 Admin 仍在列表，Role→Normal Member，权限点不变",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "Cancel / 关闭按钮关闭且不移交；点击蒙层不关闭",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "中英文标题、报错、Toast 分别正确",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "PKI",
+      "children": [
+        {
+          "title": "Member 列表",
+          "children": [
+            {
+              "title": "默认列与 Permission `+n`、Organization 位置同 KMS",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Admin 行仅 Transfer Admin；本人可操作，他人置灰 + No Permission",
+              "source": "AC-01",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "Transfer Admin",
+          "children": [
+            {
+              "title": "标题「Transfer PKI Admin / 转移证书管理员」；字段 Select Certificate Admin；报错 Certificate Admin is required",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "下拉仅 Active 其他用户；Confirm 成功后目标 Admin+全权限，原 Admin→Normal Member 权限不变",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "Cancel/关闭不执行；蒙层不可关",
+              "source": "需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Factory",
+      "children": [
+        {
+          "title": "Member 列表",
+          "children": [
+            {
+              "title": "默认可见 Name、Role、Status；Organization、Operator、Join Time 默认不展示",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Columns 可打开 Organization / Operator / Join Time",
+              "source": "AC-04",
+              "priority": "P1"
+            },
+            {
+              "title": "Admin 行 `⋮` 含 Reset Password、Transfer Admin，无 Remove",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "两操作仅 Admin 本人可点；他人置灰 + No Permission",
+              "source": "AC-04",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "Transfer Admin",
+          "children": [
+            {
+              "title": "标题「Transfer Factory Admin / 转移工厂管理员」；Select Factory Admin 必填；报错 Factory Admin is required",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "目标已在列表：Confirm 后 Role→Factory Admin；Toast 成功",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "目标不在列表：新增为 Factory Admin",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "原 Admin 仍在列表，Role→Factory Manager",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "Cancel/关闭不执行；蒙层不可关；下拉仅 Active",
+              "source": "需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Group",
+      "children": [
+        {
+          "title": "Member",
+          "children": [
+            {
+              "title": "Admin 行不展示 Operation `⋮`",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "非 Admin 行仍展示 `⋮` 且菜单可用（按现网项）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "无 Transfer Admin / Group Transfer 入口",
+              "source": "AC-06, 需求描述",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Product",
+      "children": [
+        {
+          "title": "Member（Account 删除后）",
+          "children": [
+            {
+              "title": "Account 删除后，曾加入的 Product → Member 列表不可见该用户",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "删除后刷新列表：无 Name/Status 为 `-` 的空壳残留行",
+              "source": "AC-07, 需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Account",
+      "children": [
+        {
+          "title": "删除时批量转移",
+          "children": [
+            {
+              "title": "Account / Account（SNB）删除：用户为 Product Owner / KMS Admin / PKI Admin / Factory Admin（命中任一）时不可直接删除，弹出 Confirm Action",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "弹窗标题 Confirm Action / 确认操作；提示文案中英文正确；Target Admin 必填带 *",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "资源清单分 Product/KMS/PKI/Factory 卡片；展示 Resource:n；hover 展示全部资源名；数量为 0 的卡片不展示",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "数据范围：已归档、已锁定资源纳入校验；已删除、已销毁不纳入",
+              "source": "AC-08, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "Target Admin 下拉仅同租户其他 Active 用户邮箱；未选报错 Target Admin is Required / 目标管理员是必填项",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "Confirm 后：命中资源 Admin 全部移交目标；Toast 成功；用户被删除；目标加入各资源 Member 或刷新 Role/权限",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "Cancel / 关闭不执行；蒙层不可关",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "用户无上述 Admin 身份时，可按现网直接删除（不弹批量转移窗）",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "Account（SNB）与 Account 删除批量转移行为一致",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

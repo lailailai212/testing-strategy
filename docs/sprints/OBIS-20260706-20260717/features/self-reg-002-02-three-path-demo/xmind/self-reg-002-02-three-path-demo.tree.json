@@ -1,0 +1,241 @@
+{
+  "sheet_title": "【自注册】002-02 — 三路 Demo 预设 测试点",
+  "root_title": "【自注册】002-02 — 三路 Demo 预设",
+  "tree": [
+    {
+      "title": "Factory Demo 预设",
+      "children": [
+        {
+          "title": "自注册 Tenant 预设成功后，存在 1 个 Cloud Factory（名称 `TestCloudFactory`），状态 Active",
+          "source": "AC-01",
+          "priority": "P0"
+        },
+        {
+          "title": "该 Factory 下存在 1 个 Programming Station（名称 `TestStation`），状态 Active，登录方式为密码",
+          "source": "AC-01",
+          "priority": "P0"
+        },
+        {
+          "title": "Factory 类型为云工厂（cloud）；管理员为租户 Admin 账号；API 密钥由系统自动生成",
+          "source": "需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "Factory / Station 创建时间、同步时间为预设完成时刻（年月日时分秒）",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "title": "Vault Demo 预设",
+      "children": [
+        {
+          "title": "KMS",
+          "children": [
+            {
+              "title": "预设成功后存在 1 个 KMS 密钥：名称 `TestKey`，环境 Test，对称密钥，规范 AES128",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "密钥用途包含加密解密、生成并验证 MAC；有效期 2 年；生成方式为系统生成",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "Tenant Admin 对该 Demo 密钥拥有所有权限",
+              "source": "需求描述",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "PKI 证书链",
+          "children": [
+            {
+              "title": "预设成功后存在三层证书链：PAA（`Test PAA`）+ PAI（`Test PAI`）+ DAC 模板（`Test DAC`），均为 Matter 规范、状态 Active",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "PAA / PAI / DAC 有效期均为 2 Years；算法 ECC-P256；签名算法 ecdsa-with-SHA256",
+              "source": "AC-02",
+              "priority": "P1"
+            },
+            {
+              "title": "PAA 类型为 Test PAA（非认证 PAA）；DAC 的 PID 为 8001",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "Tenant Admin 对 Demo PAA / PAI / DAC 拥有所有权限",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "Demo PAA 为租户自签名测试 PAA，不可当作 SNOWBALL 官方认证 PAA 用于生产环境（能力/标识层面可区分）",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Product Demo 预设",
+      "children": [
+        {
+          "title": "预设成功后存在 1 个产品 `Demo-Product`：Specification=Matter，状态 Released，环境 Testing",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "产品含默认 Module（Module1）与 Version（`Demo-Version-v1.0`），Version 状态为 **Approved**",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "产品资源包含：固件 `Demo-Firmware-v1.0`（Type: Application）、Chip Config `Demo-Chip-Config-v1`（Silicon Labs / EFR32MG24 / EFR32MG24B210F1536IM48）、Key 引用 Demo KMS、证书引用 Demo DAC、Matter Config、PS Software",
+          "source": "AC-03",
+          "priority": "P1"
+        },
+        {
+          "title": "Max Production Volume=Limited 500；Allowed Range Min=1、Max=30；Default Duration=30；Vendor=SNB",
+          "source": "需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "用户从列表进入产品详情默认进入 Test 环境，且可切换环境",
+          "source": "需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "Matter Config：PID=8001，DAC Template=Demo DAC，Spike2Iteration=1000，Commissioning Flow=Standard，设备发现模式=BLE",
+          "source": "需求描述",
+          "priority": "P2"
+        },
+        {
+          "title": "固件为真实可烧录文件（非占位空文件）",
+          "source": "需求描述",
+          "priority": "P2"
+        },
+        {
+          "title": "创建产品流程无 Description 字段/填写入口",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "title": "Demo 标签、环境标签与配额",
+      "children": [
+        {
+          "title": "Factory / Vault / Product 等相关**列表页**对 Demo 资源展示「Demo Data / 测试数据」或 `Demo-` 标识",
+          "source": "AC-04",
+          "priority": "P0"
+        },
+        {
+          "title": "Demo 资源列表不展示环境标签（Test / 正式等），仅标识为 Demo 数据",
+          "source": "AC-04",
+          "priority": "P1"
+        },
+        {
+          "title": "产品/资源**详情页**不展示「Demo Data / 测试数据」标签（以评论修订为准）",
+          "source": "需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "Demo 资源不计入配额和用量统计（与用量可视化等模块交叉验证）",
+          "source": "AC-04",
+          "priority": "P0"
+        }
+      ]
+    },
+    {
+      "title": "失败回滚",
+      "children": [
+        {
+          "title": "Cloud Factory 创建成功但 Station 创建失败时，回滚已创建的 Factory，该路记为失败",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "KMS 密钥创建成功但 PKI 链创建失败时，回滚已创建的 KMS 密钥，该路记为失败",
+          "source": "AC-05",
+          "priority": "P1"
+        },
+        {
+          "title": "PKI 链创建中途失败时，回滚已创建的 CA 证书，该路记为失败",
+          "source": "AC-05",
+          "priority": "P1"
+        },
+        {
+          "title": "Product 创建成功但资源包失败，或资源包成功但 Version 失败时，回滚已创建的 Product（及资源包），该路记为失败",
+          "source": "AC-05",
+          "priority": "P1"
+        },
+        {
+          "title": "单路重试 3 次均失败后，记录该路失败结果（编排层行为与 002-01 对齐）",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "title": "编辑、删除与真实使用",
+      "children": [
+        {
+          "title": "用户可删除 Demo 产品内单个资源；删除后系统不重建",
+          "source": "AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "用户可删除整个 Demo 产品；删除后系统不重建",
+          "source": "AC-06",
+          "priority": "P1"
+        },
+        {
+          "title": "用户可编辑 Demo 产品的非核心字段，保存成功且详情展示更新后内容",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "对 Demo 资源的编辑/删除效果与用户自创建资源一致（权限、校验、列表刷新等）",
+          "source": "AC-10",
+          "priority": "P0"
+        },
+        {
+          "title": "可使用预设 Demo KMS 密钥完成真实签发类操作（功能不做额外限制）",
+          "source": "AC-09",
+          "priority": "P0"
+        },
+        {
+          "title": "可使用预设 Demo Factory / Station 创建批次等真实业务流程",
+          "source": "AC-09",
+          "priority": "P1"
+        },
+        {
+          "title": "「非核心字段」可编辑范围清单（Description 已去掉后）与产品确认一致",
+          "source": "QA扩展",
+          "priority": "P2 / 待确认"
+        }
+      ]
+    },
+    {
+      "title": "租户隔离",
+      "children": [
+        {
+          "title": "租户 A 仅能看到本租户 Demo 数据，不能看到租户 B 的 Demo Factory / Key / PKI / Product",
+          "source": "AC-08",
+          "priority": "P0"
+        },
+        {
+          "title": "两个自注册 Tenant 各自拥有独立的 Demo PAA/PAI/DAC 与密钥，互不共享同一证书链",
+          "source": "AC-08",
+          "priority": "P1"
+        }
+      ]
+    }
+  ]
+}

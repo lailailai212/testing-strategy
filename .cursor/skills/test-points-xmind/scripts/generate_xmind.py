@@ -2,16 +2,18 @@
 
 Usage:
     python generate_xmind.py --feature-slug product-asset-tag
+    python generate_xmind.py --feature-slug assets-card-customization --sprint OBIS-20260622-20260703
     python generate_xmind.py --tree path/to/tree.json --output docs/foo.xmind
 
 Tree JSON schema — see reference.md in parent skill folder.
-Output paths — docs/generate_doc/test-points-xmind/ (see skill SKILL.md).
+Output paths — docs/sprints/{sprint}/features/{slug}/xmind/ (see skill SKILL.md).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import tempfile
 import zipfile
@@ -20,26 +22,29 @@ from typing import Any
 
 import xmind
 
-XMIND_OUTPUT_DIR = Path("docs/generate_doc/test-points-xmind")
-TREES_DIR = XMIND_OUTPUT_DIR / "trees"
+_REPO = Path(__file__).resolve().parents[4]
+if str(_REPO / "scripts") not in sys.path:
+    sys.path.insert(0, str(_REPO / "scripts"))
+
+from feature_paths import (  # noqa: E402
+    repo_root_from,
+    tree_path as sprint_tree_path,
+    xmind_path as sprint_xmind_path,
+)
+
+LEGACY_TP_PREFIX = re.compile(r"^TP-[\w-]+\s*\|\s*", re.IGNORECASE)
 
 
 def repo_root() -> Path:
-    """Walk up from script location to find repository root (contains docs/)."""
-    here = Path(__file__).resolve()
-    for parent in here.parents:
-        if (parent / "docs" / "generate_doc" / "test-points-xmind").is_dir():
-            return parent
-        if (parent / "docs").is_dir() and (parent / ".cursor").is_dir():
-            return parent
-    return Path.cwd()
+    return repo_root_from(Path(__file__))
 
 
-def paths_for_feature(slug: str, root: Path | None = None) -> tuple[Path, Path]:
-    base = (root or repo_root()) / XMIND_OUTPUT_DIR
-    tree = base / "trees" / f"{slug}.tree.json"
-    output = base / f"{slug}-test-points.xmind"
-    return tree, output
+def paths_for_feature(
+    slug: str, root: Path | None = None, sprint: str | None = None
+) -> tuple[Path, Path]:
+    root = root or repo_root()
+    return sprint_tree_path(slug, sprint, root), sprint_xmind_path(slug, sprint, root)
+
 
 META_XML = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <meta xmlns="urn:xmind:xmap:xmlns:meta:2.0" version="2.0">
@@ -65,19 +70,48 @@ REQUIRED_ZIP_ENTRIES = {
 }
 
 
+def format_leaf_title(node: dict) -> str:
+    """Build XMind leaf title: [优先级][来源] 描述（不含 TP-ID）。"""
+    title = (node.get("title") or "").strip()
+    if not title:
+        raise ValueError("Leaf node must have non-empty 'title'")
+    priority = (node.get("priority") or "").strip()
+    source = (node.get("source") or "").strip()
+    prefix = ""
+    if priority:
+        prefix += f"[{priority}]"
+    if source:
+        prefix += f"[{source}]"
+    return f"{prefix} {title}".strip() if prefix else title
+
+
+def normalize_legacy_string(leaf: str) -> str:
+    """Strip legacy `TP-ID |` prefix from string leaves."""
+    return LEGACY_TP_PREFIX.sub("", leaf.strip()).strip() or leaf.strip()
+
+
+def is_branch(node: Any) -> bool:
+    if isinstance(node, dict):
+        return bool(node.get("children"))
+    return False
+
+
 def add_branch(parent, node: Any) -> None:
     if isinstance(node, str):
-        parent.addSubTopic().setTitle(node)
+        parent.addSubTopic().setTitle(normalize_legacy_string(node))
         return
     if not isinstance(node, dict):
         raise TypeError(f"Tree node must be str or dict, got {type(node)}")
-    title = node.get("title")
-    if not title:
-        raise ValueError("Dict node must have non-empty 'title'")
-    branch = parent.addSubTopic()
-    branch.setTitle(title)
-    for child in node.get("children", []):
-        add_branch(branch, child)
+    if is_branch(node):
+        title = node.get("title")
+        if not title:
+            raise ValueError("Branch node must have non-empty 'title'")
+        branch = parent.addSubTopic()
+        branch.setTitle(title)
+        for child in node["children"]:
+            add_branch(branch, child)
+        return
+    parent.addSubTopic().setTitle(format_leaf_title(node))
 
 
 def load_tree(path: Path) -> dict:
@@ -139,7 +173,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate XMind from test-point tree JSON")
     parser.add_argument(
         "--feature-slug",
-        help="Feature slug; resolves tree/output under docs/generate_doc/test-points-xmind/",
+        help="Feature slug; resolves via docs/sprints/features-registry.json",
+    )
+    parser.add_argument(
+        "--sprint",
+        help="Sprint id (optional if slug is registered), e.g. OBIS-20260622-20260703",
     )
     parser.add_argument("--tree", type=Path, help="Path to tree JSON file")
     parser.add_argument("--output", type=Path, help="Output .xmind path")
@@ -157,18 +195,24 @@ def main() -> int:
         if args.tree or args.output:
             print("Error: use either --feature-slug or both --tree and --output", file=sys.stderr)
             return 1
-        tree_path, output_path = paths_for_feature(args.feature_slug, root)
+        try:
+            tree_path, output_path = paths_for_feature(
+                args.feature_slug, root, args.sprint
+            )
+        except KeyError as exc:
+            print(f"Error: {exc}", file=sys.stderr)
+            return 1
     elif args.tree and args.output:
         tree_path, output_path = args.tree, args.output
-        expected_base = (root / XMIND_OUTPUT_DIR).resolve()
-        if not tree_path.resolve().is_relative_to(expected_base / "trees"):
+        expected_base = (root / "docs" / "sprints").resolve()
+        if not str(tree_path.resolve()).startswith(str(expected_base)):
             print(
-                f"Warning: --tree should be under {expected_base / 'trees'}",
+                f"Warning: --tree should be under {expected_base}/{{sprint}}/features/{{slug}}/xmind/",
                 file=sys.stderr,
             )
-        if not output_path.resolve().is_relative_to(expected_base):
+        if not str(output_path.resolve()).startswith(str(expected_base)):
             print(
-                f"Warning: --output should be under {expected_base}",
+                f"Warning: --output should be under {expected_base}/{{sprint}}/features/{{slug}}/xmind/",
                 file=sys.stderr,
             )
     else:

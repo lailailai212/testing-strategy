@@ -1,0 +1,117 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - img "logo" [ref=e10]
+        - heading "OnBoard IoT Security" [level=5] [ref=e12]
+      - list [ref=e15]:
+        - listitem [ref=e16]:
+          - img [ref=e18]
+        - paragraph [ref=e23]: /
+        - listitem [ref=e24]:
+          - generic [ref=e25] [cursor=pointer]: KMS
+        - paragraph [ref=e28]: /
+        - listitem [ref=e29]:
+          - generic [ref=e30]: Create Key
+      - list [ref=e31]:
+        - listitem [ref=e32]:
+          - switch [ref=e33] [cursor=pointer]
+        - listitem [ref=e35]:
+          - button [ref=e36] [cursor=pointer]:
+            - img [ref=e38]
+        - listitem [ref=e40]:
+          - button [ref=e41] [cursor=pointer]:
+            - img [ref=e43]
+        - listitem [ref=e46]:
+          - generic [ref=e47] [cursor=pointer]:
+            - img "Avatar" [ref=e48]
+            - generic [ref=e49]: Future Wei
+    - generic [ref=e51]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e61]:
+          - generic: Core
+          - generic [ref=e62] [cursor=pointer]:
+            - img [ref=e64]
+            - generic [ref=e66]: Product
+          - generic [ref=e67] [cursor=pointer]:
+            - img [ref=e69]
+            - generic [ref=e71]: KMS
+          - generic [ref=e72] [cursor=pointer]:
+            - img [ref=e74]
+            - generic [ref=e76]: PKI
+        - generic [ref=e77]:
+          - generic: Ecosystem
+          - generic [ref=e78] [cursor=pointer]:
+            - img [ref=e80]
+            - generic [ref=e82]: Factory
+          - generic [ref=e83] [cursor=pointer]:
+            - img [ref=e85]
+            - generic [ref=e87]: U-Safe List
+        - generic [ref=e88]:
+          - generic: Records
+          - generic [ref=e89] [cursor=pointer]:
+            - img [ref=e91]
+            - generic [ref=e93]: Device History
+          - generic [ref=e94] [cursor=pointer]:
+            - img [ref=e96]
+            - generic [ref=e98]: DAC Report
+        - generic [ref=e99]:
+          - generic: Admin
+          - generic [ref=e100] [cursor=pointer]:
+            - img [ref=e102]
+            - generic [ref=e104]: Account
+          - generic [ref=e105] [cursor=pointer]:
+            - img [ref=e107]
+            - generic [ref=e109]: Group
+        - generic [ref=e110] [cursor=pointer]:
+          - img [ref=e112]
+          - generic [ref=e114]: System
+      - generic [ref=e115]:
+        - main [ref=e116]:
+          - generic [ref=e125]:
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - img [ref=e314]
+                - generic [ref=e133]: Basics
+              - generic [ref=e134]:
+                - img [ref=e374]
+                - generic [ref=e138]: Generation Method
+              - generic [ref=e139]:
+                - generic [ref=e141]: "3"
+                - generic [ref=e143]: Permission
+            - generic [ref=e377]:
+              - generic [ref=e378]:
+                - heading "Permission" [level=6] [ref=e380]
+                - generic [ref=e381]: Step 3/3
+              - generic [ref=e383]:
+                - generic [ref=e384]:
+                  - generic [ref=e387]: Permission
+                  - button "Add" [ref=e389] [cursor=pointer]:
+                    - img [ref=e391]
+                    - text: Add
+                - generic [ref=e399]:
+                  - table [ref=e402]:
+                    - rowgroup [ref=e407]:
+                      - row "Email Permission" [ref=e408]:
+                        - columnheader "Email" [ref=e409]:
+                          - generic [ref=e411]: Email
+                        - columnheader "Permission" [ref=e412]:
+                          - generic [ref=e415]: Permission
+                        - columnheader [ref=e416]
+                  - table [ref=e419]:
+                    - rowgroup [ref=e420]:
+                      - row "avatar Admin future.wei@snowballtech.com Add, View, Unlock, Edit, Create Authorization, Lock, Delete" [ref=e421]:
+                        - cell "avatar Admin future.wei@snowballtech.com" [ref=e422]:
+                          - generic [ref=e425]:
+                            - img "avatar" [ref=e426]
+                            - generic [ref=e427]: Admin
+                            - generic [ref=e429]: future.wei@snowballtech.com
+                        - cell "Add, View, Unlock, Edit, Create Authorization, Lock, Delete" [ref=e430]:
+                          - generic [ref=e433]: Add, View, Unlock, Edit, Create Authorization, Lock, Delete
+                        - cell [ref=e434]:
+                          - button [ref=e437] [cursor=pointer]:
+                            - img [ref=e439]
+        - button "Complete" [ref=e446] [cursor=pointer]: Complete
+  - img
+  - generic [ref=e447]: future.wei@snowballtech.co...

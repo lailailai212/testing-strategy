@@ -1,0 +1,161 @@
+{
+  "sheet_title": "【SE卡片】SE卡片内容说明 测试点",
+  "root_title": "【SE卡片】SE卡片内容说明",
+  "tree": [
+    {
+      "title": "Assets",
+      "children": [
+        {
+          "title": "SE 卡片展示",
+          "children": [
+            {
+              "title": "Assets 页面存在 SE 类型资源时，以**卡片形式**展示（非纯表格行列表）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "单张 SE 卡片同时展示字段：name、SE profile ID、active 状态、Update Time、Tag、操作项",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "多张 SE 卡片并存时，各卡片字段与对应 SEMS 数据一一对应，互不混淆",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SE 卡片",
+      "children": [
+        {
+          "title": "字段与 SEMS 数据来源",
+          "children": [
+            {
+              "title": "新导入 SE 卡片 name 与 SEMS 侧 SE profile name 一致",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "SEMS 侧 SE profile name 更新后，Assets 中对应 SE 卡片 name 自动同步为最新值（无需手动刷新或重新导入）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "SE profile ID 与 SEMS 侧一致，作为 SE 唯一标识展示",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "SE profile ID 导入后只读：无编辑入口，或尝试编辑后不可保存",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "新导入 SE 卡片 active 状态默认为 **active**",
+              "source": "AC-04",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "Update Time",
+          "children": [
+            {
+              "title": "新导入 SE 卡片 Update Time 等于导入时间",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "active / deactive 切换后 Update Time 是否更新（字段说明写「状态变化将导致 Update Time 变化」，AC-05 写「导入后不再更新」，**TBD**）",
+              "source": "需求描述, AC-05",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "SEMS 侧 name 同步更新后，Update Time 不因 name 变更而更新",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Tag",
+          "children": [
+            {
+              "title": "SE 卡片 Tag **展示样式**与平台现有 asset tag 一致",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "SE 卡片 Tag **添加 / 编辑 / 删除**交互与平台现有 tag 逻辑一致",
+              "source": "AC-06",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "active / deactive 操作",
+          "children": [
+            {
+              "title": "当前为 **active** 的 SE 卡片，操作项可切换为 **deactive**",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "当前为 **deactive** 的 SE 卡片，操作项可切换为 **active**",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "active / deactive 切换后，卡片上 active 状态展示立即更新为最新值",
+              "source": "AC-07",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "删除操作",
+          "children": [
+            {
+              "title": "点击删除操作项时弹出二次确认弹窗，不直接删除",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "确认弹窗文案：英文 **Are you sure you want to delete?**；中文 **确定删除该内容？**",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "用户在确认弹窗点击确认后，SE 卡片从 Assets 中移除",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "用户在确认弹窗点击取消，SE 卡片保留，不执行删除",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "删除成功后刷新页面，该 SE 卡片不再出现",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "UI 设计对齐",
+      "children": [
+        {
+          "title": "SE 卡片布局、字段位置与 Figma 设计稿一致（[node-id=12021-163058](https://www.figma.com/design/GomFi4IUgj6MTO7S73h26Q/OBIS-Planning%E8%AE%BE%E8%AE%A1%E7%A8%BF%E6%96%87%E4%BB%B6?node-id=12021-163058)）",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

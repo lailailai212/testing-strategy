@@ -1,0 +1,153 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - img "logo" [ref=e10]
+        - heading "OnBoard IoT Security" [level=5] [ref=e12]
+      - list [ref=e15]:
+        - listitem [ref=e16]:
+          - img [ref=e18]
+        - paragraph [ref=e23]: /
+        - listitem [ref=e24]:
+          - generic [ref=e25] [cursor=pointer]: KMS
+        - paragraph [ref=e28]: /
+        - listitem [ref=e29]:
+          - generic [ref=e30]: ScanStep23
+      - list [ref=e31]:
+        - listitem [ref=e32]:
+          - switch [ref=e33] [cursor=pointer]
+        - listitem [ref=e35]:
+          - button [ref=e36] [cursor=pointer]:
+            - img [ref=e38]
+        - listitem [ref=e40]:
+          - button [ref=e41] [cursor=pointer]:
+            - img [ref=e43]
+        - listitem [ref=e46]:
+          - generic [ref=e47] [cursor=pointer]:
+            - img "Avatar" [ref=e48]
+            - generic [ref=e49]: Future Wei
+    - generic [ref=e51]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e61]:
+          - generic: Core
+          - generic [ref=e62] [cursor=pointer]:
+            - img [ref=e64]
+            - generic [ref=e66]: Product
+          - generic [ref=e67] [cursor=pointer]:
+            - img [ref=e69]
+            - generic [ref=e71]: KMS
+          - generic [ref=e72] [cursor=pointer]:
+            - img [ref=e74]
+            - generic [ref=e76]: PKI
+        - generic [ref=e77]:
+          - generic: Ecosystem
+          - generic [ref=e78] [cursor=pointer]:
+            - img [ref=e80]
+            - generic [ref=e82]: Factory
+          - generic [ref=e83] [cursor=pointer]:
+            - img [ref=e85]
+            - generic [ref=e87]: U-Safe List
+        - generic [ref=e88]:
+          - generic: Records
+          - generic [ref=e89] [cursor=pointer]:
+            - img [ref=e91]
+            - generic [ref=e93]: Device History
+          - generic [ref=e94] [cursor=pointer]:
+            - img [ref=e96]
+            - generic [ref=e98]: DAC Report
+        - generic [ref=e99]:
+          - generic: Admin
+          - generic [ref=e100] [cursor=pointer]:
+            - img [ref=e102]
+            - generic [ref=e104]: Account
+          - generic [ref=e105] [cursor=pointer]:
+            - img [ref=e107]
+            - generic [ref=e109]: Group
+        - generic [ref=e110] [cursor=pointer]:
+          - img [ref=e112]
+          - generic [ref=e114]: System
+      - main [ref=e116]:
+        - generic [ref=e120]:
+          - generic [ref=e122]:
+            - img [ref=e123] [cursor=pointer]
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - generic "ScanStep23" [ref=e128]:
+                  - textbox "ScanStep23"
+                  - generic:
+                    - generic: ScanStep23
+                  - img [ref=e131]
+                - generic [ref=e134]: PROD
+              - separator [ref=e135]
+              - generic [ref=e136]:
+                - generic [ref=e137]: Status
+                - generic [ref=e138]: Active
+            - generic [ref=e140]:
+              - button "Lock" [ref=e141] [cursor=pointer]: Lock
+              - button "Download" [ref=e142] [cursor=pointer]: Download
+          - generic [ref=e143]:
+            - generic [ref=e146]:
+              - generic [ref=e148] [cursor=pointer]: Overview
+              - generic [ref=e150] [cursor=pointer]: Usage Count
+              - generic [ref=e152] [cursor=pointer]: Permission
+              - generic [ref=e154] [cursor=pointer]: Operation Log
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - heading "Basic Info" [level=6] [ref=e168]
+                - button [ref=e170] [cursor=pointer]:
+                  - img [ref=e171]
+              - generic [ref=e175]:
+                - generic [ref=e176]:
+                  - generic [ref=e177]:
+                    - generic [ref=e178]: Name
+                    - generic [ref=e180]:
+                      - text: ScanStep23
+                      - img [ref=e182] [cursor=pointer]
+                  - generic [ref=e184]:
+                    - generic [ref=e185]: ID
+                    - generic [ref=e187]:
+                      - text: KID-AR34c414c3f8
+                      - img [ref=e189] [cursor=pointer]
+                  - generic [ref=e191]:
+                    - generic [ref=e192]: Storage
+                    - generic [ref=e194]: Local
+                  - generic [ref=e195]:
+                    - generic [ref=e196]: Version
+                    - generic [ref=e198]: V1
+                  - generic [ref=e199]:
+                    - generic [ref=e200]: Source
+                    - generic [ref=e202]: System
+                  - generic [ref=e203]:
+                    - generic [ref=e204]: Type
+                    - generic [ref=e206]: Asymmetric
+                  - generic [ref=e207]:
+                    - generic [ref=e208]: Algorithm
+                    - generic [ref=e210]: RSA-2048
+                - generic [ref=e211]:
+                  - generic [ref=e212]:
+                    - generic [ref=e213]: Admin
+                    - generic [ref=e215]:
+                      - img "avatar" [ref=e216]
+                      - generic [ref=e217]: Future Wei
+                  - generic [ref=e218]:
+                    - generic [ref=e219]: Creation Time
+                    - generic [ref=e221]: 2026-06-15 21:22:16
+                  - generic [ref=e222]:
+                    - generic [ref=e223]: Usage
+                    - generic [ref=e226]: Sign / Verify
+                  - generic [ref=e227]:
+                    - generic [ref=e228]: Usage Count
+                    - generic [ref=e230]: "0"
+                  - generic [ref=e231]:
+                    - generic [ref=e232]: Last Usage
+                    - generic [ref=e234]: 2026-06-15 21:22:16
+                  - generic [ref=e235]:
+                    - generic [ref=e236]: Expiration Date
+                    - generic [ref=e238]: 2051-06-15
+                  - generic [ref=e241]:
+                    - progressbar [ref=e243]
+                    - generic [ref=e245]:
+                      - generic [ref=e246]: Used 1 hour
+                      - generic [ref=e247]: 25 years left
+  - img

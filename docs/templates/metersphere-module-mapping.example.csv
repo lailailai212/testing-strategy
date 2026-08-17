@@ -1,0 +1,4 @@
+tp_id,xmind_branch,module_path,remark
+TP-PA-KEY-01,Assign Security Key,/Product/Product Asset/Keys,Assign Key 弹窗相关
+TP-PA-CERT-01,Assign Certificate,/Product/Product Asset/Certifications,Assign Certificate 弹窗相关
+TP-VER-01,Version 详情页,/Product/Version,Version 页只读展示

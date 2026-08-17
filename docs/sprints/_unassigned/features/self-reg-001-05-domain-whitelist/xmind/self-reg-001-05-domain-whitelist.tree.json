@@ -1,0 +1,316 @@
+{
+  "sheet_title": "【自注册】001-05 — 企业域名白名单审批管理 测试点",
+  "root_title": "【自注册】001-05 — 企业域名白名单审批管理",
+  "tree": [
+    {
+      "title": "用户侧",
+      "children": [
+        {
+          "title": "白名单申请提示",
+          "children": [
+            {
+              "title": "前提：目标租户为有效状态、超管已在 Tenant Security Tab 开启 Self-Registration 并配置 Email Domain；用户无有效 OBIS 账号且注册邮箱命中白名单域名，首次进入流程时展示加入提示：标题 **Your email belongs to {企业名}**；按钮 **Apply to Join** / **Skip&Enter System**",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "点击 **Apply to Join** 提交后展示成功页 **Application Submitted!**；正文含申请已发送至企业管理员审核、通过后企业出现在头像下拉、可先使用 trial OBIS；按钮 **Enter Trail**",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "用户选择「跳过」后，再次登录不再展示该企业的白名单加入提示",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "用户已有有效账号时，不展示白名单加入申请提示（即使邮箱命中企业域名）",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "目标租户状态为非有效状态时，不展示白名单加入提示",
+              "source": "QA扩展",
+              "priority": "P0"
+            },
+            {
+              "title": "目标租户未开启域名白名单时，不展示白名单加入提示",
+              "source": "需求描述",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "域名匹配规则",
+          "children": [
+            {
+              "title": "子域名邮箱（如 user@sub.example.com）不匹配白名单域名 example.com",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "邮箱域名大小写不影响白名单匹配（如 user@Example.COM 与 user@example.com 视为相同）",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "邮件通知",
+      "children": [
+        {
+          "title": "申请提交",
+          "children": [
+            {
+              "title": "用户首次提交企业域名白名单申请后，系统立即向该企业 Tenant Admin 发送通知邮件",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "同一用户重复提交申请时，不重复发送通知邮件（每个用户仅首次申请触发）",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "通知邮件主题为英文：`OBIS New Join Request Pending Review`",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "通知邮件正文英文在上、中文在下；不根据 Tenant Admin 系统语言切换单语版本",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "邮件正文包含申请人姓名、邮箱、申请时间、企业名称及 OBIS Portal 快速登录链接",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "用户提交加入申请时，系统不向申请人发送任何邮件（仅通知 Tenant Admin）",
+              "source": "AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "存量租户企业的 Tenant Admin 能正常收到申请通知邮件",
+              "source": "QA扩展",
+              "priority": "P0"
+            },
+            {
+              "title": "新增企业的 Tenant Admin 能正常收到申请通知邮件",
+              "source": "QA扩展",
+              "priority": "P0"
+            },
+            {
+              "title": "同一企业租户下多名 Tenant Admin 均收到申请通知邮件",
+              "source": "QA扩展",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "异常与补偿",
+          "children": [
+            {
+              "title": "申请通知邮件发送失败时的补偿机制（重试 / 告警 / 人工补发等，**TBD**）",
+              "source": "QA扩展",
+              "priority": "P1 / 待确认"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "域名白名单配置",
+      "children": [
+        {
+          "title": "默认角色",
+          "children": [
+            {
+              "title": "超管在 Super Admin → Tenant → **Security** Tab 开启 Self-Registration，配置 **Default Roles**（可选：System Manager / Product Manager / Resource Manager / Factory Manager / Normal User）、**Email Domain** 等默认成员角色与白名单域名",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "Approve 通过后，申请人实际分配角色与审批时刻白名单配置中的默认角色一致",
+              "source": "AC-04",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Account 管理",
+      "children": [
+        {
+          "title": "Applications Tab 与列表",
+          "children": [
+            {
+              "title": "Account 管理页顶部展示三个 Tab：Members、Invitations、Applications；切换 Tab 互不影响各自内容展示",
+              "source": "QA扩展",
+              "priority": "P0"
+            },
+            {
+              "title": "Applications Tab 右侧角标展示 Pending 状态申请数量",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Pending 数量为 0 时，Applications Tab 角标隐藏",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "Applications 列表展示字段：Name、Email、Applied At、Status、Actions",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "列表默认排序：Pending 排在 Rejected 之前；同一状态内按申请时间降序（最新在前）",
+              "source": "QA扩展",
+              "priority": "P0"
+            },
+            {
+              "title": "仅 Status 为 Pending 的记录展示 Approve、Reject 操作按钮；Rejected 记录不展示操作按钮",
+              "source": "AC-03",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "审批操作",
+          "children": [
+            {
+              "title": "Tenant Admin 点击 Approve 后，申请人自动成为企业 Tenant 的 Active 成员；该条申请从 Applications 列表消失；Pending 角标减 1",
+              "source": "AC-01, AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Approve 通过后，申请人出现在 Members Tab 成员列表中",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Approve 通过后，申请人登录时头像下拉菜单中自动出现该企业 Tenant，可切换进入",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "Tenant Admin 点击 Reject 后，申请 Status 变更为 Rejected；记录保留在 Applications 列表；Pending 角标减 1",
+              "source": "AC-01, AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "审批 Approve / Reject 操作均不向申请人发送邮件通知",
+              "source": "AC-04, AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "成员已达上限（免费版默认 10 人）时 Admin 点击 Approve 无法通过申请，弹出统一配额触达弹窗（标题 **Product Limit Reached**；按钮 **Contact Sales for Enterprise** / **Maybe later**）",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "成员已达上限时，Reject 操作应仍可正常执行，不受成员限额影响",
+              "source": "AC-07",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "边界场景",
+      "children": [
+        {
+          "title": "申请期间配置变更与跨企业",
+          "children": [
+            {
+              "title": "Pending 期间超管修改或删除 Tenant Security 白名单配置后，已落库的申请数据及 Approve / Reject 行为不变；变更仅对新申请生效",
+              "source": "AC-04, AC-05",
+              "priority": "P1"
+            },
+            {
+              "title": "申请被拒绝后，用户无再次发起加入申请的入口；仅 Tenant Admin 可通过 Invitations 再次邀请",
+              "source": "AC-06",
+              "priority": "P1"
+            },
+            {
+              "title": "用户已是其他企业 Active 成员时，无入口再次申请加入本企业域名白名单（白名单加入提示仅在用户注册账号时出现）",
+              "source": "需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "审批后",
+      "children": [
+        {
+          "title": "申请人侧行为",
+          "children": [
+            {
+              "title": "申请被拒绝后，申请人仍可正常使用自己的免费版 Tenant",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "申请被拒绝后，申请人再次登录不再提示该企业的白名单加入申请",
+              "source": "AC-06",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "权限",
+      "children": [
+        {
+          "title": "Tenant Admin 可进入 Applications Tab，查看列表并执行 Approve / Reject",
+          "source": "AC-03",
+          "priority": "P0"
+        },
+        {
+          "title": "Tenant Manager 不可查看待审核申请列表（无入口或无权限）",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "Tenant Manager 不可执行 Approve / Reject 操作",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "成员限额与业务规则",
+      "children": [
+        {
+          "title": "Pending 状态的待审批申请不计入企业成员限额",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "Approve 通过后，新成员占用 1 个成员名额；Members 列表人数相应增加",
+          "source": "AC-07",
+          "priority": "P0"
+        }
+      ]
+    },
+    {
+      "title": "审计日志",
+      "children": [
+        {
+          "title": "Approve 操作在 Account 审计日志中记录，包含操作时间、操作人邮箱、申请人邮箱、操作类型",
+          "source": "AC-08",
+          "priority": "P0"
+        }
+      ]
+    }
+  ]
+}

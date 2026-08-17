@@ -1,0 +1,176 @@
+{
+  "sheet_title": "【卡片编辑】自定义卡片 测试点",
+  "root_title": "【卡片编辑】自定义卡片",
+  "tree": [
+    {
+      "title": "Assets",
+      "children": [
+        {
+          "title": "自定义卡片入口（H-1）",
+          "children": [
+            {
+              "title": "Assets **新增卡片**类型列表中含「**自定义**」选项",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "选择「**自定义**」后打开**自定义卡片编辑器**（非直接创建空白卡片）",
+              "source": "AC-02",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "自定义卡片编辑器",
+      "children": [
+        {
+          "title": "结构与编辑（H-2）",
+          "children": [
+            {
+              "title": "编辑器顶部（或显著位置）提供**卡片名称**输入",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "字段行表表头 / 每行四列：**Label**、**Type**、**Key**、**Value**",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "点击 **+ Add New Content** 在表尾**新增一行**空字段行",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "点击某行右侧 **—** 将该行**从编辑器移除**",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "**Type** 下拉包含且仅包含本期选项：**String**、**Number**、**Boolean**、**Key**、**Certificate**、**File**",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "各 **Type** 下 **Value** 录入控件与校验规则**沿用现有实现**（对照 baseline 逐 Type 验收）",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            }
+          ]
+        },
+        {
+          "title": "校验（H-3）",
+          "children": [
+            {
+              "title": "**卡片名称**为空时点击保存，**阻止保存**并提示必填（或字段标红）",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "存在字段行时，任一行 **Label** 为空 → 该行或字段**标红**，**阻止保存**",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "存在字段行时，任一行 **Type** 未选择 → **标红**，**阻止保存**",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "存在字段行时，任一行 **Key** 为空 → **标红**，**阻止保存**",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "存在字段行时，任一行 **Value** 为空（对该 Type 视为未填）→ **标红**，**阻止保存**",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "**卡片名称已填**、**零行字段**时，允许**保存成功**",
+              "source": "AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "卡片名称 + 所有已添加行四列均填写完整时，**保存成功**并关闭编辑器",
+              "source": "AC-07, AC-08",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "自定义卡片",
+      "children": [
+        {
+          "title": "保存落位（H-4）",
+          "children": [
+            {
+              "title": "保存成功后，自定义卡片出现在 Assets 页面",
+              "source": "AC-10",
+              "priority": "P0"
+            },
+            {
+              "title": "新自定义卡片位于**所有内置卡片之后**",
+              "source": "AC-10",
+              "priority": "P0"
+            },
+            {
+              "title": "连续创建多张自定义卡片，按**创建顺序**依次排列在内置卡片之后",
+              "source": "AC-10",
+              "priority": "P0"
+            },
+            {
+              "title": "自定义卡片**可删除**（二次确认，文案见 Story #602 AC-04）",
+              "source": "AC-11",
+              "priority": "P0"
+            },
+            {
+              "title": "自定义卡片删除后再新建，**数据不保留**（Story #602 G-3 AC-10）",
+              "source": "AC-11",
+              "priority": "P0"
+            },
+            {
+              "title": "删除某张自定义卡片后，**其余卡片**相对位置不变（Story #602 G-4）",
+              "source": "AC-11",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "数量上限（H-5）",
+          "children": [
+            {
+              "title": "同一 Module 下已成功创建 **10** 张自定义卡片",
+              "source": "AC-12",
+              "priority": "P0"
+            },
+            {
+              "title": "已有 **10** 张自定义卡片时，**无法继续新增**第 11 张（新增入口置灰 / 隐藏 / 提示，具体交互 **TBD**）",
+              "source": "AC-12",
+              "priority": "P0"
+            },
+            {
+              "title": "删除 1 张自定义卡片后（总数变为 9），**可再次新增**自定义卡片",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "UI 设计对齐",
+      "children": [
+        {
+          "title": "自定义卡片编辑器布局与 [Figma node-id=11874-168328](https://www.figma.com/design/GomFi4IUgj6MTO7S73h26Q/OBIS-Planning%E8%AE%BE%E8%AE%A1%E7%A8%BF%E6%96%87%E4%BB%B6?node-id=11874-168328) 一致",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

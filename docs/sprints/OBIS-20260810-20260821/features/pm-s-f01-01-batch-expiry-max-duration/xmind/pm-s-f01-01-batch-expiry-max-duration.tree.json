@@ -1,0 +1,46 @@
+{
+  "sheet_title": "PM-S-F01-01：Create Product 表单 Batch Expiry Duration Max. Duration 默认值调整 测试点",
+  "root_title": "PM-S-F01-01：Create Product 表单 Batch Expiry Duration Max. Duration 默认值调整",
+  "tree": [
+    {
+      "title": "Create Product",
+      "children": [
+        {
+          "title": "Batch Expiry Duration",
+          "children": [
+            {
+              "title": "打开 Create Product：Max. Duration 默认值为 **90**（单位天），无需手动修改即可看到新默认值",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "对照改前基线：同入口同字段改前默认为 **30**，改后为 **90**",
+              "source": "AC-01, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "Min. Duration 默认值与改前一致；Max/Min 校验范围、单位（天）不变",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "用户可将 Max. Duration 改为非默认合法值并提交成功；成功落库值为用户输入值而非强制 90",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "中/英文界面下 Max. Duration 默认值均为 90 天",
+              "source": "QA扩展",
+              "priority": "P2"
+            },
+            {
+              "title": "使用 Max Duration 默认 90 创建的 Product：Create Batch 时 Expiry Time 在上限内可成功，超出 Max Duration（>90 天）应被阻断，证明有效期约束生效",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

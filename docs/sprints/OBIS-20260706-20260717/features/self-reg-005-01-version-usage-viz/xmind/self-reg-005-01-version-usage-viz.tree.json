@@ -1,0 +1,226 @@
+{
+  "sheet_title": "【自注册】005-01 — 版本展示与用量可视化 测试点",
+  "root_title": "【自注册】005-01 — 版本展示与用量可视化",
+  "tree": [
+    {
+      "title": "Welcome 页面",
+      "children": [
+        {
+          "title": "欢迎卡片套餐与升级入口",
+          "children": [
+            {
+              "title": "免费版用户进入 Welcome 页面，欢迎卡片展示套餐名称/Package Name，文案为 `Free Tier` / `免费版`",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "免费版用户欢迎卡片展示升级入口链接 `Upgrade Plan` / `升级套餐`",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "点击欢迎卡片上的 `Upgrade Plan` / `升级套餐`，打开版本对比弹窗",
+              "source": "AC-01, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "企业版用户进入 Welcome 页面，欢迎卡片不展示套餐名称/Package Name，也不展示升级入口",
+              "source": "需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Profile 页面",
+      "children": [
+        {
+          "title": "套餐标签",
+          "children": [
+            {
+              "title": "免费版用户进入 Profile 页面，所属租户名称旁展示套餐名称/Package Name（`Free Tier` / `免费版`）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "免费版套餐标签可点击，点击后打开版本对比弹窗",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "企业版用户进入 Profile 页面，所属租户名称旁展示套餐名称/Package Name（企业版文案）",
+              "source": "AC-02",
+              "priority": "P1"
+            },
+            {
+              "title": "企业版套餐标签不可点击，点击无响应且不打开版本对比弹窗",
+              "source": "AC-02",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "版本对比弹窗",
+      "children": [
+        {
+          "title": "顶部横幅",
+          "children": [
+            {
+              "title": "版本对比弹窗顶部深色横幅标题为 `OBIS Free Tier` / `OBIS 免费版`",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "英文环境下横幅描述为：`Full PKI + KMS capabilities with quota limits. No time limit, permanently free.`",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "中文环境下横幅描述为：`完整 PKI + KMS 安全能力，配额受限但功能完整。无时间限制，永久免费。`",
+              "source": "需求描述",
+              "priority": "P2"
+            }
+          ]
+        },
+        {
+          "title": "对比表格结构与 7 维",
+          "children": [
+            {
+              "title": "对比区小标题为 `Free Tier vs Enterprise` / `免费版 VS 企业版`",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "表头三列为：`Feature` / `功能项`、`Free Tier (Current)` / `免费版（当前）`、`Enterprise` / `企业版`",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "对比表包含且仅包含以下 7 项维度：产品数量 / Products、单产品最大生产量 / Max Volume、KMS 密钥数量 / KMS Keys、KMS 密钥有效期 / KMS Validity、PKI 证书模板 / PKI Templates、PKI 证书有效期 / PKI Validity、工厂类型 / Factory Type",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "免费版列限额口径符合规格：Products 上限 10、Max Volume `≤ 500`、KMS Keys 上限 5、KMS Validity `≤ 2 years` / `2 年`、PKI Templates 上限 6、PKI Validity `≤ 2 years` / `2 年`、Factory Type `Cloud only` / `仅云工厂`",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "企业版列各维度均展示绿色 ✓ 图标 + `Per contract` / `按合同`",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "企业版工厂类型对应文案口径为 `Cloud + On-prem` / `云 + 本地工厂`（与「按合同」展示方式以 Story 企业版列统一规则为准：绿色 ✓ + 按合同）",
+              "source": "需求描述",
+              "priority": "P2"
+            }
+          ]
+        },
+        {
+          "title": "实时用量与 Demo 排除",
+          "children": [
+            {
+              "title": "免费版列展示实时用量值（如已用量/限额形式），用量随实际资源变化更新，非固定死值",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "创建/删除真实（非 Demo）产品后，产品数量用量随之增减",
+              "source": "AC-04",
+              "priority": "P1"
+            },
+            {
+              "title": "创建/删除真实 KMS 密钥后，KMS 密钥数量用量随之增减",
+              "source": "AC-04",
+              "priority": "P1"
+            },
+            {
+              "title": "创建/删除真实 PKI 证书模板后，PKI 证书模板用量随之增减",
+              "source": "AC-04",
+              "priority": "P1"
+            },
+            {
+              "title": "Demo 资源不计入限额统计：仅存在 Demo 产品/密钥/模板时，对应维度用量仍为 0（或不占用已用量）",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "同时存在 Demo 与真实资源时，用量仅统计真实资源数量",
+              "source": "AC-04",
+              "priority": "P1"
+            },
+            {
+              "title": "用量数据来自统一服务聚合；Welcome / Profile 入口打开的对比弹窗展示同一套用量结果",
+              "source": "需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "用量达到或接近限额时，对比弹窗仍可正常打开并正确展示当前用量（不因触达限额而无法打开对比）",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        },
+        {
+          "title": "底部升级引导",
+          "children": [
+            {
+              "title": "底部区域标题为 `From evaluation to mass production` / `从评估走向量产`",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "英文环境下底部描述为：`Upgrade to Enterprise with zero migration — all data retained.`",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "中文环境下底部描述为：`升级企业版数据全保留、零迁移。`",
+              "source": "需求描述",
+              "priority": "P2"
+            },
+            {
+              "title": "底部展示按钮 `Upgrade to Enterprise` / `升级到企业版`，且带右侧箭头图标",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "点击「升级到企业版」按钮，打开联系销售弹窗（弹窗本身交互细节属 FT-S-004-05，本点仅验证打开）",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "从 Welcome 入口与 Profile 入口进入对比弹窗后，点击升级按钮均可打开联系销售弹窗",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "中英文与入口一致性",
+      "children": [
+        {
+          "title": "系统语言为英文时，Welcome / Profile 套餐标签与对比弹窗全文为英文规格文案",
+          "source": "需求描述",
+          "priority": "P2"
+        },
+        {
+          "title": "系统语言为中文时，Welcome / Profile 套餐标签与对比弹窗全文为中文规格文案",
+          "source": "需求描述",
+          "priority": "P2"
+        },
+        {
+          "title": "切换语言后重新打开对比弹窗，文案随当前语言切换，无中英混杂或 i18n key 裸露",
+          "source": "QA扩展",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

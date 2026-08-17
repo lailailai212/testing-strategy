@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "description": "feature-slug → sprint 索引。Skill / 脚本用此反查路径：docs/sprints/{sprint}/features/{feature-slug}/",
+  "features": {
+    "assets-card-customization": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7013275155",
+      "story_path": "story/obis-7013275155-【卡片编辑】assests-卡片自定义",
+      "status": "cases-ready"
+    },
+    "custom-card-editor": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7013241436",
+      "story_path": "story/obis-7013241436-【卡片编辑】自定义卡片",
+      "status": "cases-ready"
+    },
+    "module-type-selection": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7013300594",
+      "story_path": "story/obis-7013300594-【卡片编辑】选择module类型",
+      "status": "cases-ready"
+    },
+    "overview-display-content": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7013841136",
+      "story_path": "story/obis-7013841136-【卡片编辑】overview展示内容改动",
+      "status": "cases-ready"
+    },
+    "se-card-content": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7018449332",
+      "story_path": "story/obis-7018449332-【SE卡片】SE卡片内容说明",
+      "status": "cases-ready"
+    },
+    "se-card-import": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7018567020",
+      "story_path": "story/obis-7018567020-【SE卡片】内容导入",
+      "status": "cases-ready"
+    },
+    "se-card-subscription-actions": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7018714820",
+      "story_path": "story/obis-7018714820-【SE卡片】订阅与动作",
+      "status": "cases-ready"
+    },
+    "self-reg-003-03-toolbar-resource-center": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7007250530",
+      "story_path": "story/obis-7007250530-【自注册】003-03-常驻工具栏与资源中心",
+      "status": "cases-ready"
+    },
+    "welcome-content-management": {
+      "sprint": "OBIS-20260622-20260703",
+      "story_id": "7007109943",
+      "story_path": null,
+      "status": "cases-ready"
+    },
+    "kms-pki-quota-trial": {
+      "sprint": "OBIS-20260608-20260618",
+      "story_id": "7007200385",
+      "story_path": "story/obis-7007200385-【自注册】004-02-kms与pki配额限制",
+      "status": "cases-ready"
+    },
+    "self-reg-002-01-demo-orchestration": {
+      "sprint": "OBIS-20260706-20260717",
+      "story_id": "7007110712",
+      "story_path": "story/obis-7007110712-【自注册】002-01-Demo数据预设编排",
+      "status": "cases-ready"
+    },
+    "self-reg-002-02-three-path-demo": {
+      "sprint": "OBIS-20260706-20260717",
+      "story_id": "7006975243",
+      "story_path": "story/obis-7006975243-【自注册】002-02-三路Demo预设",
+      "status": "cases-ready"
+    },
+    "self-reg-005-01-version-usage-viz": {
+      "sprint": "OBIS-20260706-20260717",
+      "story_id": "7007364069",
+      "story_path": "story/obis-7007364069-【自注册】005-01-版本展示与用量可视化",
+      "status": "cases-ready"
+    },
+    "self-reg-006-01-transactional-email": {
+      "sprint": "OBIS-20260706-20260717",
+      "story_id": "7007422975",
+      "story_path": "story/obis-7007422975-【自注册】006-01-免费版事务邮件触达",
+      "status": "cases-ready"
+    },
+    "ux-p2-account-detail-self-reg": {
+      "sprint": "OBIS-20260706-20260717",
+      "story_id": "7024469848",
+      "story_path": "story/obis-7024469848-【体验优化P2】Account详情（自注册版本）",
+      "status": "cases-ready"
+    },
+    "perm-create-module-asset-type": {
+      "sprint": "OBIS-20260706-20260717",
+      "story_id": "7041825174",
+      "story_path": "story/obis-7041825174-权限说明-CreateModule与Add-Asset-Type",
+      "status": "cases-ready"
+    },
+    "ux-p2-info-density": {
+      "sprint": "OBIS-20260706-20260724",
+      "story_id": "7042572937",
+      "story_path": "story/obis-7042572937-ux-p2-info-density",
+      "status": "ac-ready"
+    },
+    "ux-p2-detail-supplement": {
+      "sprint": "OBIS-20260727-20260807",
+      "story_id": "7051514356",
+      "story_path": "story/obis-7051514356-体验优化p2-细节补充",
+      "status": "ac-ready"
+    },
+    "ux-p2-member-unify": {
+      "sprint": "OBIS-20260727-20260807",
+      "story_id": "7042512337",
+      "story_path": "story/obis-7042512337-体验优化p2-member功能统一",
+      "status": "cases-ready"
+    },
+    "ux-p2-audit-unify": {
+      "sprint": "OBIS-20260727-20260807",
+      "story_id": "7029049092",
+      "story_path": "story/obis-7029049092-体验优化p2-audit功能统一",
+      "status": "ac-ready"
+    },
+    "self-reg-001-05-domain-whitelist": {
+      "sprint": "_unassigned",
+      "story_id": "7007102862",
+      "story_path": null,
+      "status": "cases-ready",
+      "note": "Story MD 未标注 Sprint，待补全后迁入正式 sprint"
+    },
+    "product-asset-tag": {
+      "sprint": "_examples",
+      "story_id": null,
+      "story_path": null,
+      "status": "cases-ready",
+      "note": "Skill 黄金样例，不归属业务 Sprint"
+    },
+    "pm-s-f01-01-batch-expiry-max-duration": {
+      "sprint": "OBIS-20260810-20260821",
+      "story_id": "7067202174",
+      "story_path": "story/obis-7067202174-pm-s-f01-01-batch-expiry-max-duration-默认值调整",
+      "status": "cases-ready"
+    },
+    "sems-e1-s08-se-profile-archive": {
+      "sprint": "OBIS-20260810-20260821",
+      "story_id": "7016548583",
+      "story_path": "story/obis-7016548583-sems-e1-s08-se-profile-归档",
+      "status": "cases-ready"
+    },
+    "sems-e1-s10-se-profile-lock-unlock": {
+      "sprint": "OBIS-20260810-20260821",
+      "story_id": "7016535074",
+      "story_path": "story/obis-7016535074-sems-e1-s10-se-profile-锁定与解锁",
+      "status": "cases-ready"
+    },
+    "e2-s01-module-nav-convergence": {
+      "sprint": "OBIS-20260810-20260821",
+      "story_id": "7067952077",
+      "story_path": "story/obis-7067952077-e2-s01-模块入口与导航收敛",
+      "status": "cases-ready"
+    },
+    "role-permission-matrix-regression": {
+      "sprint": "OBIS-20260810-20260821",
+      "story_id": null,
+      "story_path": null,
+      "status": "cases-ready",
+      "note": "来自角色分类截图与对话确认；无飞书 Story"
+    },
+    "key-cert-tag-field": {
+      "sprint": "OBIS-20260525-20260605",
+      "story_id": "6996267987",
+      "story_path": null,
+      "status": "cases-ready",
+      "note": "2026-08-11 产品评论补测：空格、1024 长度、无删除入口"
+    }
+  }
+}

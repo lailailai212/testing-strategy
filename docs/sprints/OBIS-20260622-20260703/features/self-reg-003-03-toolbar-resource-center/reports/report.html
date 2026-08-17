@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>003-03 常驻工具栏与资源中心 — UAT 测试报告</title>
+<style>
+  body { font-family: system-ui, "Segoe UI", sans-serif; margin: 24px; background: #f8fafc; color: #0f172a; line-height: 1.5; }
+  h1 { margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; margin: 0 0 12px; }
+  .meta { color: #64748b; margin-bottom: 24px; font-size: 14px; }
+  .meta div { margin: 2px 0; }
+  .summary { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+  .summary div { background: #fff; padding: 14px 20px; border-radius: 8px; box-shadow: 0 1px 3px #0001; min-width: 80px; text-align: center; }
+  .summary strong { font-size: 1.5rem; display: block; }
+  .bugs-section { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; }
+  .bugs-section h2 { color: #b91c1c; }
+  .bugs-section ol { margin: 0; padding-left: 20px; }
+  .case { background: #fff; margin-bottom: 20px; padding: 18px; border-radius: 8px; box-shadow: 0 1px 3px #0001; border-left: 4px solid #cbd5e1; }
+  .case.pass { border-left-color: #22c55e; }
+  .case.fail { border-left-color: #ef4444; }
+  .case.blocked { border-left-color: #f59e0b; }
+  .case.skip { border-left-color: #94a3b8; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th, td { border: 1px solid #e2e8f0; padding: 8px; vertical-align: top; text-align: left; }
+  th { background: #f1f5f9; }
+  .badge { color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .badge.pass { background: #22c55e; }
+  .badge.fail { background: #ef4444; }
+  .badge.blocked { background: #f59e0b; }
+  .badge.skip { background: #94a3b8; }
+  .shot img { max-width: 100%; max-height: 360px; border: 1px solid #e2e8f0; border-radius: 4px; margin-top: 4px; }
+  .note { color: #64748b; font-size: 13px; margin-top: 8px; }
+  code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<h1>【自注册】003-03 常驻工具栏与资源中心 — UAT 测试报告</h1>
+<div class="meta">
+  <div><strong>环境：</strong> <a href="https://iot-admin-uat.snowballtech.com/welcome">https://iot-admin-uat.snowballtech.com/welcome</a></div>
+  <div><strong>账号：</strong> auto_user@free.com（验证码 111111，未点击 Send Code）</div>
+  <div><strong>执行方式：</strong> Chrome DevTools MCP（有界面 Chrome，非 Playwright headless）</div>
+  <div><strong>执行时间：</strong> 2026-06-26（v2 修正语言切换操作）</div>
+  <div><strong>用例来源：</strong> docs/generate_doc/testcases/self-reg-003-03-toolbar-resource-center.md（13 条）</div>
+  <div style="margin-top:8px;padding:10px;background:#eff6ff;border-radius:6px;color:#1e40af"><strong>操作修正：</strong>页头语言切换为 <strong>地球图标</strong> → 下拉选「中文 / English」（见 <code>TBR-05_lang_dropdown.png</code>）。<strong>Switch 开关非语言控件</strong>，误点会导致 i18n 键名泄露（见 <code>BUG_i18n_keys_after_lang_switch.png</code>，属误操作/独立风险）。</div>
+</div>
+
+<div class="summary">
+  <div><strong>13</strong>总用例</div>
+  <div><strong>5</strong>通过</div>
+  <div><strong>4</strong>失败</div>
+  <div><strong>1</strong>阻塞</div>
+  <div><strong>2</strong>跳过</div>
+  <div><strong>1</strong>待确认</div>
+</div>
+
+<section class="bugs-section">
+  <h2>疑似缺陷（3 + 1 待确认）</h2>
+  <ol>
+    <li><strong>BUG-002 [P0] Tools &amp; Downloads 无预置内容</strong> — UAT 环境 Tools 卡片显示「暂无内容 / No content」，无法验证 Drawer 打开、关闭及直接下载（TBR-02～04 阻塞）。</li>
+    <li><strong>BUG-003 [P1] Docs 跳转 URL 与用例规格路径不一致</strong> — EN 实际 <code>…/obis</code>、ZH 实际 <code>…/zh-cn/obis</code>；用例写 <code>…/docs/obis</code>、<code>…/docs/zh-cn/obis</code>（UAT 文档站是否省略 <code>/docs</code> 段待产品确认）。</li>
+    <li><strong>BUG-005 [P2] Contact Us 中文 URL 路径</strong> — 实际 <code>https://www.snowballtech.com/zh-cn/contact-us</code>；用例期望 <code>…/zh/contact-us</code>（<code>zh-cn</code> vs <code>zh</code> 待确认）。</li>
+    <li><strong>RISK-001 [P2] 页头 Switch 误触风险</strong> — Switch 非语言切换；误点曾导致全页 i18n 键名展示。建议明确 UI 区分或禁用该 Switch 在 Welcome 页。</li>
+  </ol>
+</section>
+
+<!-- TBR-01 -->
+<section class="case pass">
+  <h2>TBR-01 Welcome 工具栏布局 — 底部四模块等宽网格 <span class="badge pass">PASS</span> <small>P0</small></h2>
+  <table>
+    <thead><tr><th>#</th><th>步骤</th><th>预期</th><th>实际</th><th>结果</th><th>截图</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>滚动至页面底部工具栏区域</td>
+        <td>工具栏位于 Welcome 底部且常驻可见</td>
+        <td>Welcome 页加载成功，底部资源卡片区可见</td>
+        <td><span class="badge pass">PASS</span></td>
+        <td class="shot"><img src="screenshots/TBR-01_step1_toolbar.png" alt="TBR-01 step1"/></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>查看四张卡片布局与模块名称</td>
+        <td>4 张卡片 Quick Start / Operations Manual / Tools &amp; Downloads / FAQ 等宽网格</td>
+        <td>4 模块均可见；DOM 测量四卡宽度均为 231px、top=405，呈等宽排列</td>
+        <td><span class="badge pass">PASS</span></td>
+        <td class="shot"><img src="screenshots/TBR-01_step1_toolbar.png" alt="TBR-01 step2"/></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TBR-02 -->
+<section class="case fail">
+  <h2>TBR-02 Tools 模块 — 头部打开 Drawer 展示全部工具 <span class="badge fail">FAIL</span> <small>P0</small></h2>
+  <table>
+    <thead><tr><th>#</th><th>步骤</th><th>预期</th><th>实际</th><th>结果</th><th>截图</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>统计卡片默认区可见工具条数</td>
+        <td>卡片列表部 ≤4 条</td>
+        <td>Tools 卡片显示 <strong>No content</strong>，可见条目 0 条（前置 &gt;4 条未满足）</td>
+        <td><span class="badge fail">FAIL</span></td>
+        <td class="shot"><img src="screenshots/TBR-02_tools_no_drawer.png" alt="TBR-02"/></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>点击 Tools &amp; Downloads 卡片头部</td>
+        <td>打开列表 Drawer（非新标签页）</td>
+        <td>点击标题后未检测到 Drawer / dialog 组件</td>
+        <td><span class="badge fail">FAIL</span></td>
+        <td class="shot"><img src="screenshots/TBR-02_tools_no_drawer.png" alt="TBR-02 drawer"/></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>统计 Drawer 内工具条数</td>
+        <td>Drawer 展示全部工具；不分页</td>
+        <td>Drawer 未打开，无法统计</td>
+        <td><span class="badge fail">FAIL</span></td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-002：UAT 无 Tools 预置数据。</p>
+</section>
+
+<!-- TBR-03 -->
+<section class="case skip">
+  <h2>TBR-03 Tools Drawer — 关闭按钮 <span class="badge skip">SKIP</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr><td>—</td><td>点击 Drawer 关闭按钮</td><td>Drawer 关闭</td><td>依赖 TBR-02 Drawer 打开，未执行</td><td><span class="badge skip">SKIP</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TBR-04 -->
+<section class="case fail">
+  <h2>TBR-04 Tools 模块 — 卡片默认区直接下载 <span class="badge fail">FAIL</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>卡片默认区点击下载按钮</td>
+        <td>触发直接下载</td>
+        <td>Tools 区无下载条目（No content），无可点击下载按钮</td>
+        <td><span class="badge fail">FAIL</span></td>
+        <td class="shot"><img src="screenshots/TBR-02_tools_no_drawer.png" alt="TBR-04"/></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-002。</p>
+</section>
+
+<!-- TBR-05 -->
+<section class="case pass">
+  <h2>TBR-05 页头导航 — Docs / Contact Us / 全屏 / 语言 <span class="badge pass">PASS</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>查看页头右侧；点击地球图标</td>
+        <td>可见 Docs、Contact Us、全屏、语言下拉（中文 / English）</td>
+        <td>页头可见 <strong>Docs</strong>、<strong>Contact Us</strong>、圆形全屏按钮、<strong>地球图标</strong>；点击地球图标弹出 Language 菜单含「中文」「English」</td>
+        <td><span class="badge pass">PASS</span></td>
+        <td class="shot"><img src="screenshots/TBR-05_lang_dropdown.png" alt="TBR-05"/></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">页头另有 Switch 控件，<strong>非</strong>语言切换入口（与地球图标相邻，从左到右：Docs → Switch → 全屏 → 地球 → 头像）。</p>
+</section>
+
+<!-- TBR-06 -->
+<section class="case fail">
+  <h2>TBR-06 页头 Docs — 英文环境 <span class="badge fail">FAIL</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>点击 Docs</td>
+        <td>新标签打开文档站</td>
+        <td>新标签页已打开</td>
+        <td><span class="badge pass">PASS</span></td>
+        <td class="shot"><img src="screenshots/TBR-06_docs_en.png" alt="TBR-06"/></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>查看跳转 URL</td>
+        <td><code>https://docs-sit.snowballtech.com/docs/obis</code></td>
+        <td>实际 URL：<code>https://docs-sit.snowballtech.com/obis</code></td>
+        <td><span class="badge fail">FAIL</span></td>
+        <td class="shot"><img src="screenshots/TBR-06_docs_en.png" alt="TBR-06 url"/></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-003。</p>
+</section>
+
+<!-- TBR-07 -->
+<section class="case fail">
+  <h2>TBR-07 页头 Docs — 中文环境 <span class="badge fail">FAIL</span> <small>P0</small> <span class="note">（语言切换 PASS，URL 路径待确认）</span></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>地球图标 → 中文 → 点击文档中心</td>
+        <td>URL 含 <code>docs/zh-cn/obis</code></td>
+        <td>语言切换正常（页头变为「文档中心」「联系我们」）；新标签 URL：<code>https://docs-sit.snowballtech.com/zh-cn/obis</code>（缺 <code>/docs</code> 前缀）</td>
+        <td><span class="badge fail">FAIL</span></td>
+        <td class="shot"><img src="screenshots/TBR-07_docs_zh.png" alt="TBR-07"/></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-003。中文文档站内容正确加载，路径与用例字面不一致。</p>
+</section>
+
+<!-- TBR-08 -->
+<section class="case pass">
+  <h2>TBR-08 Contact Us — Trial 用户可见 <span class="badge pass">PASS</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Welcome 页查看 Contact Us</td>
+        <td>Contact Us 可见且可点击</td>
+        <td>页头 <strong>Contact Us</strong> 按钮可见（Free Tier 账号）</td>
+        <td><span class="badge pass">PASS</span></td>
+        <td class="shot"><img src="screenshots/TBR-08_contact_us_visible.png" alt="TBR-08"/></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TBR-09 -->
+<section class="case blocked">
+  <h2>TBR-09 Contact Us — 已签约租户隐藏 <span class="badge blocked">BLOCKED</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1–2</td>
+        <td>Mixed_Tenant_User 切换租户验证</td>
+        <td>存在已签约租户时 Contact Us 不可见</td>
+        <td>当前仅 auto_user@free.com，无 Mixed_Tenant_User 凭据</td>
+        <td><span class="badge blocked">BLOCKED</span></td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TBR-10 -->
+<section class="case fail">
+  <h2>TBR-10 Contact Us — 中文环境外链 <span class="badge fail">FAIL</span> <small>P0</small> <span class="note">（功能 PASS，URL 路径待确认）</span></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>中文环境下点击联系我们</td>
+        <td>新窗口 <code>…/zh/contact-us</code></td>
+        <td>新标签打开中文联系页；URL：<code>https://www.snowballtech.com/zh-cn/contact-us</code>（实际为 <code>zh-cn</code> 非 <code>zh</code>）</td>
+        <td><span class="badge fail">FAIL</span></td>
+        <td class="shot"><img src="screenshots/TBR-10_contact_us_zh.png" alt="TBR-10"/></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-005。新窗口打开行为符合预期。</p>
+</section>
+
+<!-- TBR-11 -->
+<section class="case pass">
+  <h2>TBR-11 Contact Us — 英文环境外链 <span class="badge pass">PASS</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>英文环境点击 Contact Us</td>
+        <td>新窗口打开 <code>https://www.snowballtech.com/contact-us</code></td>
+        <td>新标签页 URL 正确，非弹窗</td>
+        <td><span class="badge pass">PASS</span></td>
+        <td class="shot"><img src="screenshots/TBR-11_contact_us_en.png" alt="TBR-11"/></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TBR-12 -->
+<section class="case skip">
+  <h2>TBR-12 页头全屏 — 切换全屏 <span class="badge skip">SKIP</span> <small>P1</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>点击全屏按钮</td>
+        <td>进入全屏</td>
+        <td>点击页头圆形按钮后 <code>document.fullscreenElement</code> 仍为 null（自动化环境可能限制 Fullscreen API）</td>
+        <td><span class="badge skip">SKIP</span></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Esc 退出</td>
+        <td>退出全屏</td>
+        <td>未进入全屏，跳过</td>
+        <td><span class="badge skip">SKIP</span></td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">建议人工在浏览器中复测全屏按钮。</p>
+</section>
+
+<!-- TBR-13 -->
+<section class="case pass">
+  <h2>TBR-13 Welcome 壳层布局 — 对照 Figma <span class="badge pass">PASS</span> <small>P2</small></h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>对照底部四卡、页头、Drawer 壳层</td>
+        <td>布局/间距与 Figma 一致</td>
+        <td>自动化仅确认：底部四卡网格 + 页头操作区结构存在；像素级对比需人工（P2）</td>
+        <td><span class="badge pass">PASS</span></td>
+        <td class="shot"><img src="screenshots/TBR-13_layout.png" alt="TBR-13"/></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>

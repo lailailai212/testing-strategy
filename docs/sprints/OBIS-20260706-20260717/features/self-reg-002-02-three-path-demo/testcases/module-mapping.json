@@ -1,0 +1,12 @@
+{
+  "feature_slug": "self-reg-002-02-three-path-demo",
+  "notes": "按验收页面挂载 Factory/KMS/PKI/Product；租户隔离挂 Registration。",
+  "module_paths": [
+    "/Cloud/Ecosystem/Factory/Factory List",
+    "/Cloud/Ecosystem/Factory/Batch",
+    "/Cloud/KMS/Key List",
+    "/Cloud/PKI/PKI List",
+    "/Cloud/Product/Product List",
+    "/Cloud/Login & Profile/Registration"
+  ]
+}

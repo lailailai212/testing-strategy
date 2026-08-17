@@ -1,0 +1,171 @@
+{
+  "sheet_title": "【卡片编辑】assests 卡片自定义 测试点",
+  "root_title": "【卡片编辑】assests 卡片自定义",
+  "tree": [
+    {
+      "title": "Assets",
+      "children": [
+        {
+          "title": "删除卡片（G-1）",
+          "children": [
+            {
+              "title": "对**非必填、可删除**卡片（如 Other Module 下非模板锁定卡）执行删除并确认后，该卡片区块从 Assets 页面**移除**",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "删除**内置卡片**后，页面不再展示该卡片，但**不触发数据清空**（为隐藏而非物理删除）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "隐藏的内置卡片通过「新增 → 未启用的内置类型」加回后，**删除前已有数据仍可访问**（与 AC-09 联动）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "已删除（隐藏）的卡片，创建 Product **Version** 时**不会纳入**该 Module 的版本内容",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "点击卡片删除时**弹出二次确认**，不直接删除",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "确认弹窗文案：英文 **Are you sure you want to delete this asset type?**；中文 **确定要删除该资产类型吗？**",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "二次确认点击**取消**，卡片保留，不执行删除",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "卡片内**密钥或证书已被引用**时，删除按钮**置灰**，无法删除",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "卡片**已被创建到某一 Version** 时，删除按钮**置灰**，无法删除",
+              "source": "AC-14",
+              "priority": "P0"
+            },
+            {
+              "title": "卡片中资产**被其他资产引用**时，删除按钮**置灰**，无法删除",
+              "source": "AC-14",
+              "priority": "P0"
+            },
+            {
+              "title": "**Story #601 模板不可删除项**（如 Matter 8 张内置卡、SE Module 的 SE 卡）删除按钮**置灰**，优先级高于「非必填可删」",
+              "source": "AC-01, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "同时满足多种删除限制（如既被引用又在 Version 中）时，删除仍置灰，无异常提示",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "新增卡片（G-2）",
+          "children": [
+            {
+              "title": "Assets 提供**新增卡片**入口；选项含「**当前未启用的内置卡片类型**」与「**自定义**」",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "选择**未启用的内置卡片类型**并确认后，该卡片出现在 Assets **固定位**（见 G-4）",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "已存在的内置卡片类型**不在**「未启用的内置类型」列表中，**不可重复添加**",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "通过内置类型新增卡片时**无需填写名称**，直接使用系统卡片类型名",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "选择「**自定义**」进入自定义卡片编辑器（详细见 Story #603）",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "自定义卡片创建时**名称必填**；未填名称无法保存",
+              "source": "AC-08",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "数据不丢（G-3）",
+          "children": [
+            {
+              "title": "**内置卡片**：删除（隐藏）前已填写的数据，加回后**原样恢复**（字段值、关联项与删除前一致）",
+              "source": "AC-09",
+              "priority": "P0"
+            },
+            {
+              "title": "**自定义卡片**：删除后再通过自定义流程新建同名/新名卡片，**此前行表数据不保留**（为空或需重新录入）",
+              "source": "AC-10",
+              "priority": "P0"
+            },
+            {
+              "title": "删除自定义卡片后，该卡片相关的**引用关系被清除**（其他资产不再引用已删自定义卡内容）",
+              "source": "AC-10",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "固定位置（G-4）",
+          "children": [
+            {
+              "title": "删除某张可删卡片后，**其余卡片**在页面上的**相对顺序不变**",
+              "source": "AC-11",
+              "priority": "P0"
+            },
+            {
+              "title": "新增一张卡片后，**已有卡片**相对顺序不变；新卡按规则插入（内置固定位或自定义区末尾，见 AC-12、AC-13）",
+              "source": "AC-11",
+              "priority": "P0"
+            },
+            {
+              "title": "**内置卡片**删除后加回，回到其**原有固定位**，**不追加到页面末尾**",
+              "source": "AC-12",
+              "priority": "P0"
+            },
+            {
+              "title": "页面卡片顺序：**所有内置卡片在前**，**自定义卡片**按**创建时间顺序**排在内置卡片之后",
+              "source": "AC-13",
+              "priority": "P0"
+            },
+            {
+              "title": "连续新增多张自定义卡片，各卡在内置卡片之后按创建顺序依次排列",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "UI 设计对齐",
+      "children": [
+        {
+          "title": "新增 / 删除入口、确认弹窗布局与 [Figma node-id=11874-168328](https://www.figma.com/design/GomFi4IUgj6MTO7S73h26Q/OBIS-Planning%E8%AE%BE%E8%AE%A1%E7%A8%BF%E6%96%87%E4%BB%B6?node-id=11874-168328) 一致",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

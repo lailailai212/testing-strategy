@@ -1,0 +1,284 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - img "logo" [ref=e10]
+        - heading "OnBoard IoT Security" [level=5] [ref=e12]
+      - list [ref=e15]:
+        - listitem [ref=e16]:
+          - img [ref=e18]
+        - paragraph [ref=e23]: /
+        - listitem [ref=e24]:
+          - generic [ref=e25]: KMS
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - switch [ref=e28] [cursor=pointer]
+        - listitem [ref=e30]:
+          - button [ref=e31] [cursor=pointer]:
+            - img [ref=e33]
+        - listitem [ref=e35]:
+          - button [ref=e36] [cursor=pointer]:
+            - img [ref=e38]
+        - listitem [ref=e41]:
+          - generic [ref=e42] [cursor=pointer]:
+            - img "Avatar" [ref=e43]
+            - generic [ref=e44]: Future Wei
+    - generic [ref=e46]:
+      - generic [ref=e51]:
+        - img [ref=e54] [cursor=pointer]
+        - generic [ref=e56]:
+          - generic: Core
+          - generic [ref=e57] [cursor=pointer]:
+            - img [ref=e59]
+            - generic [ref=e61]: Product
+          - generic [ref=e62] [cursor=pointer]:
+            - img [ref=e64]
+            - generic [ref=e66]: KMS
+          - generic [ref=e67] [cursor=pointer]:
+            - img [ref=e69]
+            - generic [ref=e71]: PKI
+        - generic [ref=e72]:
+          - generic: Ecosystem
+          - generic [ref=e73] [cursor=pointer]:
+            - img [ref=e75]
+            - generic [ref=e77]: Factory
+          - generic [ref=e78] [cursor=pointer]:
+            - img [ref=e80]
+            - generic [ref=e82]: U-Safe List
+        - generic [ref=e83]:
+          - generic: Records
+          - generic [ref=e84] [cursor=pointer]:
+            - img [ref=e86]
+            - generic [ref=e88]: Device History
+          - generic [ref=e89] [cursor=pointer]:
+            - img [ref=e91]
+            - generic [ref=e93]: DAC Report
+        - generic [ref=e94]:
+          - generic: Admin
+          - generic [ref=e95] [cursor=pointer]:
+            - img [ref=e97]
+            - generic [ref=e99]: Account
+          - generic [ref=e100] [cursor=pointer]:
+            - img [ref=e102]
+            - generic [ref=e104]: Group
+        - generic [ref=e105] [cursor=pointer]:
+          - img [ref=e107]
+          - generic [ref=e109]: System
+      - main [ref=e111]:
+        - generic [ref=e116]:
+          - generic [ref=e119]:
+            - heading "Key List" [level=5] [ref=e122]
+            - button "Create Key" [ref=e125] [cursor=pointer]:
+              - img [ref=e126]
+              - text: Create Key
+          - generic [ref=e130]:
+            - generic [ref=e135]:
+              - generic [ref=e136] [cursor=pointer]:
+                - img [ref=e137]
+                - generic [ref=e139]: Filter
+                - img [ref=e140]
+              - generic [ref=e142] [cursor=pointer]:
+                - img [ref=e143]
+                - generic [ref=e145]: Sort· 3
+                - img [ref=e146]
+              - button [ref=e148] [cursor=pointer]:
+                - img [ref=e150]
+              - button [ref=e152] [cursor=pointer]:
+                - img [ref=e154]
+            - generic [ref=e160]:
+              - table [ref=e163]:
+                - rowgroup [ref=e172]:
+                  - row "Name / Key ID Key Type Key Spec Creation Time Usage Count Status" [ref=e173]:
+                    - columnheader "Name / Key ID" [ref=e174]:
+                      - generic [ref=e176]: Name / Key ID
+                    - columnheader "Key Type" [ref=e177]:
+                      - generic [ref=e180]: Key Type
+                    - columnheader "Key Spec" [ref=e181]:
+                      - generic [ref=e184]: Key Spec
+                    - columnheader "Creation Time" [ref=e185]:
+                      - generic [ref=e188]: Creation Time
+                    - columnheader "Usage Count" [ref=e189]:
+                      - generic [ref=e192]: Usage Count
+                    - columnheader "Status" [ref=e193]:
+                      - generic [ref=e196]: Status
+                    - columnheader [ref=e197]
+              - table [ref=e201]:
+                - rowgroup [ref=e210]:
+                  - 'row "System Key RSA4096 TEST ID: KID-AR527c4547a8 Asymmetric RSA-4096 1970-01-01 00:00:00 0 Active" [ref=e211]':
+                    - 'cell "System Key RSA4096 TEST ID: KID-AR527c4547a8" [ref=e212]':
+                      - generic [ref=e216]:
+                        - generic [ref=e217]:
+                          - generic [ref=e220] [cursor=pointer]: System Key RSA4096
+                          - generic [ref=e222]: TEST
+                        - generic [ref=e224]: "ID: KID-AR527c4547a8"
+                    - cell "Asymmetric" [ref=e225]:
+                      - generic [ref=e228]: Asymmetric
+                    - cell "RSA-4096" [ref=e229]:
+                      - generic [ref=e232]: RSA-4096
+                    - cell "1970-01-01 00:00:00" [ref=e233]:
+                      - generic [ref=e236]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e237]:
+                      - generic [ref=e241]:
+                        - img [ref=e242]
+                        - text: "0"
+                    - cell "Active" [ref=e245]:
+                      - generic [ref=e251]: Active
+                    - cell [ref=e252]:
+                      - button [ref=e257] [cursor=pointer]:
+                        - img [ref=e259]
+                  - 'row "System Key RSA3072 TEST ID: KID-ARbed677f441 Asymmetric RSA-3072 1970-01-01 00:00:00 0 Active" [ref=e262]':
+                    - 'cell "System Key RSA3072 TEST ID: KID-ARbed677f441" [ref=e263]':
+                      - generic [ref=e267]:
+                        - generic [ref=e268]:
+                          - generic [ref=e271] [cursor=pointer]: System Key RSA3072
+                          - generic [ref=e273]: TEST
+                        - generic [ref=e275]: "ID: KID-ARbed677f441"
+                    - cell "Asymmetric" [ref=e276]:
+                      - generic [ref=e279]: Asymmetric
+                    - cell "RSA-3072" [ref=e280]:
+                      - generic [ref=e283]: RSA-3072
+                    - cell "1970-01-01 00:00:00" [ref=e284]:
+                      - generic [ref=e287]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e288]:
+                      - generic [ref=e292]:
+                        - img [ref=e293]
+                        - text: "0"
+                    - cell "Active" [ref=e296]:
+                      - generic [ref=e302]: Active
+                    - cell [ref=e303]:
+                      - button [ref=e308] [cursor=pointer]:
+                        - img [ref=e310]
+                  - 'row "System Key RSA2048 TEST ID: KID-AR109b0cbd99 Asymmetric RSA-2048 1970-01-01 00:00:00 0 Active" [ref=e313]':
+                    - 'cell "System Key RSA2048 TEST ID: KID-AR109b0cbd99" [ref=e314]':
+                      - generic [ref=e318]:
+                        - generic [ref=e319]:
+                          - generic [ref=e322] [cursor=pointer]: System Key RSA2048
+                          - generic [ref=e324]: TEST
+                        - generic [ref=e326]: "ID: KID-AR109b0cbd99"
+                    - cell "Asymmetric" [ref=e327]:
+                      - generic [ref=e330]: Asymmetric
+                    - cell "RSA-2048" [ref=e331]:
+                      - generic [ref=e334]: RSA-2048
+                    - cell "1970-01-01 00:00:00" [ref=e335]:
+                      - generic [ref=e338]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e339]:
+                      - generic [ref=e343]:
+                        - img [ref=e344]
+                        - text: "0"
+                    - cell "Active" [ref=e347]:
+                      - generic [ref=e353]: Active
+                    - cell [ref=e354]:
+                      - button [ref=e359] [cursor=pointer]:
+                        - img [ref=e361]
+                  - 'row "System Key AES256 TEST ID: KID-SAef4ccf3a16 Symmetric AES-256 1970-01-01 00:00:00 0 Active" [ref=e364]':
+                    - 'cell "System Key AES256 TEST ID: KID-SAef4ccf3a16" [ref=e365]':
+                      - generic [ref=e369]:
+                        - generic [ref=e370]:
+                          - generic [ref=e373] [cursor=pointer]: System Key AES256
+                          - generic [ref=e375]: TEST
+                        - generic [ref=e377]: "ID: KID-SAef4ccf3a16"
+                    - cell "Symmetric" [ref=e378]:
+                      - generic [ref=e381]: Symmetric
+                    - cell "AES-256" [ref=e382]:
+                      - generic [ref=e385]: AES-256
+                    - cell "1970-01-01 00:00:00" [ref=e386]:
+                      - generic [ref=e389]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e390]:
+                      - generic [ref=e394]:
+                        - img [ref=e395]
+                        - text: "0"
+                    - cell "Active" [ref=e398]:
+                      - generic [ref=e404]: Active
+                    - cell [ref=e405]:
+                      - button [disabled] [ref=e410]:
+                        - img [ref=e412]
+                  - 'row "System Key AES192 TEST ID: KID-SAaefb19a436 Symmetric AES-192 1970-01-01 00:00:00 0 Active" [ref=e415]':
+                    - 'cell "System Key AES192 TEST ID: KID-SAaefb19a436" [ref=e416]':
+                      - generic [ref=e420]:
+                        - generic [ref=e421]:
+                          - generic [ref=e424] [cursor=pointer]: System Key AES192
+                          - generic [ref=e426]: TEST
+                        - generic [ref=e428]: "ID: KID-SAaefb19a436"
+                    - cell "Symmetric" [ref=e429]:
+                      - generic [ref=e432]: Symmetric
+                    - cell "AES-192" [ref=e433]:
+                      - generic [ref=e436]: AES-192
+                    - cell "1970-01-01 00:00:00" [ref=e437]:
+                      - generic [ref=e440]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e441]:
+                      - generic [ref=e445]:
+                        - img [ref=e446]
+                        - text: "0"
+                    - cell "Active" [ref=e449]:
+                      - generic [ref=e455]: Active
+                    - cell [ref=e456]:
+                      - button [disabled] [ref=e461]:
+                        - img [ref=e463]
+                  - 'row "System Key AES128 TEST ID: KID-SA08215365d5 Symmetric AES-128 1970-01-01 00:00:00 0 Active" [ref=e466]':
+                    - 'cell "System Key AES128 TEST ID: KID-SA08215365d5" [ref=e467]':
+                      - generic [ref=e471]:
+                        - generic [ref=e472]:
+                          - generic [ref=e475] [cursor=pointer]: System Key AES128
+                          - generic [ref=e477]: TEST
+                        - generic [ref=e479]: "ID: KID-SA08215365d5"
+                    - cell "Symmetric" [ref=e480]:
+                      - generic [ref=e483]: Symmetric
+                    - cell "AES-128" [ref=e484]:
+                      - generic [ref=e487]: AES-128
+                    - cell "1970-01-01 00:00:00" [ref=e488]:
+                      - generic [ref=e491]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e492]:
+                      - generic [ref=e496]:
+                        - img [ref=e497]
+                        - text: "0"
+                    - cell "Active" [ref=e500]:
+                      - generic [ref=e506]: Active
+                    - cell [ref=e507]:
+                      - button [disabled] [ref=e512]:
+                        - img [ref=e514]
+                  - 'row "System Key ECC P384 TEST ID: KID-AE18207913fc Asymmetric ECC-P384 1970-01-01 00:00:00 0 Active" [ref=e517]':
+                    - 'cell "System Key ECC P384 TEST ID: KID-AE18207913fc" [ref=e518]':
+                      - generic [ref=e522]:
+                        - generic [ref=e523]:
+                          - generic [ref=e526] [cursor=pointer]: System Key ECC P384
+                          - generic [ref=e528]: TEST
+                        - generic [ref=e530]: "ID: KID-AE18207913fc"
+                    - cell "Asymmetric" [ref=e531]:
+                      - generic [ref=e534]: Asymmetric
+                    - cell "ECC-P384" [ref=e535]:
+                      - generic [ref=e538]: ECC-P384
+                    - cell "1970-01-01 00:00:00" [ref=e539]:
+                      - generic [ref=e542]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e543]:
+                      - generic [ref=e547]:
+                        - img [ref=e548]
+                        - text: "0"
+                    - cell "Active" [ref=e551]:
+                      - generic [ref=e557]: Active
+                    - cell [ref=e558]:
+                      - button [ref=e563] [cursor=pointer]:
+                        - img [ref=e565]
+                  - 'row "System Key ECC P256 TEST ID: KID-AE6a829240f1 Asymmetric ECC-P256 1970-01-01 00:00:00 0 Active" [ref=e568]':
+                    - 'cell "System Key ECC P256 TEST ID: KID-AE6a829240f1" [ref=e569]':
+                      - generic [ref=e573]:
+                        - generic [ref=e574]:
+                          - generic [ref=e577] [cursor=pointer]: System Key ECC P256
+                          - generic [ref=e579]: TEST
+                        - generic [ref=e581]: "ID: KID-AE6a829240f1"
+                    - cell "Asymmetric" [ref=e582]:
+                      - generic [ref=e585]: Asymmetric
+                    - cell "ECC-P256" [ref=e586]:
+                      - generic [ref=e589]: ECC-P256
+                    - cell "1970-01-01 00:00:00" [ref=e590]:
+                      - generic [ref=e593]: 1970-01-01 00:00:00
+                    - cell "0" [ref=e594]:
+                      - generic [ref=e598]:
+                        - img [ref=e599]
+                        - text: "0"
+                    - cell "Active" [ref=e602]:
+                      - generic [ref=e608]: Active
+                    - cell [ref=e609]:
+                      - button [ref=e614] [cursor=pointer]:
+                        - img [ref=e616]
+  - img
+  - generic [ref=e620]: "ID: KID-AE6a829240f..."

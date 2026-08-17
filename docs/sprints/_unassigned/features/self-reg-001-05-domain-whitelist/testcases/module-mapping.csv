@@ -1,0 +1,45 @@
+tp_id,xmind_branch,module_path,remark
+TP-REG-APP-01,白名单申请提示,/Cloud/Login & Profile/Login,注册流程白名单加入提示
+TP-REG-APP-02,白名单申请提示,/Cloud/Login & Profile/Login,申请加入提交
+TP-REG-APP-03,白名单申请提示,/Cloud/Login & Profile/Login,跳过提示
+TP-REG-APP-04,白名单申请提示,/Cloud/Login & Profile/Login,已有账号不展示提示
+TP-REG-APP-05,白名单申请提示,/Cloud/Login & Profile/Login,租户非有效状态
+TP-REG-APP-06,白名单申请提示,/Cloud/Login & Profile/Login,未开启白名单
+TP-REG-DOM-01,域名匹配规则,/Cloud/Login & Profile/Login,子域名不匹配
+TP-REG-DOM-02,域名匹配规则,/Cloud/Login & Profile/Login,大小写不敏感
+TP-REG-POST-01,审批后申请人行为,/Cloud/Login & Profile/Login,拒绝后仍可用免费版
+TP-REG-POST-02,审批后申请人行为,/Cloud/Login & Profile/Login,拒绝后不再提示
+TP-EDGE-REG-01,边界场景,/Cloud/Login & Profile/Login,被拒后无再次申请入口
+TP-EDGE-REG-02,边界场景,/Cloud/Login & Profile/Login,跨企业无二次入口
+TP-MAIL-06,邮件通知,/Cloud/Login & Profile/Login,申请人侧无收信验证
+TP-ACCT-ACT-03,审批操作,/Cloud/Login & Profile/My Profile,通过后头像下拉出现企业 Tenant（MS 模块名为 My Profile）
+TP-WL-CFG-01,域名白名单配置,/Super Admin Platform/OBIS Biz/Tenant,超管配置默认成员角色
+TP-WL-CFG-02,域名白名单配置,/Super Admin Platform/OBIS Biz/Tenant,Approve 后角色与白名单配置一致
+TP-EDGE-WL-01,边界场景,/Super Admin Platform/OBIS Biz/Tenant,Pending 期间白名单配置变更
+TP-MAIL-01,邮件通知,/Cloud/Admin/Account,首次申请通知 Tenant Admin
+TP-MAIL-02,邮件通知,/Cloud/Admin/Account,重复申请不重复发信
+TP-MAIL-03,邮件通知,/Cloud/Admin/Account,邮件主题英文
+TP-MAIL-04,邮件通知,/Cloud/Admin/Account,正文英上中下
+TP-MAIL-05,邮件通知,/Cloud/Admin/Account,邮件正文字段完整性
+TP-MAIL-07,邮件通知,/Cloud/Admin/Account,存量租户 Admin 收信
+TP-MAIL-08,邮件通知,/Cloud/Admin/Account,新增企业 Admin 收信
+TP-MAIL-09,邮件通知,/Cloud/Admin/Account,多 Tenant Admin 均收信
+TP-MAIL-10,邮件通知,/Cloud/Admin/Account,发送失败补偿 TBD
+TP-ACCT-TAB-01,Applications Tab,/Cloud/Admin/Account,三 Tab 展示与切换
+TP-ACCT-APP-01,Applications 列表,/Cloud/Admin/Account,Pending 角标数量
+TP-ACCT-APP-02,Applications 列表,/Cloud/Admin/Account,无 Pending 时角标隐藏
+TP-ACCT-APP-03,Applications 列表,/Cloud/Admin/Account,列表字段
+TP-ACCT-APP-04,Applications 列表,/Cloud/Admin/Account,列表排序
+TP-ACCT-APP-05,Applications 列表,/Cloud/Admin/Account,Pending 才展示操作按钮
+TP-ACCT-ACT-01,审批操作,/Cloud/Admin/Account,Approve 通过
+TP-ACCT-ACT-02,审批操作,/Cloud/Admin/Account,通过后出现在 Members
+TP-ACCT-ACT-04,审批操作,/Cloud/Admin/Account,Reject 保留列表
+TP-ACCT-ACT-05,审批操作,/Cloud/Admin/Account,审批不向申请人发邮件
+TP-ACCT-ACT-06,审批操作,/Cloud/Admin/Account,达上限 Approve 阻断
+TP-ACCT-ACT-07,审批操作,/Cloud/Admin/Account,达上限 Reject 仍可用
+TP-PERM-01,权限,/Cloud/Admin/Account,Tenant Admin 可审批
+TP-PERM-02,权限,/Cloud/Admin/Account,Tenant Manager 无列表入口
+TP-PERM-03,权限,/Cloud/Admin/Account,Tenant Manager 不可审批
+TP-BIZ-01,成员限额,/Cloud/Admin/Account,Pending 不计入限额
+TP-BIZ-02,成员限额,/Cloud/Admin/Account,通过后占用名额
+TP-AUDIT-01,审计日志,/Cloud/Admin/Account,Approve 审计记录

@@ -1,0 +1,37 @@
+{
+  "feature_slug": "ux-p2-audit-unify",
+  "metersphere_project": "OBIS Cloud",
+  "notes": "KMS Audit 对应 MeterSphere「Operation Log」；Product 详情 Audit 无独立子模块，挂 /Cloud/Product。module_path 须与 metersphere-modules.json 一致。",
+  "valid_paths": [
+    "/Cloud/Admin/Group",
+    "/Cloud/Admin/Account",
+    "/Cloud/Login & Profile/My Profile",
+    "/Cloud/KMS/Key Detail/Operation Log",
+    "/Cloud/PKI/Cert & Template Detail/Audit",
+    "/Cloud/Product"
+  ],
+  "mappings": [
+    { "tp_id": "TP-AUD-G01", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G02", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G03", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G04", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G05", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G06", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G07", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G08", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G09", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G10", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G11", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-G12", "module_path": "/Cloud/Admin/Group" },
+    { "tp_id": "TP-AUD-A01", "module_path": "/Cloud/Admin/Account" },
+    { "tp_id": "TP-AUD-A02", "module_path": "/Cloud/Login & Profile/My Profile" },
+    { "tp_id": "TP-AUD-A03", "module_path": "/Cloud/Admin/Account" },
+    { "tp_id": "TP-AUD-K01", "module_path": "/Cloud/KMS/Key Detail/Operation Log" },
+    { "tp_id": "TP-AUD-K02", "module_path": "/Cloud/KMS/Key Detail/Operation Log" },
+    { "tp_id": "TP-AUD-K03", "module_path": "/Cloud/KMS/Key Detail/Operation Log" },
+    { "tp_id": "TP-AUD-K04", "module_path": "/Cloud/KMS/Key Detail/Operation Log" },
+    { "tp_id": "TP-AUD-P01", "module_path": "/Cloud/PKI/Cert & Template Detail/Audit" },
+    { "tp_id": "TP-AUD-P02", "module_path": "/Cloud/Product" },
+    { "tp_id": "TP-AUD-P03", "module_path": "/Cloud/Product" }
+  ]
+}

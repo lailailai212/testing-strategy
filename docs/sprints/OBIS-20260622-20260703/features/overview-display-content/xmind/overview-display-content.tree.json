@@ -1,0 +1,276 @@
+{
+  "sheet_title": "【卡片编辑】overview展示内容改动 测试点",
+  "root_title": "【卡片编辑】overview展示内容改动",
+  "tree": [
+    {
+      "title": "Overview",
+      "children": [
+        {
+          "title": "页面结构与 Module 联动",
+          "children": [
+            {
+              "title": "Product Workspace → Product 详情 → **Overview** Tab 可正常进入；Product 级 Tab 含 Overview（当前）、Assets、Version 等",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "Overview 页存在 **Module 选择器**（横向 Tab + **Add**）；默认选中某一 Module",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "Module 选择器下方展示 **Assets-{Module名}** 区块标题（样本：**Assets-Module_A**）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "切换 Module 选择器至 **Module_B** 后，区块标题更新为 **Assets-Module_B**，下方卡片切换为该 Module 的 Assets 卡片",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "切换回 **Module_A** 后，卡片区恢复展示 Module_A 对应卡片集合",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "Overview 卡片区为**网格布局**（参考样本 **2 行 × 4 列**）；卡片数量变化时布局自适应，不重叠、不截断标题",
+              "source": "需求描述",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Assets 卡片与 Assets Tab 同步",
+          "children": [
+            {
+              "title": "Matter Module 初始状态下，Overview **Assets-{Module}** 卡片区卡片**种类与数量**与 Assets Tab 同 Module **一致**（默认 8 张内置卡）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "在 Assets Tab **删除**一可删卡片（如 Other Module 下 General File）并确认后，切回 Overview Tab，该卡片**不再出现**",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "在 Assets Tab **新增**卡片（内置类型或自定义，见 Story #602 / #603）成功后，Overview Tab 同 Module **同步出现**新卡片",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Assets Tab **隐藏**内置卡片（删除内置卡 = 隐藏，见 Story #602 AC-02）后，Overview **同步移除**该卡片",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Assets Tab **加回**已隐藏内置卡片后，Overview **同步恢复**该卡片",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "在 Overview Tab 停留时，于另一 Tab（Assets）完成增删后**返回 Overview**，卡片区已更新（无需整页刷新；若需手动刷新则记缺陷）",
+              "source": "AC-01",
+              "priority": "P1"
+            },
+            {
+              "title": "多 Module 并存时，在 **Module_A** Assets 增删卡片，**Module_B** Overview 卡片区**不受影响**",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "Overview 与 Assets 卡片**相对排序**一致（内置在前、自定义按创建顺序在后，见 Story #602 AC-13）",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Create Assets Type",
+          "children": [
+            {
+              "title": "**Assets-{Module}** 区块右上方存在 **Create Assets Type** 按钮（Product Doc 称「创建卡片」）",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "点击 **Create Assets Type** 弹出**新建卡片**弹窗（非跳转至 Assets Tab）",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "通过 Overview 入口成功创建卡片后，Overview 卡片区**立即出现**新卡片，且 Assets Tab 同 Module **同步出现**",
+              "source": "AC-03, AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Overview 弹窗与 Assets Tab 新增卡片弹窗是否为**同一 UI / 同一流程**（内置 / 自定义选项一致）",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "Overview 弹窗 **Cancel** / 关闭后，不创建卡片，Overview 与 Assets 均无新增",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "SE 卡片摘要",
+          "children": [
+            {
+              "title": "Secure Element Module 下，Overview 存在 **SE** 卡片时，摘要展示 **name** 字段",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Overview SE 卡片摘要 **name** 与 Assets Tab 同 Module SE 卡片 **name** 一致",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "SEMS 侧 SE profile name 更新后（Story #653 AC-02），Overview SE 卡片摘要 **name** **同步更新**",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "SE 卡片 name 为空或未导入时，Overview 摘要展示规则（占位文案 / 空态 / 隐藏卡片）符合产品约定",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Custom 卡片摘要",
+          "children": [
+            {
+              "title": "Overview 上 **Custom（自定义）** 卡片摘要展示 **data volume**（行数语义）",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "自定义卡片字段行表有 **N** 行已保存数据时，Overview 摘要 **data volume = N**（与 Assets 侧行表一致）",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "在 Assets 自定义卡片中**新增 / 删除**字段行并保存后，Overview 摘要 **data volume** **同步更新**",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "**data volume** 是否含**空行**、是否仅统计**已保存**行、未保存草稿是否计入",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "同一 Module 多张 Custom 卡片并存时，各卡 **data volume** 独立计数、互不混淆",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "Custom 卡片 **0 行**时 Overview 摘要展示（如 `0` / `0 data keys` / 空态文案）符合产品约定",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        },
+        {
+          "title": "内置卡片（Matter）摘要",
+          "children": [
+            {
+              "title": "Matter Module Overview 上 **Firmware** 卡片摘要格式与样本一致：**`{total} total, {active} active`**（样本 `2 total, 1 active`）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**Keys** 摘要：**`{n} active keys`**（样本 `6 active keys`）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**Certificates** 摘要：**`{n} active certs`**（样本 `2 active certs`）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**Chip Config** 摘要：**`Chip: {chip model}`**（样本 `Chip: Silicon Labs MG24`）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**Matter Config** 摘要含两行：**`VID: {vid}`**、**`PID: {pid}`**（样本 `VID: 0x1441`、`PID: 0x0123`）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**Factory Data** 摘要：**`{n} data keys`**（样本 `8 data keys`）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**Programming Station Software** 卡片摘要：**`{total} total, {active} active`**（样本 `1 total, 2 active`）；Assets 侧对应卡片为 **PS Software Package**",
+              "source": "AC-06, AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "**General File** 摘要：**`{total} total, {active} active`**（样本 `2 total, 1 active`）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "修改 Matter 内置卡内容（如新增 active key）并保存后，Overview 对应卡片摘要**实时或刷新后更新**为最新统计",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "内置卡**无数据 / 空态**时摘要展示规则（如 `0 active keys`）是否全环境统一",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "**Other** Module 内置卡（无 Matter Config）Overview 摘要规则与 Matter 同类卡一致（total/active 或 key 计数格式）",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "卡片通用展示（图标 / 底栏）",
+          "children": [
+            {
+              "title": "每张 Overview 卡片含**图标**、**卡片标题**、**摘要内容**三个主要区域",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "内置卡片底栏展示 **`{编辑者} - {相对时间}`** 格式（样本 `John Smith - 2h ago`）",
+              "source": "AC-06, AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "Overview 卡片标题 **Programming Station Software** 与 Assets **PS Software Package** 为同一卡片的不同页面命名",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "底栏 **编辑者** 与 **相对时间** 的数据来源（最后保存者 / 最后编辑字段者）及更新时机",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "SE / Custom 卡片底栏是否同样展示 **{编辑者} - {相对时间}**（Product Doc 仅明确内置卡，待 UI 确认）",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "相对时间随时间推移自动刷新（如 `2h ago` → `3h ago`）或需重新进入页面才更新",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

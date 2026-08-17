@@ -1,0 +1,201 @@
+{
+  "sheet_title": "[SEMS] E1-S08：SE Profile 归档（Archive） 测试点",
+  "root_title": "[SEMS] E1-S08：SE Profile 归档（Archive）",
+  "tree": [
+    {
+      "title": "SE Profile 详情页",
+      "children": [
+        {
+          "title": "Archive 入口与确认",
+          "children": [
+            {
+              "title": "Locked 状态详情页操作栏显示 Archive 入口",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Revoked 状态详情页操作栏显示 Archive 入口",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "点击 Archive 弹出二次确认对话框，文案符合 COPY-01（中/英对照需求表），含 Confirm Archive 与 Cancel",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "详情页确认归档：状态变为 Archived；顶部 Toast 为 COPY-02；跳回列表页",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "二次确认点 Cancel：对话框关闭，状态保持 Locked/Revoked 不变",
+              "source": "AC-02, QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SE Profile 列表页",
+      "children": [
+        {
+          "title": "Archive",
+          "children": [
+            {
+              "title": "Locked 行操作列显示 Archive 入口",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Revoked 行操作列显示 Archive 入口",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "列表页点击 Archive：弹出二次确认对话框，文案符合 COPY-01，含 Confirm Archive 与 Cancel（Locked / Revoked 各至少验 1 次）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "列表页对 Locked 确认归档：① 状态变为 Archived；② 顶部 Toast 为 COPY-02；③ **留在列表页**（不跳详情）；④ 该行从当前列表消失",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "列表页对 Revoked 确认归档：同上四项（Toast COPY-02、留在列表、行消失、状态 Archived）",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "列表页二次确认点 Cancel：对话框关闭；行仍在列表；状态保持 Locked/Revoked",
+              "source": "AC-02, QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "前置状态限制",
+      "children": [
+        {
+          "title": "Active 状态详情页与列表操作列均不显示 Archive 入口",
+          "source": "需求描述",
+          "priority": "P0"
+        },
+        {
+          "title": "Draft 状态不显示 Archive 入口（须对照现网/设计稿）",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "终态与不可见",
+      "children": [
+        {
+          "title": "Archived 后界面无任何可切换至其他状态的操作按钮",
+          "source": "AC-04",
+          "priority": "P0"
+        },
+        {
+          "title": "对 Archived 调用状态变更 API 应失败/拒绝，状态保持 Archived",
+          "source": "AC-04, QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "归档后列表不展示该 SE Profile",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "归档后搜索不命中该 SE Profile",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "详情页直链访问返回 COPY-04（不存在或无访问权限）",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "**不可被新引用**：前置造一 Active/Locked SE Profile 并归档 → 进入 Product → Create Version（或 Version 编辑中的 SE Profile 选择/引用入口）→ 搜索该 Profile Name/ID → **不可选中/不出现在可选列表**。**历史引用不受影响**：前置另造一 Version 已引用该 Profile → 归档后打开该 Version 详情/只读引用区 → 原引用关系仍可见且可追溯",
+          "source": "AC-05, BR-01",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "失败与反馈",
+      "children": [
+        {
+          "title": "归档接口返回 **5xx**：顶部 Toast 为 COPY-03；SE Profile 状态保持原 Locked/Revoked；列表/详情仍可见且可再次发起 Archive",
+          "source": "AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "归档请求 **网络超时 / 断网**：Toast 为 COPY-03（或与现网统一网络错误文案，若非 COPY-03 则记入待确认）；状态不变",
+          "source": "AC-06, QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "归档接口返回 **403**（无权限）：顶部展示错误反馈（COPY-03 或权限类错误文案）；状态不变；有权限账号仍可归档",
+          "source": "AC-06, QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "中英文界面下 COPY-01 / COPY-02 / COPY-03 / COPY-04 与需求文案表一致",
+          "source": "AC-02, AC-03",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "审计与 lock_sources",
+      "children": [
+        {
+          "title": "归档成功写入审计：操作人、时间、SE Profile ID、Name、action=archive、from_status→to_status（优先经产品审计 UI / 可导出审计；无 UI 时用联调接口）",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "Locked→Archived：审计记录含转换前 `lock_sources` 集合；归档后当前 `lock_sources` 清空为 `[]`（清空可用详情/接口回读；审计集合同 AUD-01 验证通道）",
+          "source": "AC-07, BR-02",
+          "priority": "P0"
+        },
+        {
+          "title": "Revoked→Archived：当前 `lock_sources` 清空；审计含 from/to 状态（按产品终态口径）",
+          "source": "BR-02, 需求描述",
+          "priority": "P1"
+        },
+        {
+          "title": "（实现层细节，非 AC）生命周期审计 `trigger_reason=manual_archived` 与状态 outbox `se_profile.archived`：**验证方式**需 DB / 内部表或联调日志；无访问权限时本条跳过，不阻断 AC-07 验收",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "title": "接口边界（QA 扩展）",
+      "children": [
+        {
+          "title": "`businessProfileId` 支持裸 ID 与 `SEP_<id>` 两种格式归档成功",
+          "source": "QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "**同用户** 10 秒内重复提交同一归档请求被防重；`clientRequestId` 网络重试复用原 UUID",
+          "source": "QA扩展",
+          "priority": "P2"
+        },
+        {
+          "title": "**并发归档**：两名有权限用户几乎同时对同一 Locked/Revoked SE Profile 确认 Archive → 最终仅成功一次（状态为 Archived）；另一侧失败（错误 Toast / 业务冲突），且不出现双成功或脏状态；列表侧仅一份归档结果",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    }
+  ]
+}

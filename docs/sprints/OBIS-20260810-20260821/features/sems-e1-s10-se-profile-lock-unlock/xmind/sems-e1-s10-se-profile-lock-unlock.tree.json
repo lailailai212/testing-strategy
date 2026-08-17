@@ -1,0 +1,201 @@
+{
+  "sheet_title": "[SEMS] E1-S10：SE Profile 锁定与解锁（Lock / Unlock） 测试点",
+  "root_title": "[SEMS] E1-S10：SE Profile 锁定与解锁（Lock / Unlock）",
+  "tree": [
+    {
+      "title": "详情页",
+      "children": [
+        {
+          "title": "手动锁定（Active → Locked）",
+          "children": [
+            {
+              "title": "Active 详情页操作栏显示 Lock 按钮",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "点击 Lock 弹出二次确认，文案符合 COPY-01，含 Confirm / Cancel",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "确认锁定：① 状态变为 Locked；② 顶部 Toast 为 COPY-02；③ **留在详情页**（URL/页签不跳转列表）",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "Lock 对话框点 Cancel：状态保持 Active；仍留在详情页",
+              "source": "AC-02, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "手动锁定成功后 `lock_sources` 含且仅含一个 `manual` 来源（可对照接口/审计）",
+              "source": "AC-03, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "Draft 状态详情页无 Lock 入口",
+              "source": "AC-01, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "Locked 状态详情页 **不显示 Lock**（不可重复锁定；可显示 Unlock，见 TP-UNL-01）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Revoked 状态详情页 **不显示 Lock、不显示 Unlock**（Revoked 走 Archive，见 S08；本 Story 仅验无 Lock/Unlock 入口）",
+              "source": "AC-01, QA扩展",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "手动解锁（Locked → Active）",
+          "children": [
+            {
+              "title": "纯手动 Locked（无级联来源）详情页显示 Unlock，且不显示 Lock",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "点击 Unlock 弹出 COPY-03 确认框；确认后：① 状态恢复 Active；② Toast 为 COPY-04；③ **留在详情页**",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "Unlock 对话框点 Cancel：状态保持 Locked；仍留在详情页",
+              "source": "AC-06, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "手动解锁成功后 `lock_sources` 清空为 `[]`",
+              "source": "AC-06, 需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "Unlock 成功回到 Active 后，操作栏重新显示 Lock、不显示 Unlock",
+              "source": "AC-01, AC-06",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "级联 Locked",
+      "children": [
+        {
+          "title": "Unlock 不可见",
+          "children": [
+            {
+              "title": "上游级联 Locked（GP CA Locked 或 KMS Key Suspended 任一）时，详情页不显示 Unlock，也不显示 Lock",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "手动锁定与级联锁定共存时，Unlock 不可见",
+              "source": "AC-05, BR-02",
+              "priority": "P0"
+            },
+            {
+              "title": "级联 Locked 场景下直接调用手动 Unlock 接口应被拒绝，状态不变（前端无入口的后端兜底）",
+              "source": "AC-05, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "仅当所有 lock_sources 解除后才可恢复 Active（本 Story 验「有级联则不可手动」；自动解锁细节归 E4-S6）",
+              "source": "BR-01, 需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "失败与反馈",
+      "children": [
+        {
+          "title": "Lock 接口返回 **5xx**：顶部显示错误 Toast（或与现网统一失败文案）；状态保持 Active；仍留在详情页且可再次发起 Lock",
+          "source": "QA扩展",
+          "priority": "P0"
+        },
+        {
+          "title": "Unlock 接口返回 **5xx**：顶部显示错误 Toast；状态保持 Locked；仍留在详情页且可再次发起 Unlock",
+          "source": "QA扩展",
+          "priority": "P0"
+        },
+        {
+          "title": "Lock/Unlock **网络超时 / 断网**：状态不变；有错误反馈；可重试",
+          "source": "QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "Lock/Unlock 返回 **403**：状态不变；有错误反馈；有权限账号仍可操作",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "审计日志",
+      "children": [
+        {
+          "title": "手动 Lock 写入审计：action=lock，含操作人、时间、Profile ID/Name、**lock_sources**、from→to",
+          "source": "AC-09",
+          "priority": "P0"
+        },
+        {
+          "title": "手动 Unlock 写入审计：action=unlock，含操作人、时间、Profile ID/Name、**lock_sources**（解锁后集合或转换前集合按实现可观察口径）、from→to",
+          "source": "AC-09",
+          "priority": "P0"
+        },
+        {
+          "title": "上游级联 Locked 写入审计：action=cascade_lock，且记录含 **lock_sources**（含级联来源）、from→to（需级联联调环境）",
+          "source": "AC-09",
+          "priority": "P0"
+        },
+        {
+          "title": "上游恢复自动解锁写入审计：action=cascade_unlock，且记录含 **lock_sources**、from→to（联调/E4-S6 环境）",
+          "source": "AC-09",
+          "priority": "P0"
+        }
+      ]
+    },
+    {
+      "title": "文案与一致性",
+      "children": [
+        {
+          "title": "中英文 COPY-01～COPY-04 与需求文案表一致",
+          "source": "AC-02, AC-03, AC-06",
+          "priority": "P1"
+        },
+        {
+          "title": "Locked 后禁止建立新引用的业务结果可在引用入口观察到阻断（COPY-01 语义抽测）",
+          "source": "QA扩展",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "title": "接口边界（QA 扩展）",
+      "children": [
+        {
+          "title": "Lock/Unlock 支持裸 ID 与 `SEP_<id>`",
+          "source": "QA扩展",
+          "priority": "P1"
+        },
+        {
+          "title": "同用户 10 秒防重复提交；`clientRequestId` 重试复用",
+          "source": "QA扩展",
+          "priority": "P2"
+        },
+        {
+          "title": "对 Locked 调用 Lock、对 Revoked 调用 Lock/Unlock：接口拒绝且状态不变（与 UI 无入口兜底一致）",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    }
+  ]
+}

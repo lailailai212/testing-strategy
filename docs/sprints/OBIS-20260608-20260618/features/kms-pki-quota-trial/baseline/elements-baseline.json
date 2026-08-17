@@ -1,0 +1,448 @@
+{
+  "scannedAt": "2026-06-15T13:21:00.000Z",
+  "environment": "iot-admin-sit.snowballtech.com",
+  "baseUrl": "https://iot-admin-sit.snowballtech.com",
+  "account": "future.wei@snowballtech.com",
+  "locale": "English",
+  "uiFramework": "Arco Design (arco-*)",
+  "notes": [
+    "SIT 租户 future.wei 列表含 8 条 System Key 预设数据，与自注册 Story「无 default key」场景不同",
+    "Create Key 页 Step1 当前可见 Unlimited 有效期选项，默认值 25 Years；免费版 Story 要求隐藏 Unlimited",
+    "Create Key 页 Step1 按钮为 Continue；Step2 为 Back/Skip/Next；Step3 为 Complete",
+    "Asymmetric 密钥在 Step1 需勾选 Usage（Sign/Verify 等）方可 Continue",
+    "Step2 表单标题为 Key Source Setting，须选 keySource 方可 Next"
+  ],
+  "pages": {
+    "keyList": {
+      "url": "/key/list",
+      "fullUrl": "https://iot-admin-sit.snowballtech.com/key/list",
+      "breadcrumb": "KMS",
+      "pageTitle": "Key List",
+      "meterSphereModule": "/Cloud/KMS/Key List",
+      "elements": [
+        {
+          "section": "Header",
+          "name": "Page title",
+          "role": "heading",
+          "text": "Key List",
+          "stableLocator": "page.getByRole('heading', { name: 'Key List' })",
+          "priority": "high"
+        },
+        {
+          "section": "Header",
+          "name": "Create Key",
+          "role": "button",
+          "text": "Create Key",
+          "class": "kms-list-header-actions__primary",
+          "stableLocator": "page.getByRole('button', { name: 'Create Key' })",
+          "priority": "high"
+        },
+        {
+          "section": "Toolbar",
+          "name": "Filter",
+          "role": "generic",
+          "text": "Filter",
+          "stableLocator": "page.getByText('Filter', { exact: true })",
+          "priority": "medium"
+        },
+        {
+          "section": "Toolbar",
+          "name": "Sort",
+          "role": "generic",
+          "text": "Sort· 3",
+          "stableLocator": "page.getByText(/Sort/)",
+          "priority": "medium"
+        },
+        {
+          "section": "Toolbar",
+          "name": "Toolbar icon button 1",
+          "role": "button",
+          "text": "",
+          "stableLocator": "page.locator('.kms-list-toolbar button').first()",
+          "priority": "low",
+          "fragile": true
+        },
+        {
+          "section": "Toolbar",
+          "name": "Toolbar icon button 2",
+          "role": "button",
+          "text": "",
+          "stableLocator": "page.locator('.kms-list-toolbar button').nth(1)",
+          "priority": "low",
+          "fragile": true
+        },
+        {
+          "section": "Table",
+          "name": "Column Name / Key ID",
+          "role": "columnheader",
+          "id": "th-name",
+          "stableLocator": "page.locator('#th-name')",
+          "priority": "high"
+        },
+        {
+          "section": "Table",
+          "name": "Column Key Type",
+          "role": "columnheader",
+          "id": "th-type",
+          "stableLocator": "page.locator('#th-type')",
+          "priority": "high"
+        },
+        {
+          "section": "Table",
+          "name": "Column Key Spec",
+          "role": "columnheader",
+          "id": "th-algorithm",
+          "stableLocator": "page.locator('#th-algorithm')",
+          "priority": "high"
+        },
+        {
+          "section": "Table",
+          "name": "Column Creation Time",
+          "role": "columnheader",
+          "id": "th-createTime",
+          "stableLocator": "page.locator('#th-createTime')",
+          "priority": "high"
+        },
+        {
+          "section": "Table",
+          "name": "Column Usage Count",
+          "role": "columnheader",
+          "id": "th-usageCount",
+          "stableLocator": "page.locator('#th-usageCount')",
+          "priority": "high"
+        },
+        {
+          "section": "Table",
+          "name": "Column Status",
+          "role": "columnheader",
+          "id": "th-status",
+          "stableLocator": "page.locator('#th-status')",
+          "priority": "high"
+        },
+        {
+          "section": "Table",
+          "name": "Column Operations",
+          "role": "columnheader",
+          "id": "th-operations",
+          "stableLocator": "page.locator('#th-operations')",
+          "priority": "medium"
+        },
+        {
+          "section": "Table row",
+          "name": "Key name link",
+          "role": "generic",
+          "text": "System Key RSA4096 (sample)",
+          "stableLocator": "page.getByRole('row').filter({ hasText: 'KID-' }).getByText(/System Key/).first()",
+          "priority": "medium",
+          "fragile": true
+        },
+        {
+          "section": "Table row",
+          "name": "Status badge",
+          "role": "cell",
+          "text": "Active",
+          "stableLocator": "page.getByRole('cell', { name: 'Active' }).first()",
+          "priority": "medium"
+        },
+        {
+          "section": "Table row",
+          "name": "Row operations menu",
+          "role": "button",
+          "text": "",
+          "stableLocator": "page.locator('tbody .arco-table-tr').first().getByRole('button')",
+          "priority": "low",
+          "fragile": true
+        },
+        {
+          "section": "Sidebar",
+          "name": "Nav KMS",
+          "role": "generic",
+          "text": "KMS",
+          "stableLocator": "page.locator('aside, nav').getByText('KMS', { exact: true })",
+          "priority": "medium"
+        }
+      ],
+      "sampleData": {
+        "rowCount": 8,
+        "rows": [
+          "System Key RSA4096 | Asymmetric | RSA-4096 | Active | KID-AR527c4547a8",
+          "System Key RSA3072 | Asymmetric | RSA-3072 | Active | KID-ARbed677f441",
+          "System Key RSA2048 | Asymmetric | RSA-2048 | Active | KID-AR109b0cbd99",
+          "System Key AES256 | Symmetric | AES-256 | Active | KID-SAef4ccf3a16",
+          "System Key AES192 | Symmetric | AES-192 | Active | KID-SAaefb19a436",
+          "System Key AES128 | Symmetric | AES-128 | Active | KID-SA08215365d5",
+          "System Key ECC P384 | Asymmetric | ECC-P384 | Active | KID-AE18207913fc",
+          "System Key ECC P256 | Asymmetric | ECC-P256 | Active | KID-AE6a829240f1"
+        ]
+      }
+    },
+    "createKeyStep1": {
+      "url": "/key/create",
+      "fullUrl": "https://iot-admin-sit.snowballtech.com/key/create",
+      "breadcrumb": "KMS / Create Key",
+      "step": "1/3 Basics",
+      "meterSphereModule": "/Cloud/KMS/Create Key",
+      "wizardSteps": [
+        { "step": 1, "name": "Basics", "state": "active" },
+        { "step": 2, "name": "Generation Method", "state": "wait" },
+        { "step": 3, "name": "Permission", "state": "wait" }
+      ],
+      "elements": [
+        {
+          "section": "Wizard",
+          "name": "Step Basics",
+          "text": "1 Basics",
+          "stableLocator": "page.getByText('Basics')",
+          "priority": "medium"
+        },
+        {
+          "section": "Wizard",
+          "name": "Step Generation Method",
+          "text": "2 Generation Method",
+          "stableLocator": "page.getByText('Generation Method')",
+          "priority": "medium"
+        },
+        {
+          "section": "Wizard",
+          "name": "Step Permission",
+          "text": "3 Permission",
+          "stableLocator": "page.getByText('Permission')",
+          "priority": "medium"
+        },
+        {
+          "section": "Form",
+          "name": "Key Name",
+          "role": "textbox",
+          "label": "Key Name",
+          "placeholder": "Please enter value",
+          "required": true,
+          "stableLocator": "page.getByRole('textbox', { name: /Key Name|Please enter value/ }).first()",
+          "priority": "high",
+          "fragile": true,
+          "note": "无 data-testid；建议用 form item 父级 + label 定位"
+        },
+        {
+          "section": "Form",
+          "name": "Environment",
+          "role": "combobox",
+          "label": "Environment",
+          "defaultValue": "PROD",
+          "placeholder": "Please Select",
+          "required": true,
+          "stableLocator": "page.locator('.arco-form-item').filter({ hasText: 'Environment' }).locator('.arco-select')",
+          "priority": "high"
+        },
+        {
+          "section": "Form",
+          "name": "Key Type",
+          "role": "combobox",
+          "label": "Key Type",
+          "placeholder": "Please Select",
+          "required": true,
+          "stableLocator": "page.locator('.arco-form-item').filter({ hasText: 'Key Type' }).locator('.arco-select')",
+          "priority": "high"
+        },
+        {
+          "section": "Form",
+          "name": "Key Spec",
+          "role": "combobox",
+          "label": "Key Spec",
+          "placeholder": "Please Select",
+          "required": true,
+          "stableLocator": "page.locator('.arco-form-item').filter({ hasText: 'Key Spec' }).locator('.arco-select')",
+          "priority": "high"
+        },
+        {
+          "section": "Form",
+          "name": "Notes",
+          "role": "textarea",
+          "label": "Notes",
+          "placeholder": "Please enter value",
+          "required": false,
+          "stableLocator": "page.locator('.arco-form-item').filter({ hasText: 'Notes' }).getByRole('textbox')",
+          "priority": "medium"
+        },
+        {
+          "section": "Form",
+          "name": "Usage Sign / Verify",
+          "role": "checkbox",
+          "label": "Sign / Verify",
+          "required": true,
+          "condition": "Key Type=Asymmetric 且已选 Key Spec 后显示",
+          "stableLocator": "page.locator('label').filter({ hasText: 'Sign / Verify' })",
+          "priority": "high"
+        },
+        {
+          "section": "Form",
+          "name": "Usage Encrypt / Decrypt",
+          "role": "checkbox",
+          "label": "Encrypt / Decrypt",
+          "stableLocator": "page.locator('label').filter({ hasText: 'Encrypt / Decrypt' })",
+          "priority": "high"
+        },
+        {
+          "section": "Validity Period",
+          "name": "Radio Years",
+          "role": "radio",
+          "label": "Years",
+          "defaultChecked": true,
+          "stableLocator": "page.getByRole('radio', { name: 'Years' })",
+          "priority": "high"
+        },
+        {
+          "section": "Validity Period",
+          "name": "Radio Date",
+          "role": "radio",
+          "label": "Date",
+          "stableLocator": "page.getByRole('radio', { name: 'Date' })",
+          "priority": "high"
+        },
+        {
+          "section": "Validity Period",
+          "name": "Radio Unlimited",
+          "role": "radio",
+          "label": "Unlimited",
+          "stableLocator": "page.getByRole('radio', { name: 'Unlimited' })",
+          "priority": "high",
+          "note": "自注册免费版 Story 要求隐藏；SIT 当前账号可见"
+        },
+        {
+          "section": "Validity Period",
+          "name": "Years spinbutton",
+          "role": "spinbutton",
+          "label": "Validity Period",
+          "placeholder": "Please enter value",
+          "defaultValue": "25",
+          "stableLocator": "page.getByRole('spinbutton')",
+          "priority": "high"
+        },
+        {
+          "section": "Validity Period",
+          "name": "Validity range hint",
+          "role": "generic",
+          "text": "Now ~ 2051-06-15 23:59:59",
+          "stableLocator": "page.getByText(/Now ~/)",
+          "priority": "medium"
+        },
+        {
+          "section": "Footer",
+          "name": "Cancel",
+          "role": "button",
+          "text": "Cancel",
+          "stableLocator": "page.getByRole('button', { name: 'Cancel' })",
+          "priority": "high"
+        },
+        {
+          "section": "Footer",
+          "name": "Continue",
+          "role": "button",
+          "text": "Continue",
+          "stableLocator": "page.getByRole('button', { name: 'Continue' })",
+          "priority": "high",
+          "note": "Story 文案为 Next；SIT 实际为 Continue"
+        }
+      ],
+      "keySpecOptionsAsymmetric": [
+        "RSA-2048", "RSA-3072", "RSA-4096", "ECC-P256", "ECC-P384", "ECC-P521", "ECC-P256K", "EC_ED25519"
+      ]
+    },
+    "createKeyStep2": {
+      "url": "/key/create",
+      "step": "2/3 Key Source Setting",
+      "wizardStepLabel": "Generation Method",
+      "meterSphereModule": "/Cloud/KMS/Create Key/Generation Method",
+      "footerButtons": ["Back", "Skip", "Next"],
+      "elements": [
+        { "section": "Form", "name": "Generated by System", "role": "radio", "stableLocator": "page.getByRole('radio', { name: 'Generated by System' })", "priority": "high" },
+        { "section": "Form", "name": "Import Key Pair", "role": "radio", "stableLocator": "page.getByRole('radio', { name: 'Import Key Pair' })", "priority": "high" },
+        { "section": "Form", "name": "Import PK", "role": "radio", "stableLocator": "page.getByRole('radio', { name: 'Import PK' })", "priority": "high" },
+        { "section": "Form", "name": "BYOK AK/SK", "role": "radio", "stableLocator": "page.getByRole('radio', { name: 'BYOK AK/SK' })", "priority": "high" },
+        { "section": "Form", "name": "BYOK Account Role", "role": "radio", "stableLocator": "page.getByRole('radio', { name: 'BYOK Account Role' })", "priority": "high" },
+        { "section": "Footer", "name": "Back", "role": "button", "stableLocator": "page.getByRole('button', { name: 'Back' })", "priority": "high" },
+        { "section": "Footer", "name": "Skip", "role": "button", "stableLocator": "page.getByRole('button', { name: 'Skip' })", "priority": "high" },
+        { "section": "Footer", "name": "Next", "role": "button", "stableLocator": "page.getByRole('button', { name: 'Next' })", "priority": "high" }
+      ],
+      "validation": { "keySourceRequired": "keySource is required." }
+    },
+    "createKeyStep3": {
+      "url": "/key/create",
+      "step": "3/3 Permission",
+      "meterSphereModule": "/Cloud/KMS/Create Key/Permission",
+      "footerButtons": ["Complete"],
+      "elements": [
+        { "section": "Toolbar", "name": "Add", "role": "button", "stableLocator": "page.getByRole('button', { name: 'Add' })", "priority": "high" },
+        { "section": "Table", "name": "Column Email", "role": "columnheader", "stableLocator": "page.getByRole('columnheader', { name: 'Email' })", "priority": "high" },
+        { "section": "Table", "name": "Column Permission", "role": "columnheader", "stableLocator": "page.getByRole('columnheader', { name: 'Permission' })", "priority": "high" },
+        { "section": "Footer", "name": "Complete", "role": "button", "stableLocator": "page.getByRole('button', { name: 'Complete' })", "priority": "high" }
+      ],
+      "defaultPermissionRow": {
+        "email": "future.wei@snowballtech.com",
+        "role": "Admin",
+        "permissions": "Add, View, Unlock, Edit, Create Authorization, Lock, Delete"
+      },
+      "addPermissionModal": {
+        "title": "Assign User Permissions",
+        "elements": [
+          { "name": "Email Address", "placeholder": "Please Enter", "stableLocator": "page.getByPlaceholder('Please Enter')" },
+          { "name": "Assign Permissions", "stableLocator": "modal filter by heading Assign User Permissions" },
+          { "name": "Cancel", "stableLocator": "page.getByRole('button', { name: 'Cancel' })" },
+          { "name": "Confirm", "stableLocator": "page.getByRole('button', { name: 'Confirm' })" },
+          { "name": "Close", "stableLocator": "page.getByRole('button', { name: 'Close' })" }
+        ]
+      }
+    },
+    "keyDetail": {
+      "urlPattern": "/key/{keyId}",
+      "sampleUrl": "https://iot-admin-sit.snowballtech.com/key/2066511606979149826",
+      "meterSphereModule": "/Cloud/KMS/Key Detail",
+      "sampleKey": {
+        "name": "ScanStep23",
+        "kid": "KID-AR34c414c3f8",
+        "status": "Active",
+        "environment": "PROD",
+        "type": "Asymmetric",
+        "algorithm": "RSA-2048",
+        "expirationDate": "2051-06-15",
+        "validityHint": "25 years left"
+      },
+      "tabs": ["Overview", "Usage Count", "Permission", "Operation Log"],
+      "headerActions": ["Lock", "Download"],
+      "sections": {
+        "overview": {
+          "meterSphereModule": "/Cloud/KMS/Key Detail/Overview",
+          "heading": "Basic Info",
+          "fields": ["Name", "ID", "Storage", "Version", "Source", "Type", "Algorithm", "Admin", "Creation Time", "Usage", "Usage Count", "Last Usage", "Expiration Date"],
+          "elements": [
+            { "name": "Lock", "stableLocator": "page.getByRole('button', { name: 'Lock' })", "priority": "high" },
+            { "name": "Download", "stableLocator": "page.getByRole('button', { name: 'Download' })", "priority": "high" },
+            { "name": "Tab Overview", "stableLocator": "page.locator('.arco-tabs-tab').filter({ hasText: 'Overview' })", "priority": "high" },
+            { "name": "Basic Info collapse", "note": "折叠/展开，非编辑", "stableLocator": "page.locator('h6').filter({ hasText: 'Basic Info' }).locator('..').getByRole('button')", "priority": "medium", "fragile": true }
+          ]
+        },
+        "usageCount": {
+          "meterSphereModule": "/Cloud/KMS/Key Detail/Usage Count",
+          "panels": [
+            { "name": "Used by Product", "emptyState": "No associated products", "stableLocator": "page.getByRole('button', { name: /Used by Product/ })" },
+            { "name": "Used by User", "emptyState": "No associated users", "stableLocator": "page.getByRole('button', { name: /Used by User/ })" }
+          ]
+        },
+        "permission": {
+          "meterSphereModule": "/Cloud/KMS/Key Detail/Permission",
+          "toolbar": ["Add", "Filter", "Sort"],
+          "columns": ["Name", "Permission", "Status", "Operator", "Operation Time"],
+          "elements": [
+            { "name": "Add", "stableLocator": "page.getByRole('button', { name: 'Add' })", "priority": "high" }
+          ]
+        },
+        "operationLog": {
+          "meterSphereModule": "/Cloud/KMS/Key Detail/Operation Log",
+          "columns": ["Operation", "Operation Type", "Operation Time", "Operator Name", "Operator Email"],
+          "sampleRows": [
+            { "operation": "Save HSM Key: ScanStep23", "type": "Create-HSM", "time": "2026-06-15 21:22:24" },
+            { "operation": "Create key: ScanStep23", "type": "Create", "time": "2026-06-15 21:22:16" }
+          ]
+        }
+      }
+    }
+  }
+}

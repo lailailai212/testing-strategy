@@ -1,0 +1,18 @@
+{
+  "feature_slug": "sems-e1-s10-se-profile-lock-unlock",
+  "source": "MeterSphere 模块树截图 2026-08-11",
+  "default_module_path": "/Cloud/SEMS/SE-Profile-Detail",
+  "note": "本 Story 飞书 AC 仅定义详情页操作栏 Lock/Unlock；列表入口 Out of Scope。",
+  "paths": {
+    "SE Profile Detail / Lock Unlock": "/Cloud/SEMS/SE-Profile-Detail"
+  },
+  "sems_tree_ref": [
+    "/Cloud/SEMS",
+    "/Cloud/SEMS/SE-Profile-List-Operation",
+    "/Cloud/SEMS/SE-Profile-Detail-Tabs",
+    "/Cloud/SEMS/SE-Profile-List",
+    "/Cloud/SEMS/SE-Profile-Detail",
+    "/Cloud/SEMS/SCP11c Wrap API",
+    "/Cloud/SEMS/GP Script Parsing Spec"
+  ]
+}

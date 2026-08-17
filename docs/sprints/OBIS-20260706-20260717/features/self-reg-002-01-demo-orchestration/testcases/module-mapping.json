@@ -1,0 +1,7 @@
+{
+  "feature_slug": "self-reg-002-01-demo-orchestration",
+  "notes": "Demo 预设编排触发与验收统一挂 /Cloud/Login & Profile/Registration；资源列表核对在步骤中进入 Factory/KMS/Product。",
+  "module_paths": [
+    "/Cloud/Login & Profile/Registration"
+  ]
+}

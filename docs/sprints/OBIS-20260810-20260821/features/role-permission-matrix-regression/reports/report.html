@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>角色权限矩阵回归 — SIT 测试报告</title>
+<style>
+  body { font-family: system-ui, "Segoe UI", "PingFang SC", sans-serif; margin: 24px; background: #f8fafc; color: #0f172a; line-height: 1.55; }
+  h1 { margin-bottom: 4px; }
+  h2 { font-size: 1.12rem; margin: 0 0 12px; }
+  h3 { font-size: 0.98rem; margin: 16px 0 8px; }
+  .meta { color: #64748b; margin-bottom: 24px; font-size: 14px; }
+  .meta div { margin: 2px 0; }
+  .summary { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+  .summary div { background: #fff; padding: 14px 20px; border-radius: 8px; box-shadow: 0 1px 3px #0001; min-width: 88px; text-align: center; }
+  .summary strong { font-size: 1.5rem; display: block; }
+  .bugs-section { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; }
+  .bugs-section h2 { color: #b91c1c; }
+  .bugs-section ol { margin: 0; padding-left: 20px; }
+  .bugs-section li { margin: 10px 0; }
+  .case { background: #fff; margin-bottom: 20px; padding: 18px; border-radius: 8px; box-shadow: 0 1px 3px #0001; border-left: 4px solid #cbd5e1; }
+  .case.pass { border-left-color: #22c55e; }
+  .case.fail { border-left-color: #ef4444; }
+  .case.blocked { border-left-color: #f59e0b; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th, td { border: 1px solid #e2e8f0; padding: 8px; vertical-align: top; text-align: left; }
+  th { background: #f1f5f9; }
+  .badge { color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .badge.pass { background: #22c55e; }
+  .badge.fail { background: #ef4444; }
+  .badge.blocked { background: #f59e0b; }
+  .shot img { max-width: 100%; max-height: 420px; border: 1px solid #e2e8f0; border-radius: 4px; margin-top: 4px; }
+  .note { color: #64748b; font-size: 13px; margin-top: 8px; }
+  code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+  .warn { margin-top: 8px; padding: 10px 12px; background: #fff7ed; border-radius: 6px; color: #9a3412; font-size: 13px; }
+  .ok { margin-top: 8px; padding: 10px 12px; background: #f0fdf4; border-radius: 6px; color: #166534; font-size: 13px; }
+  a { color: #2563eb; }
+</style>
+</head>
+<body>
+
+<h1>OBIS 角色权限矩阵回归 — SIT 测试报告</h1>
+<div class="meta">
+  <div><strong>环境：</strong> SIT <a href="https://iot-admin-sit.snowballtech.com">https://iot-admin-sit.snowballtech.com</a></div>
+  <div><strong>账号：</strong> future.wei@snowballtech.com（OTP 登录，报告不写验证码）</div>
+  <div><strong>实际角色：</strong> 产品 <em>Test Product Negative</em> → <strong>Product Owner</strong>；工厂 <em>Cloud Factory 02</em> → <strong>Admin</strong>；工厂 <em>Factory Cloud 01</em> → <strong>Factory Manager</strong></div>
+  <div><strong>执行时间：</strong> 2026-08-13</div>
+  <div><strong>执行方式：</strong> Playwright MCP（有界面浏览器）</div>
+  <div><strong>用例来源：</strong> <code>docs/sprints/OBIS-20260810-20260821/features/role-permission-matrix-regression/testcases/role-permission-matrix-regression.md</code>（16 条）</div>
+  <div><strong>证据 PNG：</strong> <code>docs/execution/OBIS-20260810-20260821/evidence/role-permission-matrix-regression/</code></div>
+  <div class="warn"><strong>门禁说明：</strong>用户只提供一个账号。仅 Member / 仅 VM / 仅 BM / 仅 RM / 仅 PM 等单角色前置未满足的用例标 <strong>Blocked</strong>，未为凑前置改他人权限。🟡 改角色 / Add User / Transfer Confirm 均未落库；打开弹窗后均 Cancel。</div>
+</div>
+
+<div class="summary">
+  <div><strong>16</strong>总用例</div>
+  <div><strong>2</strong>通过</div>
+  <div><strong>4</strong>失败</div>
+  <div><strong>10</strong>阻塞</div>
+  <div><strong>4</strong>疑似缺陷</div>
+</div>
+
+<section class="bugs-section">
+  <h2>疑似缺陷（4）</h2>
+  <ol>
+    <li>
+      <strong>BUG-RPM-01 [P0] Edit Member Role 下拉缺少 Owner</strong><br>
+      产品 Member → ⋮ → Edit Role → Assign Role 可选：Product Manager、Version Manager、Batch Manager、Member（锁定）、Resource Manager。<strong>没有 Owner</strong>。AC-01 要求六种产品内角色均可赋予。<br>
+      产品：<code>Test Product Negative</code> / <code>2087023093035761665</code>，目标用户 <code>test_user4@future.com</code>。<br>
+      <div class="shot"><img src="gifs/bug-missing-owner-role.gif" alt="BUG-RPM-01 缺少 Owner"/></div>
+    </li>
+    <li>
+      <strong>BUG-RPM-02 [P0] Factory Add 只能加 Manager，且无 Edit User 切换 Admin/Manager</strong><br>
+      Cloud Factory 02（当前用户为 Admin）Member 的 Add 弹窗标题为 <strong>Add Factory Manager</strong>，仅 Email，<strong>无角色选择</strong>，无法通过 Add 赋予 Factory Admin。Admin 行菜单仅 <strong>Transfer Admin</strong>；Manager 行（Factory Cloud 01）仅 <strong>Remove</strong>。<strong>不存在 Edit User</strong>。与 AC-03「Add User 或 Edit User 分别设为 Admin 或 Manager」不符。<br>
+      <div class="shot"><img src="gifs/bug-add-manager-only.gif" alt="BUG-RPM-02 Add 只能加 Manager"/></div>
+    </li>
+    <li>
+      <strong>BUG-RPM-03 [P1] Factory Manager 在 Admin 行仍能看到 Transfer Admin</strong><br>
+      Factory Cloud 01 中当前用户 Role=<strong>Factory Manager</strong>。打开 <code>test_user modified</code>（Role=Admin）行菜单，出现 <strong>Transfer Admin</strong>（<code>arco-dropdown-option-disabled</code> 置灰）。AC-07 / 用例预期为 <strong>不显示</strong>，置灰仍算暴露入口。<br>
+      本人 Manager 行菜单只有 Remove，该项符合预期。<br>
+      <div class="shot"><img src="gifs/bug-manager-sees-transfer.gif" alt="BUG-RPM-03 Manager 可见 Transfer"/></div>
+    </li>
+    <li>
+      <strong>BUG-RPM-04 [P1] Factory 详情头栏 Admin 与 Member 列表不一致</strong><br>
+      Factory Cloud 01（<code>7830380587921411</code>）头栏 Admin 显示 <strong>Future Wei_modify 123</strong>；Member 列表同一用户为 <strong>Factory Manager</strong>，Admin 行是 <strong>test_user modified</strong>。工厂列表页 Admin 列也是 test_user modified。<br>
+      <div class="shot"><img src="gifs/bug-admin-header-mismatch.gif" alt="BUG-RPM-04 Admin 头栏不一致"/></div>
+    </li>
+  </ol>
+</section>
+
+<!-- TC01 -->
+<section class="case fail">
+  <h2>TC01 【Product-Member】【E2E】编辑产品内角色 - ⋮ 改为 Version Manager 后权限生效 <span class="badge fail">FAIL</span> <small>P0</small></h2>
+  <table>
+    <thead><tr><th>#</th><th>步骤</th><th>预期</th><th>实际</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>进入产品详情 → Member</td><td>Member 列表可见</td><td>Test Product Negative Member 列表 3 人：test_user2（Member +3）、test_user4（Member +1）、Future Wei（Product Owner）；有 Add</td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>2</td><td>打开目标用户行 ⋮，核对可选角色</td><td>Owner / Product Manager / Resource Manager / Version Manager / Batch Manager / Member</td><td>⋮ → Edit Role / Remove。Assign Role 仅 PM、VM、BM、Member（禁用必选）、RM。<strong>缺 Owner</strong></td><td><span class="badge fail">FAIL</span></td></tr>
+      <tr><td>3</td><td>改为 Version Manager 并保存</td><td>列表 Role 更新</td><td>未保存（无目标用户会话验证步骤 4；避免 🟡 改权限无法复位验证）</td><td><span class="badge blocked">BLOCKED</span></td></tr>
+      <tr><td>4</td><td>目标用户刷新后看 Create Version</td><td>可见 Create Version</td><td>仅有 future.wei 会话，无法用 test_user4 登录</td><td><span class="badge blocked">BLOCKED</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-RPM-01。test_user2 额外角色 hover：Product Manager + Version Manager + Batch Manager（Member +3）。</p>
+  <div class="shot"><img src="gifs/tc01-edit-role.gif" alt="TC01 Edit Role"/></div>
+</section>
+
+<!-- TC02 -->
+<section class="case blocked">
+  <h2>TC02 【Product-Member】【UI】无 Member 管理权限 - 不显示 Add 与 ⋮ 编辑 <span class="badge blocked">BLOCKED</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr><td>前置</td><td>仅 Member 账号登录</td><td>当前账号在该产品为 Product Owner，Add 与 ⋮ 均显示（符合 Owner，不符合本条前置）</td><td><span class="badge blocked">BLOCKED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="shot"><img src="gifs/blocked-owner-not-member.gif" alt="TC02 当前是 Owner"/></div>
+</section>
+
+<!-- TC03 -->
+<section class="case fail">
+  <h2>TC03 【Factory】【E2E】Add User - 可分别赋予 Factory Admin 与 Factory Manager <span class="badge fail">FAIL</span> <small>P0</small></h2>
+  <table>
+    <thead><tr><th>#</th><th>步骤</th><th>预期</th><th>实际</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>工厂详情 Member → Add User</td><td>Add User 可见可打开</td><td>Cloud Factory 02 Member 有 Add；弹窗标题为 <strong>Add Factory Manager</strong></td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>2</td><td>角色选 Factory Admin 并保存</td><td>保存后 Role=Factory Admin</td><td>弹窗仅 Email，<strong>无 Admin 选项</strong>；未保存</td><td><span class="badge fail">FAIL</span></td></tr>
+      <tr><td>3</td><td>再 Add，角色选 Factory Manager</td><td>Role=Factory Manager</td><td>Add 路径本身只面向 Manager，无法对照「两种角色可选」</td><td><span class="badge fail">FAIL</span></td></tr>
+      <tr><td>4</td><td>核对 Role 列 Admin ≠ Manager</td><td>两个不同 Role 值</td><td>列表侧已观察到 Admin vs Factory Manager 是不同值（Cloud Factory 02 Admin；Factory Cloud 01 同时有两种）。赋权路径仍失败</td><td><span class="badge fail">FAIL</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-RPM-02。弹窗已 Cancel，未加用户。</p>
+  <div class="shot"><img src="gifs/tc03-add-factory-manager.gif" alt="TC03 Add Factory Manager"/></div>
+</section>
+
+<!-- TC04 -->
+<section class="case fail">
+  <h2>TC04 【Factory】【E2E】Edit User - 在 Admin 与 Manager 之间切换 <span class="badge fail">FAIL</span> <small>P0</small></h2>
+  <table>
+    <tbody>
+      <tr><td>1</td><td>打开目标用户 Edit User</td><td>Edit User 可打开，角色可选 Admin 与 Manager</td><td>Cloud Factory 02 Admin 行仅 Transfer Admin；Factory Cloud 01 Manager 行仅 Remove。全程无 Edit User</td><td><span class="badge fail">FAIL</span></td></tr>
+      <tr><td>2–3</td><td>改为 Admin 并用目标会话看 Transfer</td><td>Role 变为 Admin 且可见 Transfer</td><td>无 Edit 入口，未改角色</td><td><span class="badge blocked">BLOCKED</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-RPM-02。Admin 唯一性似乎只能走 Transfer，与「Edit User 切换」AC 不符。</p>
+</section>
+
+<!-- TC05 -->
+<section class="case blocked">
+  <h2>TC05 【Factory】【UI】无工厂 Member 管理权限 - 不显示 Add User 与 Edit User <span class="badge blocked">BLOCKED</span> <small>P0</small></h2>
+  <p>用例允许「仅 Factory Manager 且现网不允许其加用户」或以只读账号对照，<strong>以现网为准</strong>。现网 Factory Manager（Factory Cloud 01）<strong>仍显示 Add</strong>，且行菜单有 Remove。缺少完全无工厂 Member 管理权的账号，不能把 Manager 有 Add 判成缺陷。</p>
+  <div class="shot"><img src="gifs/tc13-factory-manager-transfer.gif" alt="TC05 Manager 仍有 Add"/></div>
+</section>
+
+<!-- TC06 -->
+<section class="case blocked">
+  <h2>TC06 【Product-Overview】【UI】仅 Member - 不显示各写入口 <span class="badge blocked">BLOCKED</span> <small>P0</small></h2>
+  <p>前置要求产品内仅为 Member。当前为 Product Owner，Overview/Settings/Assets 写入口、Member Add/⋮ 均显示。证据见 TC07 GIF。</p>
+</section>
+
+<!-- TC07 -->
+<section class="case pass">
+  <h2>TC07 【Product-Overview】【E2E】仅 Owner - 四类写入口均可用 <span class="badge pass">PASS</span> <small>P0</small></h2>
+  <table>
+    <thead><tr><th>#</th><th>步骤</th><th>预期</th><th>实际</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Overview 编辑产品信息 / 打开设置</td><td>产品信息可编辑</td><td>产品名可点；Settings 页有 Product Name / Vendor / Max Volume 等与 Cancel、Save</td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>2</td><td>Assets 编辑/Add，确认可点后 Cancel</td><td>写入口显示且可操作</td><td>Chip Config → Edit → Add New Content / Cancel / Save；Keys/Certificates 有 Add。已 Cancel 未保存</td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>3</td><td>Version 打开 Create Version</td><td>显示且可进入创建</td><td><strong>Create 按钮显示</strong>，因 Chip Config 必填为空而 <strong>disabled</strong>；Settings 页 toast：「The required fields for the assets are empty…」。属数据前置，非无权限隐藏</td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>4</td><td>Batch 打开 Create Batch</td><td>入口可用</td><td>Create 显示且同样因无 Version/Assets disabled</td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>5</td><td>Member 打开 ⋮ 编辑角色</td><td>⋮ 显示</td><td>可见 Edit Role（见 TC01）</td><td><span class="badge pass">PASS</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">产品 <code>Test Product Negative</code> Chip: -，Active Key/Cert=0。完整走完创建向导需另选 Assets 齐全的产品。</p>
+  <div class="shot"><img src="gifs/tc07-owner-write-entries.gif" alt="TC07 Owner 写入口"/></div>
+</section>
+
+<!-- TC08 -->
+<section class="case blocked">
+  <h2>TC08 【Product-Version】【E2E】仅 Version Manager <span class="badge blocked">BLOCKED</span> <small>P0</small></h2>
+  <p>无「仅 Version Manager」会话。test_user2 同时有 VM+BM+PM+Member，且无法用该邮箱登录。</p>
+</section>
+
+<section class="case blocked">
+  <h2>TC09 【Product-Batch】【E2E】仅 Batch Manager <span class="badge blocked">BLOCKED</span> <small>P0</small></h2>
+  <p>无仅 Batch Manager 会话。</p>
+</section>
+
+<section class="case blocked">
+  <h2>TC10 【Product-Assets】【E2E】仅 Resource Manager <span class="badge blocked">BLOCKED</span> <small>P0</small></h2>
+  <p>test_user4 为 Member + Resource Manager，但仍无其登录凭证；当前账号是 Owner。</p>
+</section>
+
+<section class="case blocked">
+  <h2>TC11 【Product-Overview】【UI】仅 Product Manager <span class="badge blocked">BLOCKED</span> <small>P1</small></h2>
+  <p>无仅 Product Manager 会话。</p>
+</section>
+
+<!-- TC12 -->
+<section class="case pass">
+  <h2>TC12 【Factory】【UI】Factory Admin - 可见 Transfer Admin <span class="badge pass">PASS</span> <small>P0</small></h2>
+  <table>
+    <thead><tr><th>#</th><th>步骤</th><th>预期</th><th>实际</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>进入工厂 Member</td><td>Member 可见</td><td>Cloud Factory 02（ID 6116540249038875），本人 Role=Admin</td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>2</td><td>打开本人 Admin 行菜单</td><td>含 Transfer Admin</td><td>菜单仅一项 Transfer Admin</td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>3</td><td>点击 Transfer Admin</td><td>弹窗可打开（不强制移交）</td><td>「Transfer Factory Admin / Select Factory Admin / Cancel / Confirm」已打开后 <strong>Cancel</strong></td><td><span class="badge pass">PASS</span></td></tr>
+    </tbody>
+  </table>
+  <div class="ok">未点 Confirm，Admin 身份未变。</div>
+  <div class="shot"><img src="gifs/tc12-factory-admin-transfer.gif" alt="TC12 Transfer Admin"/></div>
+</section>
+
+<!-- TC13 -->
+<section class="case fail">
+  <h2>TC13 【Factory】【UI】Factory Manager - 不显示 Transfer Admin <span class="badge fail">FAIL</span> <small>P0</small></h2>
+  <table>
+    <thead><tr><th>#</th><th>步骤</th><th>预期</th><th>实际</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>进入工厂 Member</td><td>Member 可打开</td><td>Factory Cloud 01，本人 Role=<strong>Factory Manager</strong></td><td><span class="badge pass">PASS</span></td></tr>
+      <tr><td>2</td><td>打开本人行及 Admin 行菜单</td><td>不显示 Transfer Admin</td><td>本人行：仅 Remove。Admin 行（test_user modified）：<strong>显示 Transfer Admin（disabled）</strong></td><td><span class="badge fail">FAIL</span></td></tr>
+      <tr><td>3</td><td>全页搜索 Transfer Admin</td><td>不显示</td><td>Admin 行菜单可见该文案</td><td><span class="badge fail">FAIL</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">关联 BUG-RPM-03、BUG-RPM-04。</p>
+  <div class="shot"><img src="gifs/tc13-factory-manager-transfer.gif" alt="TC13 Manager Transfer"/></div>
+</section>
+
+<!-- TC14 -->
+<section class="case blocked">
+  <h2>TC14 【Product-Version】【Functional】无权限绕过 - 创建 Version/Batch 或改 Member 被拒绝 <span class="badge blocked">BLOCKED</span> <small>P1</small></h2>
+  <p>需要仅 Member 会话抓包/直链。当前 Owner 有写权限，重放会成功，不能当拒绝证据。未改数据、未打无权限接口。</p>
+</section>
+
+<section class="case blocked">
+  <h2>TC15 【Factory】【Functional】无权限绕过 - Factory Add User 被拒绝 <span class="badge blocked">BLOCKED</span> <small>P1</small></h2>
+  <p>当前账号在 Cloud Factory 02 为 Admin、在 Factory Cloud 01 为 Manager（现网 Manager 仍有 Add）。缺少无工厂 Member 管理权的会话，未重放加用户接口。</p>
+</section>
+
+<section class="case blocked">
+  <h2>TC16 【Product-Member】【Functional】多角色叠加 - 写入口取并集 <span class="badge blocked">BLOCKED</span> <small>P2</small></h2>
+  <p>test_user2@future.com 在 Test Product Negative 同时拥有 Member + Product Manager + Version Manager + Batch Manager（hover +3 已记录），但无法用该用户登录观察 Create Version ∩ Create Batch。并集规则仍待产品确认。</p>
+  <div class="shot"><img src="gifs/blocked-owner-not-member.gif" alt="TC16 仅观察到他人多角色标签"/></div>
+</section>
+
+<h2>账号与资源快照（不含凭证）</h2>
+<table>
+  <thead><tr><th>对象</th><th>ID / 标识</th><th>本账号角色</th><th>备注</th></tr></thead>
+  <tbody>
+    <tr><td>产品 Test Product Negative</td><td>2087023093035761665</td><td>Product Owner</td><td>Assets 空；Create Version/Batch disabled</td></tr>
+    <tr><td>工厂 Cloud Factory 02</td><td>6116540249038875</td><td>Admin</td><td>Member 仅本人；用于 TC12</td></tr>
+    <tr><td>工厂 Factory Cloud 01</td><td>7830380587921411</td><td>Factory Manager</td><td>Admin=test_user modified；头栏显示不一致</td></tr>
+    <tr><td>工厂列表第三家</td><td>Local Factory 1 / 4755050843809143</td><td>未打开 Member</td><td>列表 Admin=test_user modified，Unregistered</td></tr>
+  </tbody>
+</table>
+
+<p class="note">侧栏抽样（本账号）：Product / KMS / PKI / Factory / U-Safe / Device History / Account / Group 均可见。系统层完整菜单矩阵不在本包范围。</p>
+
+<h2>建议下一步</h2>
+<ul>
+  <li>补仅 Member / 仅 VM / 仅 BM / 仅 RM / 仅 PM 账号后重跑 TC02、TC06、TC08–11、TC14–16。</li>
+  <li>产品确认：Owner 是否不允许通过 Edit Role 赋予（若是设计，回写 AC-01）；Factory Admin 是否只能 Transfer、Add 是否只加 Manager（若是设计，回写 AC-03/04）。</li>
+  <li>BUG-RPM-03：Manager 对 Admin 行应隐藏 Transfer，而不是 disabled。</li>
+  <li>BUG-RPM-04：头栏 Admin 应与 Member Role=Admin 同一人。</li>
+</ul>
+
+</body>
+</html>

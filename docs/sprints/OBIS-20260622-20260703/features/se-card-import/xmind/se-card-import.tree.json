@@ -1,0 +1,176 @@
+{
+  "sheet_title": "【SE卡片】内容导入 测试点",
+  "root_title": "【SE卡片】内容导入",
+  "tree": [
+    {
+      "title": "Assets",
+      "children": [
+        {
+          "title": "SE 卡片区域与添加按钮",
+          "children": [
+            {
+              "title": "Secure Element Module 的 Assets 页 **SE 卡片区域**右上方存在「**添加**」按钮",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "当前 Module **尚未导入 SE** 时，「添加」按钮**可点击**（非置灰）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "点击「添加」后弹出 **SE 下拉选择框**（非跳转至 SEMS 外部页）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "已成功导入 **1 个 SE** 后，「添加」按钮**置灰**，无法再次点击",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "删除已导入 SE 卡片（Story #653 AC-08）后，「添加」按钮是否**恢复可点击**",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "无 create authorization 权限的用户，「添加」按钮**隐藏或置灰**（与 AC-05 筛选联动）",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SE 下拉选择框",
+      "children": [
+        {
+          "title": "单选与导入",
+          "children": [
+            {
+              "title": "下拉选择框为**单选**模式，同一时刻仅可选中 **1 个** SE",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "选中并确认导入后，Assets SE 卡片区域展示**该 SE** 卡片（与 Story #653 展示字段联动）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "导入成功后下拉关闭，页面仅存在 **1 张** SE 卡片，「添加」按钮置灰",
+              "source": "AC-02, AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "选中 SE 后的**确认交互**：点击选项即导入 / 需额外 Confirm 按钮（Product Doc 未述）",
+              "source": "需求描述",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "打开下拉后点击外部区域或 Cancel，**不导入** SE，「添加」按钮仍可点击",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "下拉列表为空时，展示**空态提示**（如无可用 SE），且不创建 SE 卡片",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SEMS 列表",
+      "children": [
+        {
+          "title": "实时查询",
+          "children": [
+            {
+              "title": "每次点击「添加」打开下拉时，PW **调用 SEMS 接口**拉取最新可用列表（非本地缓存静态数据）",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "SEMS 侧**新增**符合条件的 SE Profile 后，再次打开下拉，新 SE **出现在**选项中",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "SEMS 侧 SE Profile **变更或移除**后，再次打开下拉，列表与 SEMS 当前状态**一致**",
+              "source": "AC-04",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "筛选条件（AC-05）",
+          "children": [
+            {
+              "title": "**Test** PV 环境下，下拉仅展示与 **Test** 环境匹配的 SE Profile",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "**Production** PV 环境下，下拉仅展示与 **Production** 环境匹配的 SE Profile",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "SEMS 中状态为 **非 Active** 的 SE Profile **不出现在**下拉选项",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "操作者**无 create authorization** 时，对应 SE Profile **不出现在**下拉（或无法完成导入）",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "同时满足 **PV 环境 + Active + create authorization** 的 SE Profile **出现在**下拉",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "仅满足部分条件（如 Active 但环境不匹配）的 SE **均被排除**",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "选项展示字段",
+          "children": [
+            {
+              "title": "下拉每一项同时展示 **SE name** 与 **SE id**",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "下拉中 SE name、SE id 与 SEMS 侧对应 SE Profile **一致**",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "导入成功后，Assets SE 卡片 **name** 与下拉所选 **SE name** 一致，**SE profile ID** 与所选 **SE id** 一致",
+              "source": "AC-06, AC-02",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "UI 设计对齐",
+      "children": [
+        {
+          "title": "「添加」按钮位置、下拉样式与 Figma 设计稿一致（[node-id=12021-163058](https://www.figma.com/design/GomFi4IUgj6MTO7S73h26Q/OBIS-Planning%E8%AE%BE%E8%AE%A1%E7%A8%BF%E6%96%87%E4%BB%B6?node-id=12021-163058)）",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

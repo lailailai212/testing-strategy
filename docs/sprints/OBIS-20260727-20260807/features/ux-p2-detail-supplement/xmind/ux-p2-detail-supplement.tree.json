@@ -1,0 +1,301 @@
+{
+  "sheet_title": "【体验优化P2】细节补充 测试点",
+  "root_title": "【体验优化P2】细节补充",
+  "tree": [
+    {
+      "title": "Account",
+      "children": [
+        {
+          "title": "Account 列表",
+          "children": [
+            {
+              "title": "User Role 出现 `+n` 时，hover 小窗展示被折叠的全部 Role",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Account List、Group List：固定三列约 280/160/64；大屏中间列按比例均分剩余宽度",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "操作本人行：Edit 可用；打开抽屉后无 User Role、Notes",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "本人编辑可保存成功后列表/详情展示更新（非 Role/Notes 字段）",
+              "source": "QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "非本人行：仅具备 System Admin role 的管理员可 Edit，其余人 Edit 置灰；管理员编辑他人时表单仍可见 User Role、Notes",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Account（SNB）列表",
+          "children": [
+            {
+              "title": "操作本人行：Edit 可用；抽屉隐藏 User Role、Notes",
+              "source": "AC-06",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "Account 详情",
+          "children": [
+            {
+              "title": "Role 出现 `+n` 时，hover 小窗展示全部 Role",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "本人：Edit icon 可用；弹窗隐藏 User Role、Notes；Email 等其余字段逻辑不变",
+              "source": "AC-06",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "Profile",
+          "children": [
+            {
+              "title": "本人：Edit icon 可用；弹窗隐藏 User Role、Notes",
+              "source": "AC-06",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Group",
+      "children": [
+        {
+          "title": "Group 详情 — Linked Product",
+          "children": [
+            {
+              "title": "Role 列（如 `Member +2`）hover `+n` 展示其余角色全文",
+              "source": "AC-01",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Product",
+      "children": [
+        {
+          "title": "Product 列表",
+          "children": [
+            {
+              "title": "固定三列约 280/160/64；大屏中间列按比例均分剩余宽度",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Module 列：首 Tag + `+n`；hover 浮层标题 Module :，Tag 列出全部溢出项，过多可滚动",
+              "source": "AC-01, 需求描述",
+              "priority": "P1"
+            },
+            {
+              "title": "Version 列展示 Prod 环境下最新一个版本文案（有 Prod Version 时）",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "仅存在 Test Version、或 Test 比 Prod 更新时，列表仍只展示 Prod 最新 Version（不取 Test）",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "切换/筛选 Module 相关展示时，Version 列不随 Module 联动改变",
+              "source": "AC-07",
+              "priority": "P0"
+            },
+            {
+              "title": "无 Prod Version 时，Version 列展示 `-`",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Product 详情 — Tab 显隐",
+          "children": [
+            {
+              "title": "用户无 Vulnerability Tab Page 权限时，不展示 Vulnerability Tab",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "用户无 OTA Tab Page 权限时，不展示 OTA Tab",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "用户同时拥有两权限时，两 Tab 均可见且可进入",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "权限变更后重新登录/刷新，Tab 显隐与权限一致",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "KMS / PKI",
+      "children": [
+        {
+          "title": "KMS 列表",
+          "children": [
+            {
+              "title": "KMS List、PKI List：固定三列约 280/160/64；大屏中间列按比例均分剩余宽度",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Usage Count 为普通文字，无图标与边框",
+              "source": "AC-05",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "PKI 列表",
+          "children": [
+            {
+              "title": "Issued Count（含树展开至有值节点）为普通文字，无图标与边框",
+              "source": "AC-05",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "其他大列表",
+      "children": [
+        {
+          "title": "Factory / U-safe / Device History / DAC Report：固定三列约 280/160/64；大屏中间列按比例均分剩余宽度（抽样）",
+          "source": "AC-04",
+          "priority": "P1"
+        },
+        {
+          "title": "小屏：固定三列保持宽度不被挤占，出现横向滚动可查看中间列（以 Product List 为主路径验收）",
+          "source": "AC-04",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "全局交互",
+      "children": [
+        {
+          "title": "成功 Toast",
+          "children": [
+            {
+              "title": "中文环境任选一成功操作：Toast 文案为「操作成功」，绿勾 + 浅绿底",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "英文环境同一类成功操作：Toast 文案为「Operation Successful」（非 Operation success）",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "至少再抽测 2 个不同模块成功操作，Toast 文案与样式一致",
+              "source": "AC-02, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "需求约定有特殊文案的成功提示不受本 AC 强制覆盖（按各 Story 例外）",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        },
+        {
+          "title": "勾选框主题色",
+          "children": [
+            {
+              "title": "Filter 内 Checkbox 勾选态为主题色（对照 Figma node 15959-188662）",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "表单 / 下拉相关 Checkbox 勾选态为主题色，标签文案不变",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "至少再抽测 1 处非 Filter 勾选（如 Role 权限树），勾选态为主题色",
+              "source": "AC-03, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "未勾选态与禁用态不误用勾选主题色（待确认是否含 Radio/Switch）",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        },
+        {
+          "title": "+n hover 边界",
+          "children": [
+            {
+              "title": "仅 1 个值无 `+n` 时不出现 hover 溢出窗；恰好溢出边界时 `+n` 与小窗内容正确",
+              "source": "AC-01, QA扩展",
+              "priority": "P1"
+            },
+            {
+              "title": "中英文环境下 `+n` hover 小窗均可打开且内容完整",
+              "source": "QA扩展",
+              "priority": "P2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Role 权限",
+      "children": [
+        {
+          "title": "权限树配置",
+          "children": [
+            {
+              "title": "出现节点 Vulnerability Tab Page / 漏洞 Tab 页面、OTA Tab Page / OTA Tab 页面，可勾选配置",
+              "source": "AC-08",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "租户默认配置",
+          "children": [
+            {
+              "title": "会上线租户：雪球超级管理员、雪球租户数据管理员、System Manager、Product Manager 默认/交付后具备上述两权限",
+              "source": "AC-08",
+              "priority": "P0"
+            },
+            {
+              "title": "不上线租户（如宜家及其关联租户）：所有 Role 均不配置上述两权限；对应用户看不到两 Tab",
+              "source": "AC-08",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

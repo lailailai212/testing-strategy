@@ -1,0 +1,17 @@
+{
+  "feature_slug": "sems-e1-s08-se-profile-archive",
+  "source": "MeterSphere 模块树 2026-08-11",
+  "default_module_path": "/Cloud/SEMS/SE-Profile-Detail",
+  "note": "详情归档用 SE-Profile-Detail；列表归档用 SE-Profile-List。",
+  "paths": {
+    "SE Profile Detail / Archive": "/Cloud/SEMS/SE-Profile-Detail",
+    "SE Profile List / Archive": "/Cloud/SEMS/SE-Profile-List"
+  },
+  "sems_tree_ref": [
+    "/Cloud/SEMS",
+    "/Cloud/SEMS/SE-Profile-List-Operation",
+    "/Cloud/SEMS/SE-Profile-Detail-Tabs",
+    "/Cloud/SEMS/SE-Profile-List",
+    "/Cloud/SEMS/SE-Profile-Detail"
+  ]
+}

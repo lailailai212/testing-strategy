@@ -1,0 +1,156 @@
+{
+  "sheet_title": "【体验优化P2】Audit功能统一 测试点",
+  "root_title": "【体验优化P2】Audit功能统一",
+  "tree": [
+    {
+      "title": "Group Audit（基准）",
+      "children": [
+        {
+          "title": "列表展示",
+          "children": [
+            {
+              "title": "默认列：Operator、Organization、Operation Type、Operation Time；无默认展示 Operation Details",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Operator 展示头像+Name+邮箱 icon；hover 出完整邮箱与复制，复制成功",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Organization 展示操作人所属租户简称",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Operation Time 为年月日时分秒；单元格溢出时可 hover 见全文",
+              "source": "AC-01",
+              "priority": "P0"
+            }
+          ]
+        },
+        {
+          "title": "Filter",
+          "children": [
+            {
+              "title": "含 Operator Name / Email / Organization 输入框（Placeholder 正确）与 Operation Time 范围",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "按时间范围筛选：起日按 00:00:00、止日按 23:59:59 生效",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "按姓名/邮箱/组织输入可筛出匹配行；无匹配时空态合理",
+              "source": "AC-02",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Columns",
+          "children": [
+            {
+              "title": "Operator、Operation Type 不可隐藏、不可拖拽换序",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "开启 Operation Details 后出现在 Operation Type 后；内容为原 Operation 长文案格式",
+              "source": "AC-03",
+              "priority": "P0"
+            },
+            {
+              "title": "可隐藏/显示 Organization、Operation Time；关闭后恢复默认可见集",
+              "source": "AC-03",
+              "priority": "P1"
+            }
+          ]
+        },
+        {
+          "title": "Refresh / Sort",
+          "children": [
+            {
+              "title": "Refresh 刷新列表数据；默认 Sort 按 Operation Time 倒序",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "切换为正序后列表按时间升序；无其它 Sort 维度可选",
+              "source": "AC-04",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Account / Profile Audit",
+      "children": [
+        {
+          "title": "Account 详情 Audit：默认列、Operator hover、Organization、Filter/Columns/Sort 与 Group 一致",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "Profile Audit：同上与 Group 一致",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "Account 与 Profile 列配置/筛选行为一致（是否同组件待确认，验收结果一致即可）",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "KMS Audit",
+      "children": [
+        {
+          "title": "默认列与 Columns/Sort/Refresh 同 Group",
+          "source": "AC-05, AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "点击列表上方 Filter：面板在 Organization 后有 Operation Type 筛选项",
+          "source": "AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "使用 Operation Type 筛选后列表仅保留匹配类型（控件细节待确认，以可筛为准）",
+          "source": "AC-06",
+          "priority": "P0"
+        },
+        {
+          "title": "开启 Operation Details 可见且默认隐藏",
+          "source": "AC-01",
+          "priority": "P1"
+        }
+      ]
+    },
+    {
+      "title": "PKI / Product Audit",
+      "children": [
+        {
+          "title": "PKI Audit：默认列、Filter（无额外 Operation Type）、Columns、Sort 同 Group",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "Product Audit：同上；Organization 列与基准一致（含 Operator hover、Details 默认隐藏）",
+          "source": "AC-05",
+          "priority": "P0"
+        },
+        {
+          "title": "Product 不额外出现仅 KMS 才有的 Filter Operation Type",
+          "source": "QA扩展",
+          "priority": "P1"
+        }
+      ]
+    }
+  ]
+}

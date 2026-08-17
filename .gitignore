@@ -29,6 +29,21 @@ Desktop.ini
 # Local temp / backup
 *.bak
 *.tmp
+*.tmp.xlsx
+~$*.xlsx
+.tmp/
+.playwright-mcp/
 docs/_test_gen.xmind
 docs/_xmind_build/
 docs/_xmind_inspect/
+
+# PKI test fixtures (private keys only; PEM may be committed as sample)
+scripts/pki/fixtures/*.key
+
+# Local env & credentials — never commit (use config/env.example.yaml as template)
+config/env.local.*
+config/*.local.yaml
+config/*.local.yml
+.env
+.env.*
+!.env.example

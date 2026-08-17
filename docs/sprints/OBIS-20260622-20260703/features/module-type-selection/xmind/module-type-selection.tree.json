@@ -1,0 +1,231 @@
+{
+  "sheet_title": "【卡片编辑】选择module类型 测试点",
+  "root_title": "【卡片编辑】选择module类型",
+  "tree": [
+    {
+      "title": "Assets",
+      "children": [
+        {
+          "title": "Add Module 弹框",
+          "children": [
+            {
+              "title": "Assets Tab → Module 选择器旁 **Add**，弹出 **Add Module** 对话框（标题、副标题、Cancel / Confirm）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "弹框含 **Name**（必填 `*`）与 **Module Type**（必填 `*`，Radio 单选）",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "Module Type 枚举：**Matter** / **Secure Element** / **Other**",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "打开弹框时 **Matter** 默认选中",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "**Matter** 选中时 Section 展示 **8** 张卡片预览，均为 **Already visible**：Firmware、Certificates、Matter Config、Programming Station Script、Keys、Chip Config、Factory Data、General File",
+              "source": "AC-01",
+              "priority": "P0"
+            },
+            {
+              "title": "切换 **Secure Element** 后 Section 预览更新为 SE 类型默认卡片（预期含 SE、脚本、General File；具体 UI 待补截图）",
+              "source": "AC-01",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "切换 **Other** 后 Section 预览更新为 Other 默认 **7** 张卡片（**不含 Matter Config**；具体 UI 待补截图）",
+              "source": "AC-01",
+              "priority": "P1 / 待确认"
+            },
+            {
+              "title": "填写 Name + 选择 Module Type 后 **Confirm**，Module 创建成功并在 Module 选择器中可选",
+              "source": "需求描述",
+              "priority": "P0"
+            },
+            {
+              "title": "**Cancel** 或右上角 **X** 关闭弹框，不创建 Module",
+              "source": "QA扩展",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Module",
+      "children": [
+        {
+          "title": "名称编辑",
+          "children": [
+            {
+              "title": "Module 选择器 / 模块区域提供 **编辑**入口",
+              "source": "AC-02",
+              "priority": "P0"
+            },
+            {
+              "title": "点击编辑后可修改 Module **名称**并保存；保存后名称展示更新",
+              "source": "AC-02",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "创建产品",
+      "children": [
+        {
+          "title": "默认 Module",
+          "children": [
+            {
+              "title": "**新建 Product** 后，默认存在 **Matter** 类型 Module（Module Type = Matter）",
+              "source": "AC-03",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Matter Module",
+      "children": [
+        {
+          "title": "默认卡片与不可删除",
+          "children": [
+            {
+              "title": "新建 **Matter** Module 并进入 Assets，默认展示 **8** 张内置卡片",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "8 张卡片自上而下顺序：Chip Config → Keys → Certificate → Firmware → Matter Config → Factory Data → General File → PS Software Package",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Matter Module 下上述 **8** 张卡片均为模板 **不可删除项**：删除操作 **置灰**或不可用（无引用 / 未进版本前提下仍不可删）",
+              "source": "AC-04",
+              "priority": "P0"
+            },
+            {
+              "title": "Add Module 弹框 Section 预览卡片与创建后 Assets 实际卡片 **一一对应**（弹框 **Certificates** ↔ Assets **Certificate**；**Programming Station Script** ↔ **PS Software Package**）",
+              "source": "需求描述",
+              "priority": "P1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Secure Element Module",
+      "children": [
+        {
+          "title": "默认卡片、不可删除与 Version 必填",
+          "children": [
+            {
+              "title": "新建 **Secure Element** Module，Assets 默认展示：**SE**、**PS Software Package**、**General File**（共 3 张）",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "**SE** 卡片为模板 **不可删除项**：删除操作置灰或不可用",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "SE Module 下 **PS Software Package**、**General File** **非**模板不可删除项（在无引用 / 未进版本等前提下 **可删除**，具体删除交互见 Story #602）",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "SE 卡片 **数据未填写 / 不充分** 时，创建 Product **Version** 该 Module **不出现在**可选 Module 列表中",
+              "source": "AC-05",
+              "priority": "P0"
+            },
+            {
+              "title": "SE 卡片数据 **填写完整** 后，创建 Version 时该 Module **出现在**可选 Module 列表中",
+              "source": "AC-05",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Other Module",
+      "children": [
+        {
+          "title": "默认卡片与 Version 校验",
+          "children": [
+            {
+              "title": "新建 **Other** Module，Assets 默认展示 **7** 张内置卡片，**不含 Matter Config**",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "7 张卡片为：Chip Config、Keys、Certificate、Firmware、Factory Data、General File、PS Software Package",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "Other Module **无**模板不可删除项：各默认卡片在无引用 / 未进版本等前提下 **可删除**（删除流程见 Story #602）",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**chip config** 数据 **未填写 / 不充分** 时，创建 Version 该 Other Module **不出现在**可选 Module 列表中",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "**chip config** 填写完整、且 **未添加** Matter Config 卡片时，创建 Version 该 Module **可出现在**可选 Module 列表中",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "Other Module 通过 Story #602 **手动加回 Matter Config** 卡片后，若 matter 数据 **未填写 / 不充分**，创建 Version 该 Module **不出现在**可选 Module 列表中",
+              "source": "AC-06",
+              "priority": "P0"
+            },
+            {
+              "title": "已加回 Matter Config 且 **chip config + matter 均填写完整** 时，创建 Version 该 Module **出现在**可选 Module 列表中",
+              "source": "AC-06",
+              "priority": "P0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "引用保护（跨 Module Type）",
+      "children": [
+        {
+          "title": "**Matter / SE / Other** 任一 Module 下，卡片内 **密钥或证书已被引用** 时，该卡片删除操作 **置灰**，无法删除",
+          "source": "AC-07",
+          "priority": "P0"
+        },
+        {
+          "title": "取消引用后，若该卡片 **非**模板不可删除项且未满足 Story #602 其他删除限制，删除操作 **恢复可用**",
+          "source": "AC-07",
+          "priority": "P0"
+        }
+      ]
+    },
+    {
+      "title": "UI 设计对齐",
+      "children": [
+        {
+          "title": "Add Module 弹框、Module Type 控件布局与 [Figma node-id=11874-168328](https://www.figma.com/design/GomFi4IUgj6MTO7S73h26Q/OBIS-Planning%E8%AE%BE%E8%AE%A1%E7%A8%BF%E6%96%87%E4%BB%B6?node-id=11874-168328) 一致",
+          "source": "需求描述",
+          "priority": "P2"
+        }
+      ]
+    }
+  ]
+}

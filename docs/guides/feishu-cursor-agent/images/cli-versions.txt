@@ -1,0 +1,5 @@
+﻿PS> agent --version
+2026.08.04-aaa8809
+
+PS> cc-connect --version
+cc-connect v1.4.1
