@@ -1,0 +1,1268 @@
+{
+  "source": "MeterSphere 用例模块树（页面 DOM 快照，2026-06-11，全量展开；2026-08-11 增补 /Cloud/SEMS 子树）",
+  "path_format": "以 / 开头；大小写、空格、&、中英文、连字符均敏感，须与 MeterSphere 完全一致",
+  "hierarchy_rules": [
+    "level 0：项目根模块（parentid=NONE）",
+    "level N：第 N 层子模块",
+    "未规划用例：系统默认节点，不建议新业务挂载"
+  ],
+  "coverage_note": "自 MeterSphere 页面 expandall=true 快照解析，含 Cloud/Edge/Client/Super Admin Platform 全展开子模块。",
+  "valid_paths": [
+    "/未规划用例",
+    "/Cloud",
+    "/Cloud/Login & Profile",
+    "/Cloud/Login & Profile/Login",
+    "/Cloud/Login & Profile/My Profile",
+    "/Cloud/Login & Profile/Registration",
+    "/Cloud/Product",
+    "/Cloud/Product/Product List",
+    "/Cloud/Product/Product List/Version",
+    "/Cloud/Product/Product List/Module",
+    "/Cloud/Product/Header",
+    "/Cloud/Product/Header/Settings",
+    "/Cloud/Product/Overview",
+    "/Cloud/Product/Assets",
+    "/Cloud/Product/Version",
+    "/Cloud/Product/Version/Create",
+    "/Cloud/Product/Version/List",
+    "/Cloud/Product/Batch",
+    "/Cloud/Product/Batch/Detail",
+    "/Cloud/Product/Batch/Create",
+    "/Cloud/Product/Batch/List",
+    "/Cloud/Product/Vulnerability & SBOM",
+    "/Cloud/Product/Vulnerability & SBOM/Vulnerability",
+    "/Cloud/Product/Vulnerability & SBOM/SBOM",
+    "/Cloud/Product/OTA",
+    "/Cloud/Product/Device",
+    "/Cloud/Product/Device/List",
+    "/Cloud/Product/Device/Profile",
+    "/Cloud/Product/Device/Logs",
+    "/Cloud/Product/Member",
+    "/Cloud/KMS",
+    "/Cloud/KMS/Create Key",
+    "/Cloud/KMS/Create Key/Basic",
+    "/Cloud/KMS/Create Key/Generation Method",
+    "/Cloud/KMS/Create Key/Permission",
+    "/Cloud/KMS/Key Detail",
+    "/Cloud/KMS/Key Detail/Overview",
+    "/Cloud/KMS/Key Detail/Usage Count",
+    "/Cloud/KMS/Key Detail/Usage Count/Product",
+    "/Cloud/KMS/Key Detail/Usage Count/User",
+    "/Cloud/KMS/Key Detail/Permission",
+    "/Cloud/KMS/Key Detail/Operation Log",
+    "/Cloud/KMS/Key List",
+    "/Cloud/PKI",
+    "/Cloud/PKI/PKI List",
+    "/Cloud/PKI/Google Cast",
+    "/Cloud/PKI/Cert & Template Detail",
+    "/Cloud/PKI/Cert & Template Detail/Navigation Bar",
+    "/Cloud/PKI/Cert & Template Detail/Overview",
+    "/Cloud/PKI/Cert & Template Detail/Usage Count",
+    "/Cloud/PKI/Cert & Template Detail/Usage Count/User",
+    "/Cloud/PKI/Cert & Template Detail/Usage Count/Usage",
+    "/Cloud/PKI/Cert & Template Detail/Usage Count/Usage/Product",
+    "/Cloud/PKI/Cert & Template Detail/Usage Count/Usage/User",
+    "/Cloud/PKI/Cert & Template Detail/Usage Count/Product",
+    "/Cloud/PKI/Cert & Template Detail/Verification Service",
+    "/Cloud/PKI/Cert & Template Detail/End Entity Cert List",
+    "/Cloud/PKI/Cert & Template Detail/Audit",
+    "/Cloud/PKI/Create Certificate",
+    "/Cloud/PKI/Create Certificate/Step1 Basics",
+    "/Cloud/PKI/Create Certificate/Step2 Certificate Profile",
+    "/Cloud/PKI/Create Certificate/Step3 Permission",
+    "/Cloud/PKI/CSR Configuration",
+    "/Cloud/PKI/Matter",
+    "/Cloud/PKI/Custom",
+    "/Cloud/Ecosystem",
+    "/Cloud/Ecosystem/Factory",
+    "/Cloud/Ecosystem/Factory/Factory List",
+    "/Cloud/Ecosystem/Factory/Factory Info",
+    "/Cloud/Ecosystem/Factory/Station",
+    "/Cloud/Ecosystem/Factory/Batch",
+    "/Cloud/Ecosystem/U-Safe List",
+    "/Cloud/Records",
+    "/Cloud/Records/Device History",
+    "/Cloud/Records/DAC Report",
+    "/Cloud/Admin",
+    "/Cloud/Admin/Account",
+    "/Cloud/Admin/Group",
+    "/Cloud/Operation",
+    "/Cloud/Operation/Tenant",
+    "/Cloud/Operation/Role",
+    "/Cloud/Operation/User(SNB)",
+    "/Cloud/Operation/DAC Toup",
+    "/Cloud/System",
+    "/Cloud/System/Language",
+    "/Cloud/System/Resources",
+    "/Cloud/System/Parameters",
+    "/Cloud/Archived",
+    "/Cloud/Archived/全局UI&UE",
+    "/Cloud/Archived/Basic",
+    "/Cloud/Archived/Certificate",
+    "/Cloud/Archived/U-Safe Account",
+    "/Cloud/Archived/U-Safe List (SNB)",
+    "/Cloud/UI Check",
+    "/Cloud/UI Check/OBIS-20260608-20260618",
+    "/Cloud/SEMS",
+    "/Cloud/SEMS/SE-Profile-List-Operation",
+    "/Cloud/SEMS/SE-Profile-Detail-Tabs",
+    "/Cloud/SEMS/SE-Profile-List",
+    "/Cloud/SEMS/SE-Profile-Detail",
+    "/Cloud/SEMS/SCP11c Wrap API",
+    "/Cloud/SEMS/GP Script Parsing Spec",
+    "/Edge",
+    "/Edge/Login",
+    "/Edge/Factory",
+    "/Edge/Batch",
+    "/Edge/Station",
+    "/Edge/Interface",
+    "/Edge/全局UI&UE",
+    "/Edge/Auth",
+    "/Client",
+    "/Client/Programing Station",
+    "/Client/Programing Station/login",
+    "/Client/Programing Station/Programing",
+    "/Client/Programing Station/Batch Detail",
+    "/Client/Programing Station/Channel Configuration",
+    "/Client/Programing Station/Others",
+    "/Client/Programing Station/Programing CLI",
+    "/Client/CHIP",
+    "/Client/CHIP/Qorvo",
+    "/Client/CHIP/Telink",
+    "/Client/CHIP/Silicon Labs",
+    "/Client/SNB-CLI",
+    "/Super Admin Platform",
+    "/Super Admin Platform/OBIS Biz",
+    "/Super Admin Platform/OBIS Biz/Tenant",
+    "/Super Admin Platform/OBIS Biz/Role",
+    "/Super Admin Platform/OBIS Biz/User(SNB)",
+    "/Super Admin Platform/OBIS Biz/DAC Topup",
+    "/Super Admin Platform/OBIS System",
+    "/Super Admin Platform/OBIS System/Resource",
+    "/Super Admin Platform/OBIS System/Parameters",
+    "/Super Admin Platform/OBIS System/Language",
+    "/Super Admin Platform/OBIS System/Certificate Specification",
+    "/Super Admin Platform/OBIS System/Certificate Specification/Cert Spec List",
+    "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec",
+    "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step1 Basics",
+    "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint",
+    "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint/Leaf Cert",
+    "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint/Root",
+    "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint/Intermediate CA",
+    "/Super Admin Platform/OBIS System/U-Safe Account",
+    "/Super Admin Platform/SA System",
+    "/Super Admin Platform/SA System/超管用户管理",
+    "/Super Admin Platform/SA System/超管角色管理",
+    "/Super Admin Platform/SA System/超管资源管理"
+  ],
+  "modules": [
+    {
+      "path": "/未规划用例",
+      "level": 0,
+      "name": "未规划用例",
+      "case_count": 9,
+      "is_leaf": true,
+      "type": "system_default"
+    },
+    {
+      "path": "/Client",
+      "level": 0,
+      "name": "Client",
+      "case_count": 156,
+      "is_leaf": false,
+      "children": [
+        {
+          "path": "/Client/CHIP",
+          "level": 1,
+          "name": "CHIP",
+          "case_count": 27,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Client/CHIP/Qorvo",
+              "level": 2,
+              "name": "Qorvo",
+              "case_count": 9,
+              "is_leaf": true
+            },
+            {
+              "path": "/Client/CHIP/Silicon Labs",
+              "level": 2,
+              "name": "Silicon Labs",
+              "case_count": 9,
+              "is_leaf": true
+            },
+            {
+              "path": "/Client/CHIP/Telink",
+              "level": 2,
+              "name": "Telink",
+              "case_count": 9,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Client/Programing Station",
+          "level": 1,
+          "name": "Programing Station",
+          "case_count": 116,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Client/Programing Station/Batch Detail",
+              "level": 2,
+              "name": "Batch Detail",
+              "case_count": 7,
+              "is_leaf": true
+            },
+            {
+              "path": "/Client/Programing Station/Channel Configuration",
+              "level": 2,
+              "name": "Channel Configuration",
+              "case_count": 6,
+              "is_leaf": true
+            },
+            {
+              "path": "/Client/Programing Station/Others",
+              "level": 2,
+              "name": "Others",
+              "case_count": 3,
+              "is_leaf": true
+            },
+            {
+              "path": "/Client/Programing Station/Programing",
+              "level": 2,
+              "name": "Programing",
+              "case_count": 60,
+              "is_leaf": true
+            },
+            {
+              "path": "/Client/Programing Station/Programing CLI",
+              "level": 2,
+              "name": "Programing CLI",
+              "case_count": 3,
+              "is_leaf": true
+            },
+            {
+              "path": "/Client/Programing Station/login",
+              "level": 2,
+              "name": "login",
+              "case_count": 37,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Client/SNB-CLI",
+          "level": 1,
+          "name": "SNB-CLI",
+          "case_count": 13,
+          "is_leaf": true
+        }
+      ]
+    },
+    {
+      "path": "/Cloud",
+      "level": 0,
+      "name": "Cloud",
+      "case_count": 1813,
+      "is_leaf": false,
+      "children": [
+        {
+          "path": "/Cloud/Admin",
+          "level": 1,
+          "name": "Admin",
+          "case_count": 75,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/Admin/Account",
+              "level": 2,
+              "name": "Account",
+              "case_count": 41,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Admin/Group",
+              "level": 2,
+              "name": "Group",
+              "case_count": 34,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/Archived",
+          "level": 1,
+          "name": "Archived",
+          "case_count": 76,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/Archived/Basic",
+              "level": 2,
+              "name": "Basic",
+              "case_count": 49,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Archived/Certificate",
+              "level": 2,
+              "name": "Certificate",
+              "case_count": 12,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Archived/U-Safe Account",
+              "level": 2,
+              "name": "U-Safe Account",
+              "case_count": 3,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Archived/U-Safe List (SNB)",
+              "level": 2,
+              "name": "U-Safe List (SNB)",
+              "case_count": 4,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Archived/全局UI&UE",
+              "level": 2,
+              "name": "全局UI&UE",
+              "case_count": 8,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/Ecosystem",
+          "level": 1,
+          "name": "Ecosystem",
+          "case_count": 122,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/Ecosystem/Factory",
+              "level": 2,
+              "name": "Factory",
+              "case_count": 119,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/Ecosystem/Factory/Batch",
+                  "level": 3,
+                  "name": "Batch",
+                  "case_count": 7,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Ecosystem/Factory/Factory Info",
+                  "level": 3,
+                  "name": "Factory Info",
+                  "case_count": 53,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Ecosystem/Factory/Factory List",
+                  "level": 3,
+                  "name": "Factory List",
+                  "case_count": 4,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Ecosystem/Factory/Station",
+                  "level": 3,
+                  "name": "Station",
+                  "case_count": 45,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/Ecosystem/U-Safe List",
+              "level": 2,
+              "name": "U-Safe List",
+              "case_count": 3,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/KMS",
+          "level": 1,
+          "name": "KMS",
+          "case_count": 411,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/KMS/Create Key",
+              "level": 2,
+              "name": "Create Key",
+              "case_count": 64,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/KMS/Create Key/Basic",
+                  "level": 3,
+                  "name": "Basic",
+                  "case_count": 23,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/KMS/Create Key/Generation Method",
+                  "level": 3,
+                  "name": "Generation Method",
+                  "case_count": 24,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/KMS/Create Key/Permission",
+                  "level": 3,
+                  "name": "Permission",
+                  "case_count": 16,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/KMS/Key Detail",
+              "level": 2,
+              "name": "Key Detail",
+              "case_count": 92,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/KMS/Key Detail/Operation Log",
+                  "level": 3,
+                  "name": "Operation Log",
+                  "case_count": 17,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/KMS/Key Detail/Overview",
+                  "level": 3,
+                  "name": "Overview",
+                  "case_count": 0,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/KMS/Key Detail/Permission",
+                  "level": 3,
+                  "name": "Permission",
+                  "case_count": 22,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/KMS/Key Detail/Usage Count",
+                  "level": 3,
+                  "name": "Usage Count",
+                  "case_count": 15,
+                  "is_leaf": false,
+                  "children": [
+                    {
+                      "path": "/Cloud/KMS/Key Detail/Usage Count/Product",
+                      "level": 4,
+                      "name": "Product",
+                      "case_count": 6,
+                      "is_leaf": true
+                    },
+                    {
+                      "path": "/Cloud/KMS/Key Detail/Usage Count/User",
+                      "level": 4,
+                      "name": "User",
+                      "case_count": 7,
+                      "is_leaf": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/KMS/Key List",
+              "level": 2,
+              "name": "Key List",
+              "case_count": 45,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/Login & Profile",
+          "level": 1,
+          "name": "Login & Profile",
+          "case_count": 22,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/Login & Profile/Login",
+              "level": 2,
+              "name": "Login",
+              "case_count": 8,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Login & Profile/My Profile",
+              "level": 2,
+              "name": "My Profile",
+              "case_count": 14,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Login & Profile/Registration",
+              "level": 2,
+              "name": "Registration",
+              "case_count": 0,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/Operation",
+          "level": 1,
+          "name": "Operation",
+          "case_count": 85,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/Operation/DAC Toup",
+              "level": 2,
+              "name": "DAC Toup",
+              "case_count": 8,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Operation/Role",
+              "level": 2,
+              "name": "Role",
+              "case_count": 16,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Operation/Tenant",
+              "level": 2,
+              "name": "Tenant",
+              "case_count": 45,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Operation/User(SNB)",
+              "level": 2,
+              "name": "User(SNB)",
+              "case_count": 16,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/PKI",
+          "level": 1,
+          "name": "PKI",
+          "case_count": 393,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/PKI/CSR Configuration",
+              "level": 2,
+              "name": "CSR Configuration",
+              "case_count": 16,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/PKI/Cert & Template Detail",
+              "level": 2,
+              "name": "Cert & Template Detail",
+              "case_count": 162,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/PKI/Cert & Template Detail/Audit",
+                  "level": 3,
+                  "name": "Audit",
+                  "case_count": 21,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/PKI/Cert & Template Detail/End Entity Cert List",
+                  "level": 3,
+                  "name": "End Entity Cert List",
+                  "case_count": 22,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/PKI/Cert & Template Detail/Navigation Bar",
+                  "level": 3,
+                  "name": "Navigation Bar",
+                  "case_count": 15,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/PKI/Cert & Template Detail/Overview",
+                  "level": 3,
+                  "name": "Overview",
+                  "case_count": 50,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/PKI/Cert & Template Detail/Usage Count",
+                  "level": 3,
+                  "name": "Usage Count",
+                  "case_count": 31,
+                  "is_leaf": false,
+                  "children": [
+                    {
+                      "path": "/Cloud/PKI/Cert & Template Detail/Usage Count/Product",
+                      "level": 4,
+                      "name": "Product",
+                      "case_count": 16,
+                      "is_leaf": true
+                    },
+                    {
+                      "path": "/Cloud/PKI/Cert & Template Detail/Usage Count/Usage",
+                      "level": 4,
+                      "name": "Usage",
+                      "case_count": 11,
+                      "is_leaf": false,
+                      "children": [
+                        {
+                          "path": "/Cloud/PKI/Cert & Template Detail/Usage Count/Usage/Product",
+                          "level": 5,
+                          "name": "Product",
+                          "case_count": 5,
+                          "is_leaf": true
+                        },
+                        {
+                          "path": "/Cloud/PKI/Cert & Template Detail/Usage Count/Usage/User",
+                          "level": 5,
+                          "name": "User",
+                          "case_count": 5,
+                          "is_leaf": true
+                        }
+                      ]
+                    },
+                    {
+                      "path": "/Cloud/PKI/Cert & Template Detail/Usage Count/User",
+                      "level": 4,
+                      "name": "User",
+                      "case_count": 4,
+                      "is_leaf": true
+                    }
+                  ]
+                },
+                {
+                  "path": "/Cloud/PKI/Cert & Template Detail/Verification Service",
+                  "level": 3,
+                  "name": "Verification Service",
+                  "case_count": 23,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/PKI/Create Certificate",
+              "level": 2,
+              "name": "Create Certificate",
+              "case_count": 72,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/PKI/Create Certificate/Step1 Basics",
+                  "level": 3,
+                  "name": "Step1 Basics",
+                  "case_count": 26,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/PKI/Create Certificate/Step2 Certificate Profile",
+                  "level": 3,
+                  "name": "Step2 Certificate Profile",
+                  "case_count": 31,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/PKI/Create Certificate/Step3 Permission",
+                  "level": 3,
+                  "name": "Step3 Permission",
+                  "case_count": 15,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/PKI/Custom",
+              "level": 2,
+              "name": "Custom",
+              "case_count": 27,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/PKI/Google Cast",
+              "level": 2,
+              "name": "Google Cast",
+              "case_count": 22,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/PKI/Matter",
+              "level": 2,
+              "name": "Matter",
+              "case_count": 23,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/PKI/PKI List",
+              "level": 2,
+              "name": "PKI List",
+              "case_count": 71,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/Product",
+          "level": 1,
+          "name": "Product",
+          "case_count": 562,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/Product/Assets",
+              "level": 2,
+              "name": "Assets",
+              "case_count": 148,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Product/Batch",
+              "level": 2,
+              "name": "Batch",
+              "case_count": 55,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/Product/Batch/Create",
+                  "level": 3,
+                  "name": "Create",
+                  "case_count": 11,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Product/Batch/Detail",
+                  "level": 3,
+                  "name": "Detail",
+                  "case_count": 3,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Product/Batch/List",
+                  "level": 3,
+                  "name": "List",
+                  "case_count": 13,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/Product/Device",
+              "level": 2,
+              "name": "Device",
+              "case_count": 19,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/Product/Device/List",
+                  "level": 3,
+                  "name": "List",
+                  "case_count": 10,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Product/Device/Logs",
+                  "level": 3,
+                  "name": "Logs",
+                  "case_count": 2,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Product/Device/Profile",
+                  "level": 3,
+                  "name": "Profile",
+                  "case_count": 7,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/Product/Header",
+              "level": 2,
+              "name": "Header",
+              "case_count": 22,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/Product/Header/Settings",
+                  "level": 3,
+                  "name": "Settings",
+                  "case_count": 15,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/Product/Member",
+              "level": 2,
+              "name": "Member",
+              "case_count": 24,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Product/OTA",
+              "level": 2,
+              "name": "OTA",
+              "case_count": 0,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Product/Overview",
+              "level": 2,
+              "name": "Overview",
+              "case_count": 31,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Product/Product List",
+              "level": 2,
+              "name": "Product List",
+              "case_count": 26,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/Product/Product List/Module",
+                  "level": 3,
+                  "name": "Module",
+                  "case_count": 2,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Product/Product List/Version",
+                  "level": 3,
+                  "name": "Version",
+                  "case_count": 1,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/Product/Version",
+              "level": 2,
+              "name": "Version",
+              "case_count": 49,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/Product/Version/Create",
+                  "level": 3,
+                  "name": "Create",
+                  "case_count": 22,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Product/Version/List",
+                  "level": 3,
+                  "name": "List",
+                  "case_count": 16,
+                  "is_leaf": true
+                }
+              ]
+            },
+            {
+              "path": "/Cloud/Product/Vulnerability & SBOM",
+              "level": 2,
+              "name": "Vulnerability & SBOM",
+              "case_count": 188,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Cloud/Product/Vulnerability & SBOM/SBOM",
+                  "level": 3,
+                  "name": "SBOM",
+                  "case_count": 100,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Cloud/Product/Vulnerability & SBOM/Vulnerability",
+                  "level": 3,
+                  "name": "Vulnerability",
+                  "case_count": 88,
+                  "is_leaf": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/Records",
+          "level": 1,
+          "name": "Records",
+          "case_count": 46,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/Records/DAC Report",
+              "level": 2,
+              "name": "DAC Report",
+              "case_count": 14,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/Records/Device History",
+              "level": 2,
+              "name": "Device History",
+              "case_count": 32,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/System",
+          "level": 1,
+          "name": "System",
+          "case_count": 13,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/System/Language",
+              "level": 2,
+              "name": "Language",
+              "case_count": 3,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/System/Parameters",
+              "level": 2,
+              "name": "Parameters",
+              "case_count": 3,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/System/Resources",
+              "level": 2,
+              "name": "Resources",
+              "case_count": 7,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/UI Check",
+          "level": 1,
+          "name": "UI Check",
+          "case_count": 0,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/UI Check/OBIS-20260608-20260618",
+              "level": 2,
+              "name": "OBIS-20260608-20260618",
+              "case_count": 0,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Cloud/SEMS",
+          "level": 1,
+          "name": "SEMS",
+          "case_count": 526,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Cloud/SEMS/SE-Profile-List-Operation",
+              "level": 2,
+              "name": "SE-Profile-List-Operation",
+              "case_count": 135,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/SEMS/SE-Profile-Detail-Tabs",
+              "level": 2,
+              "name": "SE-Profile-Detail-Tabs",
+              "case_count": 146,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/SEMS/SE-Profile-List",
+              "level": 2,
+              "name": "SE-Profile-List",
+              "case_count": 0,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/SEMS/SE-Profile-Detail",
+              "level": 2,
+              "name": "SE-Profile-Detail",
+              "case_count": 116,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/SEMS/SCP11c Wrap API",
+              "level": 2,
+              "name": "SCP11c Wrap API",
+              "case_count": 44,
+              "is_leaf": true
+            },
+            {
+              "path": "/Cloud/SEMS/GP Script Parsing Spec",
+              "level": 2,
+              "name": "GP Script Parsing Spec",
+              "case_count": 40,
+              "is_leaf": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Edge",
+      "level": 0,
+      "name": "Edge",
+      "case_count": 67,
+      "is_leaf": false,
+      "children": [
+        {
+          "path": "/Edge/Auth",
+          "level": 1,
+          "name": "Auth",
+          "case_count": 9,
+          "is_leaf": true
+        },
+        {
+          "path": "/Edge/Batch",
+          "level": 1,
+          "name": "Batch",
+          "case_count": 14,
+          "is_leaf": true
+        },
+        {
+          "path": "/Edge/Factory",
+          "level": 1,
+          "name": "Factory",
+          "case_count": 19,
+          "is_leaf": true
+        },
+        {
+          "path": "/Edge/Interface",
+          "level": 1,
+          "name": "Interface",
+          "case_count": 9,
+          "is_leaf": true
+        },
+        {
+          "path": "/Edge/Login",
+          "level": 1,
+          "name": "Login",
+          "case_count": 4,
+          "is_leaf": true
+        },
+        {
+          "path": "/Edge/Station",
+          "level": 1,
+          "name": "Station",
+          "case_count": 12,
+          "is_leaf": true
+        },
+        {
+          "path": "/Edge/全局UI&UE",
+          "level": 1,
+          "name": "全局UI&UE",
+          "case_count": 0,
+          "is_leaf": true
+        }
+      ]
+    },
+    {
+      "path": "/Super Admin Platform",
+      "level": 0,
+      "name": "Super Admin Platform",
+      "case_count": 83,
+      "is_leaf": false,
+      "children": [
+        {
+          "path": "/Super Admin Platform/OBIS Biz",
+          "level": 1,
+          "name": "OBIS Biz",
+          "case_count": 16,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Super Admin Platform/OBIS Biz/DAC Topup",
+              "level": 2,
+              "name": "DAC Topup",
+              "case_count": 2,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/OBIS Biz/Role",
+              "level": 2,
+              "name": "Role",
+              "case_count": 6,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/OBIS Biz/Tenant",
+              "level": 2,
+              "name": "Tenant",
+              "case_count": 4,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/OBIS Biz/User(SNB)",
+              "level": 2,
+              "name": "User(SNB)",
+              "case_count": 4,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Super Admin Platform/OBIS System",
+          "level": 1,
+          "name": "OBIS System",
+          "case_count": 59,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Super Admin Platform/OBIS System/Certificate Specification",
+              "level": 2,
+              "name": "Certificate Specification",
+              "case_count": 40,
+              "is_leaf": false,
+              "children": [
+                {
+                  "path": "/Super Admin Platform/OBIS System/Certificate Specification/Cert Spec List",
+                  "level": 3,
+                  "name": "Cert Spec List",
+                  "case_count": 30,
+                  "is_leaf": true
+                },
+                {
+                  "path": "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec",
+                  "level": 3,
+                  "name": "Create Cert Spec",
+                  "case_count": 10,
+                  "is_leaf": false,
+                  "children": [
+                    {
+                      "path": "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step1 Basics",
+                      "level": 4,
+                      "name": "step1 Basics",
+                      "case_count": 10,
+                      "is_leaf": true
+                    },
+                    {
+                      "path": "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint",
+                      "level": 4,
+                      "name": "step2 Attribute Constraint",
+                      "case_count": 0,
+                      "is_leaf": false,
+                      "children": [
+                        {
+                          "path": "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint/Intermediate CA",
+                          "level": 5,
+                          "name": "Intermediate CA",
+                          "case_count": 0,
+                          "is_leaf": true
+                        },
+                        {
+                          "path": "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint/Leaf Cert",
+                          "level": 5,
+                          "name": "Leaf Cert",
+                          "case_count": 0,
+                          "is_leaf": true
+                        },
+                        {
+                          "path": "/Super Admin Platform/OBIS System/Certificate Specification/Create Cert Spec/step2 Attribute Constraint/Root",
+                          "level": 5,
+                          "name": "Root",
+                          "case_count": 0,
+                          "is_leaf": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "path": "/Super Admin Platform/OBIS System/Language",
+              "level": 2,
+              "name": "Language",
+              "case_count": 6,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/OBIS System/Parameters",
+              "level": 2,
+              "name": "Parameters",
+              "case_count": 4,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/OBIS System/Resource",
+              "level": 2,
+              "name": "Resource",
+              "case_count": 6,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/OBIS System/U-Safe Account",
+              "level": 2,
+              "name": "U-Safe Account",
+              "case_count": 3,
+              "is_leaf": true
+            }
+          ]
+        },
+        {
+          "path": "/Super Admin Platform/SA System",
+          "level": 1,
+          "name": "SA System",
+          "case_count": 8,
+          "is_leaf": false,
+          "children": [
+            {
+              "path": "/Super Admin Platform/SA System/超管用户管理",
+              "level": 2,
+              "name": "超管用户管理",
+              "case_count": 2,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/SA System/超管角色管理",
+              "level": 2,
+              "name": "超管角色管理",
+              "case_count": 3,
+              "is_leaf": true
+            },
+            {
+              "path": "/Super Admin Platform/SA System/超管资源管理",
+              "level": 2,
+              "name": "超管资源管理",
+              "case_count": 3,
+              "is_leaf": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "not_in_tree_yet": {
+    "note": "以下细分子模块尚未在 MeterSphere 创建；Product 相关用例当前统一挂在 /Cloud/Product 下已有模块",
+    "paths": [
+      "/Cloud/Product/Assets/Assign Security Key",
+      "/Cloud/Product/Assets/Assign Certificate",
+      "/Cloud/Product/Assets/Tag 新增与删除（Key/Certificate 共用）",
+      "/Cloud/Product/Assets/Asset 列表展示"
+    ]
+  }
+}
